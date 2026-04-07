@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艾伯林量子調頻｜腦波狀態解碼測驗</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-1: #06111f;
+            --bg-2: #0f1d31;
+            --panel: rgba(7, 18, 33, 0.82);
+            --line: rgba(148, 163, 184, 0.18);
+            --line-strong: rgba(125, 211, 252, 0.45);
+            --text-main: #e2e8f0;
+            --text-soft: #94a3b8;
+            --brand: #67e8f9;
+            --brand-2: #38bdf8;
+            --accent: #f8fafc;
+            --success: #86efac;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'PingFang TC', 'Noto Sans TC', 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--text-main);
+            background:
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+                radial-gradient(circle at top right, rgba(103, 232, 249, 0.12), transparent 26%),
+                linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
+        }
+        .step { display: none; }
+        .step.active { display: block; animation: fadeIn 0.45s ease; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: 0 20px 80px rgba(2, 8, 23, 0.45);
+            backdrop-filter: blur(18px);
+        }
+        .desktop-shell {
+            position: relative;
+        }
+        .desktop-shell::before {
+            content: "";
+            position: absolute;
+            inset: -1.5rem 8% auto 8%;
+            height: 14rem;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.12), transparent 68%);
+            filter: blur(24px);
+            pointer-events: none;
+        }
+        .desktop-panel {
+            position: relative;
+            height: 100%;
+        }
+        .desktop-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 24%);
+            pointer-events: none;
+        }
+        .desktop-panel > * {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-grid {
+            background-image:
+                linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+        .option-btn {
+            width: 100%;
+            text-align: left;
+            padding: 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 1rem;
+            background: rgba(15, 23, 42, 0.72);
+            transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+            cursor: pointer;
+        }
+        .option-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(103, 232, 249, 0.38);
+            background: rgba(15, 23, 42, 0.92);
+            box-shadow: 0 12px 24px rgba(8, 47, 73, 0.18);
+        }
+        .option-btn.selected {
+            border-color: var(--line-strong);
+            background: linear-gradient(135deg, rgba(12, 74, 110, 0.9), rgba(14, 116, 144, 0.7));
+            box-shadow: 0 16px 32px rgba(14, 116, 144, 0.2);
+        }
+        .option-key {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(103, 232, 249, 0.26);
+            color: #cffafe;
+            background: rgba(8, 47, 73, 0.45);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .field-input {
+            width: 100%;
+            background: rgba(2, 6, 23, 0.66);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 0.9rem;
+            padding: 0.95rem 1rem;
+            color: white;
+            outline: none;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease;
+        }
+        .field-input:focus {
+            border-color: rgba(103, 232, 249, 0.55);
+            box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.08);
+        }
+        .primary-btn {
+            border: none;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, var(--brand-2), var(--brand));
+            color: #062033;
+            font-weight: 700;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+            box-shadow: 0 18px 40px rgba(14, 165, 233, 0.18);
+        }
+        .primary-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 20px 48px rgba(34, 211, 238, 0.24);
+        }
+        .secondary-btn {
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            background: rgba(15, 23, 42, 0.55);
+            color: var(--text-main);
+            border-radius: 9999px;
+            transition: border-color 0.18s ease, background 0.18s ease;
+        }
+        .secondary-btn:hover {
+            border-color: rgba(103, 232, 249, 0.32);
+            background: rgba(15, 23, 42, 0.82);
+        }
+        .brand-chip {
+            border: 1px solid rgba(103, 232, 249, 0.24);
+            background: rgba(8, 47, 73, 0.3);
+            color: #cffafe;
+        }
+        .mini-card {
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            background: rgba(15, 23, 42, 0.45);
+        }
+        .mobile-hero-only {
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .desktop-balance {
+                display: grid;
+                grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
+                gap: 1.5rem;
+                align-items: stretch;
+            }
+            .desktop-side-panel,
+            .desktop-main-panel {
+                min-height: 860px;
+            }
+            .desktop-side-panel {
+                padding: 2.25rem;
+            }
+            .desktop-main-panel {
+                padding: 2.25rem;
+            }
+            .desktop-main-panel .step {
+                min-height: 100%;
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .desktop-main-panel .step.active {
+                display: flex;
+            }
+            .desktop-main-panel #step-start.step.active {
+                justify-content: flex-start;
+                align-items: flex-start;
+                text-align: left;
+                padding-top: 3.5rem;
+            }
+            .desktop-main-panel #step-start .entry-note {
+                max-width: 32rem;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .desktop-main-panel #step-start .entry-cards {
+                width: 100%;
+                max-width: 100%;
+            }
+            .desktop-main-panel #step-start .brand-chip {
+                align-self: flex-start;
+            }
+            .desktop-main-panel #step-start .primary-btn {
+                align-self: flex-start;
+            }
+            .desktop-main-panel #quiz-container.step.active {
+                justify-content: flex-start;
+            }
+        }
+        @media (max-width: 767px) {
+            body {
+                padding: 0.75rem;
+            }
+            .mobile-main-first {
+                display: flex;
+                flex-direction: column;
+            }
+            .mobile-main-first > .mobile-main-panel {
+                order: 1;
+            }
+            .mobile-main-first > .mobile-side-panel {
+                order: 2;
+            }
+            .mobile-main-panel,
+            .mobile-side-panel {
+                border-radius: 1.5rem;
+            }
+            .mobile-side-panel {
+                padding: 1.25rem;
+            }
+            .mobile-side-panel {
+                position: relative;
+                overflow: hidden;
+            }
+            .mobile-side-panel::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background:
+                    radial-gradient(circle at 20% 18%, rgba(103, 232, 249, 0.22), transparent 24%),
+                    radial-gradient(circle at 82% 14%, rgba(56, 189, 248, 0.18), transparent 22%),
+                    linear-gradient(180deg, rgba(6, 17, 31, 0.15) 0%, rgba(6, 17, 31, 0.75) 100%);
+                pointer-events: none;
+            }
+            .mobile-side-panel > * {
+                position: relative;
+                z-index: 1;
+            }
+            .mobile-side-panel .brand-chip {
+                font-size: 0.7rem;
+                letter-spacing: 0.14em;
+            }
+            .mobile-side-panel .desktop-hero-copy {
+                display: none;
+            }
+            .mobile-side-panel .mobile-hero-only {
+                display: block;
+            }
+            .mobile-side-panel .hero-brow {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
+                padding: 0.45rem 0.8rem;
+                border: 1px solid rgba(125, 211, 252, 0.28);
+                border-radius: 9999px;
+                background: rgba(8, 47, 73, 0.35);
+                color: #d8fbff;
+                font-size: 0.68rem;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+            .mobile-side-panel .hero-brow-dot {
+                width: 0.4rem;
+                height: 0.4rem;
+                border-radius: 9999px;
+                background: #67e8f9;
+                box-shadow: 0 0 16px rgba(103, 232, 249, 0.7);
+            }
+            .mobile-side-panel h1 {
+                font-size: 2.2rem;
+                line-height: 1.08;
+                letter-spacing: -0.03em;
+            }
+            .mobile-side-panel .hero-summary {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+            .mobile-side-panel .mobile-hero-summary {
+                margin-top: 0.9rem;
+                font-size: 0.98rem;
+                line-height: 1.72;
+                color: rgba(226, 232, 240, 0.92);
+            }
+            .mobile-side-panel .hero-cta-cluster {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+                margin-top: 1.15rem;
+            }
+            .mobile-side-panel .hero-primary-stat {
+                padding: 1rem 1rem 0.95rem;
+                border-radius: 1.1rem;
+                border: 1px solid rgba(125, 211, 252, 0.2);
+                background: linear-gradient(180deg, rgba(8, 47, 73, 0.42), rgba(2, 6, 23, 0.5));
+            }
+            .mobile-side-panel .hero-primary-stat strong {
+                display: block;
+                font-size: 1.2rem;
+                color: white;
+                margin-top: 0.2rem;
+            }
+            .mobile-side-panel .hero-mobile-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 3.35rem;
+                border-radius: 9999px;
+                background: linear-gradient(135deg, #67e8f9, #bae6fd);
+                color: #062033;
+                font-weight: 800;
+                text-decoration: none;
+                box-shadow: 0 16px 34px rgba(14, 165, 233, 0.24);
+            }
+            .mobile-side-panel .hero-mobile-note {
+                margin-top: 0.75rem;
+                text-align: center;
+                font-size: 0.78rem;
+                color: rgba(148, 163, 184, 0.88);
+            }
+            .mobile-side-panel .hero-metrics {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.6rem;
+                margin-top: 1rem;
+            }
+            .mobile-side-panel .hero-metrics .mini-card {
+                padding: 0.75rem 0.7rem;
+                border-radius: 1rem;
+                text-align: center;
+            }
+            .mobile-side-panel .hero-metrics .mini-card p:last-child {
+                margin-top: 0.35rem;
+                font-size: 0.9rem;
+            }
+            .mobile-side-panel .hero-points {
+                margin-top: 1rem;
+                gap: 0.65rem;
+                padding-top: 0.95rem;
+                border-top: 1px solid rgba(148, 163, 184, 0.12);
+            }
+            .mobile-side-panel .hero-points p {
+                font-size: 0.82rem;
+                line-height: 1.55;
+            }
+            .mobile-main-panel {
+                padding: 1.25rem;
+            }
+            .mobile-main-panel .entry-heading {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            .mobile-main-panel .entry-cards {
+                grid-template-columns: 1fr;
+            }
+            .mobile-main-panel .entry-note {
+                line-height: 1.6;
+            }
+            .mobile-progress {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mobile-progress .progress-track {
+                width: 100%;
+            }
+            .mobile-question-card {
+                padding: 1rem;
+            }
+            .mobile-question-title {
+                font-size: 1.15rem;
+                line-height: 1.7;
+            }
+            .option-btn {
+                padding: 0.9rem;
+                border-radius: 0.9rem;
+            }
+            .option-btn .option-key {
+                width: 1.85rem;
+                height: 1.85rem;
+                font-size: 0.85rem;
+            }
+            .option-btn .option-text {
+                font-size: 0.95rem;
+                line-height: 1.65;
+            }
+            .mobile-quiz-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mobile-quiz-actions p,
+            .mobile-quiz-actions button {
+                width: 100%;
+                text-align: center;
+            }
+            .mobile-lead-title,
+            .mobile-result-title {
+                font-size: 1.75rem;
+                line-height: 1.25;
+            }
+            .mobile-lead-copy,
+            .mobile-result-copy {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+            .field-input {
+                font-size: 16px;
+            }
+            .primary-btn,
+            .secondary-btn {
+                min-height: 3.25rem;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6">
+
+<div class="max-w-6xl mx-auto desktop-shell">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start mobile-main-first desktop-balance">
+        <aside class="glass-panel desktop-panel desktop-side-panel hero-grid rounded-[2rem] p-6 sm:p-8 overflow-hidden mobile-side-panel">
+            <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-sm tracking-[0.18em] uppercase">
+                <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
+                艾伯林量子調頻
+            </div>
+            <div class="mt-8">
+                <div class="mobile-hero-only">
+                    <div class="hero-brow">
+                        <span class="hero-brow-dot"></span>
+                        Quantum Frequency Assessment
+                    </div>
+                </div>
+                <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">Quantum Frequency Assessment</p>
+                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">8 題定位你目前最需要的<br>神經調頻路徑</h1>
+                <p class="mt-5 text-slate-300 leading-relaxed text-base sm:text-lg hero-summary desktop-hero-copy">
+                    這不是一般心理測驗。艾伯林量子調頻透過場景化問答，快速判讀你目前最明顯的壓力模式、神經負載與內在失衡方向，協助你對應最適合的頻率方案。
+                </p>
+                <div class="mobile-hero-only">
+                    <p class="mobile-hero-summary">
+                        不是泛用測驗，而是為高壓、過載、難以放鬆的當代狀態打造的品牌化解碼入口。90 秒內看見你此刻最需要的調頻方向。
+                    </p>
+                    <div class="hero-cta-cluster">
+                        <div class="hero-primary-stat">
+                            <span class="text-[0.68rem] uppercase tracking-[0.16em] text-cyan-100/70">Brand Signal</span>
+                            <strong>個人化狀態解碼 + Email 報告</strong>
+                        </div>
+                        <a href="#step-start" class="hero-mobile-cta">立即開始測驗</a>
+                    </div>
+                    <p class="hero-mobile-note">無需先填資料，完成後再留下 Email 即可接收結果</p>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-3 mt-8 hero-metrics">
+                <div class="mini-card rounded-2xl p-4">
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">測驗時間</p>
+                    <p class="mt-2 text-lg font-semibold text-white">約 90 秒</p>
+                </div>
+                <div class="mini-card rounded-2xl p-4">
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">解碼維度</p>
+                    <p class="mt-2 text-lg font-semibold text-white">4 種狀態類型</p>
+                </div>
+                <div class="mini-card rounded-2xl p-4">
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">結果交付</p>
+                    <p class="mt-2 text-lg font-semibold text-white">Email 報告</p>
+                </div>
+            </div>
+
+            <div class="mt-8 space-y-3 text-sm text-slate-300 hero-points">
+                <div class="flex items-start gap-3">
+                    <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
+                    <p>聚焦日常高壓、過載、神經緊繃與匱乏感等真實狀態。</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
+                    <p>結果將對應專屬調頻方向，方便後續銜接體驗音頻與服務說明。</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
+                    <p>流程僅需姓名與 Email，用於寄送你的個人化解碼結果。</p>
+                </div>
+            </div>
+        </aside>
+
+<div class="glass-panel desktop-panel desktop-main-panel hero-grid rounded-[2rem] p-6 sm:p-8 lg:p-10 border border-slate-700 mobile-main-panel">
+    
+    <!-- 歡迎畫面 -->
+    <div id="step-start" class="step active text-center">
+        <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
+            <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
+            檢測入口
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">腦波狀態解碼測驗</h2>
+        <p class="text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto entry-note">
+            透過 8 個高度貼近日常的情境問題，快速定位你現在最主要的內在負載來源，並提供對應的頻率調整建議與後續體驗入口。
+        </p>
+        <div class="grid sm:grid-cols-2 gap-3 text-left mb-8 entry-cards">
+            <div class="mini-card rounded-2xl p-4">
+                <p class="text-sm font-semibold text-white">你會得到什麼</p>
+                <p class="text-sm text-slate-400 mt-2">個人狀態類型、核心說明、對應調頻方向。</p>
+            </div>
+            <div class="mini-card rounded-2xl p-4">
+                <p class="text-sm font-semibold text-white">適合誰做</p>
+                <p class="text-sm text-slate-400 mt-2">長期高壓、睡前停不下來、容易過載或常感到緊繃的人。</p>
+            </div>
+        </div>
+        <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">開始狀態解碼</button>
+        <p class="text-xs text-slate-500 mt-4">填答後可留下 Email 收取結果，不會在過程中中斷你作答。</p>
+    </div>
+
+    <!-- 測驗題目容器 -->
+    <div id="quiz-container" class="step">
+        <div class="mb-6 flex justify-between items-center gap-4 text-sm text-slate-400 mobile-progress">
+            <div>
+                <p class="text-xs uppercase tracking-[0.18em] text-slate-500">目前進度</p>
+                <span id="question-counter">第 1 題 / 共 8 題</span>
+            </div>
+            <div class="w-2/3 bg-slate-700/80 rounded-full h-2.5 progress-track">
+                <div id="progress-bar" class="bg-gradient-to-r from-sky-400 to-cyan-300 h-2.5 rounded-full" style="width: 12.5%"></div>
+            </div>
+        </div>
+        <div class="mini-card rounded-2xl p-5 mb-6 mobile-question-card">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-3">請選擇最接近你最近狀態的一項</p>
+            <h2 id="question-text" class="text-xl sm:text-2xl font-semibold text-white leading-relaxed mobile-question-title"></h2>
+        </div>
+        <div id="options-container" class="space-y-3"></div>
+        <div class="mt-6 flex justify-between items-center gap-3 mobile-quiz-actions">
+            <button id="back-btn" type="button" onclick="goBack()" class="secondary-btn px-5 py-3 text-sm">上一題</button>
+            <p class="text-xs text-slate-500 text-right">選項送出後將自動前往下一題</p>
+        </div>
+    </div>
+
+    <!-- 收集 Email 表單 -->
+    <div id="step-lead" class="step">
+        <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
+            <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
+            解碼完成，準備寄送結果
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-white mobile-lead-title">留下資料，立即接收你的個人化調頻結果</h2>
+        <p class="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed mobile-lead-copy">
+            艾伯林量子調頻會將你的狀態結果、對應說明與體驗入口寄到信箱。你只需要留下姓名與 Email，即可完成本次解碼流程。
+        </p>
+        <div class="mini-card rounded-2xl p-4 mb-6">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500">你的預測結果方向</p>
+            <p id="lead-result-preview" class="mt-2 text-base font-semibold text-cyan-200"></p>
+        </div>
+        
+        <form id="lead-form" onsubmit="submitLead(event)" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-slate-400 mb-1">您的姓名</label>
+                <input type="text" id="user-name" required autocomplete="name" placeholder="請輸入稱呼" class="field-input">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-400 mb-1">電子郵件 (接收音頻用)</label>
+                <input type="email" id="user-email" required autocomplete="email" placeholder="you@example.com" class="field-input">
+            </div>
+            <button type="submit" id="submit-btn" class="primary-btn w-full py-4 px-8 mt-4">
+                寄送我的解碼報告
+            </button>
+            <p class="text-xs text-slate-500">送出後將直接進入結果頁，同步由系統發送 Email。</p>
+        </form>
+    </div>
+
+    <!-- 最終結果畫面 -->
+    <div id="step-result" class="step text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 text-green-300 mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
+            <span class="w-2 h-2 rounded-full bg-green-300"></span>
+            艾伯林量子調頻 已完成同步
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-white mobile-result-title">你的調頻解碼已生成</h2>
+        <p class="text-slate-300 mb-6 mobile-result-copy">本次主要結果為：<span id="result-title" class="font-bold text-cyan-300"></span></p>
+        <div class="mini-card rounded-2xl p-6 text-left mb-4">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">對應頻率方向</p>
+            <p id="result-freq" class="text-base font-semibold text-white"></p>
+        </div>
+        <div class="bg-slate-950/60 rounded-2xl p-6 text-left border border-slate-700 mb-6">
+            <p id="result-desc" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
+        </div>
+        <p class="text-sm text-slate-400">請檢查你的信箱。我們已透過系統發送個人化結果與後續體驗資訊。</p>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    const N8N_WEBHOOK_URL = "https://erick303.app.n8n.cloud/webhook/timewaver-quiz-hook";
+
+    const questions = [
+        { q: "【檢測 1/8】回想昨晚，當你終於躺在床上閉上眼睛時，第一個浮現的狀態是？", options: [ {text: "腦袋像停不下來的跑馬燈，還在反覆重播白天沒處理好的工作。", type: "A"}, {text: "身體已經累到極點，但神經系統還是很緊繃，完全無法放鬆。", type: "B"}, {text: "一直想著明天那件極度重要、高壓的任務，越想越有壓力。", type: "C"}, {text: "胸口有一種說不出的悶，對未來的某種不確定感突然湧上來。", type: "D"} ] },
+        { q: "【檢測 2/8】當你覺得大腦「過載」時，通常伴隨著以下哪一種具體的生理感受？", options: [ {text: "太陽穴兩側緊繃，甚至有點隱隱作痛，腦壓很高。", type: "A"}, {text: "肩頸僵硬，只要有一點微小的環境聲音，就會覺得煩躁。", type: "B"}, {text: "呼吸短促，心跳比平常快，覺得自己一直在準備「作戰」。", type: "C"}, {text: "覺得身體特別沉重，即使休息了，隔天醒來還是覺得被消耗過。", type: "D"} ] },
+        { q: "【檢測 3/8】如果你將現在的大腦比喻為一台電腦，它目前的狀態最接近：", options: [ {text: "開了 50 個分頁，風扇狂轉，隨時準備過熱當機。", type: "A"}, {text: "按下了關機鍵，但系統一直顯示「背景程式執行中，無法關閉」。", type: "B"}, {text: "CPU 全速運轉在預演明天的壓力，導致當下畫面完全卡死。", type: "C"}, {text: "資源被未知的木馬程式（深層恐懼）佔用，一直跳出紅色警告。", type: "D"} ] },
+        { q: "【檢測 4/8】在過去的一週裡，你用什麼方式試圖讓自己放鬆下來？", options: [ {text: "強迫自己去聽白噪音或冥想音樂，但聽著聽著反而更焦慮。", type: "A"}, {text: "吃一些保健品或放鬆劑，但隔天醒來只覺得頭暈腦脹。", type: "B"}, {text: "滑手機滑到眼睛完全睜不開才敢放下，靠極度疲勞來強迫休眠。", type: "C"}, {text: "試著跟自己說「不要想了」，但底層的匱乏感根本壓不住。", type: "D"} ] },
+        { q: "【檢測 5/8】當你看到身邊的朋友或對手獲得巨大的成功時，你的潛意識反應更偏向？", options: [ {text: "開始檢討自己是不是不夠努力，給大腦施加更大的運算壓力。", type: "A"}, {text: "其實沒什麼特別感覺，我現在只希望能好好的、安靜的休息。", type: "B"}, {text: "會有點羨慕，但一想到明天要面對的高壓任務，神經又緊繃了起來。", type: "C"}, {text: "表面恭喜，但內心會瞬間浮現對金錢與未來的強烈不安全感。", type: "D"} ] },
+        { q: "【檢測 6/8】如果有一種「頻率科技」可以介入你的神經系統，你最希望它幫你解決什麼？", options: [ {text: "釋放腦壓，讓我不要再一直重播沒有意義的雜念。", type: "A"}, {text: "強迫肉體深度放鬆，讓我隔天醒來能感受到「真的充飽電了」。", type: "B"}, {text: "預先植入從容感，讓我明天面對重大決策時不再恐懼。", type: "C"}, {text: "洗掉潛意識裡的匱乏頻率，讓我重新感受到安全與豐盛。", type: "D"} ] },
+        { q: "【檢測 7/8】TimeWaver 設備目前有四種頻率防護罩，憑你的直覺，哪個功能最能引起你的共鳴？", options: [ {text: "【腦波降壓】：像拔掉大腦插頭一樣，強制切斷表意識運轉。", type: "A"}, {text: "【環境遮蔽】：將頻率拖入深海，阻絕外界雜音的深度包覆。", type: "B"}, {text: "【神經預載】：在平靜中彩排明天的從容，消除對未知的恐懼。", type: "C"}, {text: "【匱乏清理】：洗掉內心恐懼頻率，植入絕對的信任感。", type: "D"} ] },
+        { q: "【檢測 8/8】最後，靜下心來深呼吸一次。你準備好將大腦的控制權交還給頻率了嗎？", options: [ {text: "是的，我需要立刻釋放我的高頻腦壓。", type: "A"}, {text: "是的，我需要立刻進入深度的平靜與修復。", type: "B"}, {text: "是的，我需要放下對明天的恐懼，回到當下的心流。", type: "C"}, {text: "是的，我準備好洗掉恐懼，讓自己被豐盛感重新包覆。", type: "D"} ] }
+    ];
+
+    const resultsMap = {
+        "A": { title: "過載運轉的超級電腦 (A劑：斷路器)", desc: "你的大腦就像開了 50 個分頁的電腦，Beta波持續高頻震盪。即使躺在床上，腦袋還在跑明天的簡報與會議。你需要 A劑（Theta波）來強制切斷表意識的過載運轉，像拔掉大腦電源插頭一樣釋放腦壓。", freq: "【A劑】斷路器 (Theta 波 4-7Hz)" },
+        "B": { title: "無法休眠的伺服器 (B劑：深海艙)", desc: "即使身體躺平，神經系統依然處於備戰狀態，導致無法放鬆，早上起來全身痠痛。你需要 B劑（Delta波）的深層包覆，將頻率拖入深海，阻絕外界雜音，強迫身體進入修復期。", freq: "【B劑】深海艙 (Delta 波 0.5-4Hz)" },
+        "C": { title: "預期性焦慮的處理器 (C劑：心流校準)", desc: "因為明天有極度重要、高壓的任務，導致當下神經緊繃無法平靜。你需要 C劑（Alpha波）的「心流預載」，讓大腦在平靜中預先彩排明天的從容狀態，消除未知的恐懼感。", freq: "【C劑】心流校準 (Alpha 波 8-12Hz)" },
+        "D": { title: "充滿防衛的封閉網路 (D劑：豐盛錨點)", desc: "深層情緒恐懼導致的慢性高壓。因為對金錢、未來或人際關係充滿不安全感與匱乏感。你需要 D劑（852Hz）在最脆弱的時刻，洗掉恐懼的頻率，植入豐盛與信任的錨點。", freq: "【D劑】豐盛錨點 (Solfeggio 852Hz)" }
+    };
+
+    let currentQ = 0;
+    let scores = { A:0, B:0, C:0, D:0 };
+    let userResultType = "A";
+    let answers = [];
+
+    function showStep(stepId) {
+        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+        document.getElementById(stepId).classList.add('active');
+    }
+
+    function startQuiz() {
+        currentQ = 0;
+        scores = { A:0, B:0, C:0, D:0 };
+        answers = [];
+        showStep('quiz-container');
+        renderQuestion();
+    }
+
+    function renderQuestion() {
+        const qData = questions[currentQ];
+        document.getElementById('question-counter').innerText = `第 ${currentQ + 1} 題 / 共 ${questions.length} 題`;
+        document.getElementById('progress-bar').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+        document.getElementById('question-text').innerText = qData.q;
+        document.getElementById('back-btn').disabled = currentQ === 0;
+        document.getElementById('back-btn').style.opacity = currentQ === 0 ? '0.4' : '1';
+        
+        const optsContainer = document.getElementById('options-container');
+        optsContainer.innerHTML = '';
+        
+        qData.options.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `
+                <div class="flex items-start gap-4">
+                    <span class="option-key">${String.fromCharCode(65 + index)}</span>
+                    <span class="option-text text-sm sm:text-base leading-relaxed text-slate-100">${opt.text}</span>
+                </div>
+            `;
+            btn.onclick = () => selectOption(opt.type, btn);
+            optsContainer.appendChild(btn);
+        });
+    }
+
+    function selectOption(type, btn) {
+        document.querySelectorAll('.option-btn').forEach(el => el.classList.remove('selected'));
+        btn.classList.add('selected');
+        scores[type]++;
+        answers[currentQ] = type;
+        currentQ++;
+        setTimeout(() => {
+            if (currentQ < questions.length) {
+                renderQuestion();
+            } else {
+                calculateResult();
+                showLeadStep();
+            }
+        }, 180);
+    }
+
+    function goBack() {
+        if (currentQ === 0) return;
+        currentQ--;
+        const previousType = answers[currentQ];
+        if (previousType) {
+            scores[previousType] = Math.max(0, scores[previousType] - 1);
+            answers.splice(currentQ, 1);
+        }
+        renderQuestion();
+    }
+
+    function calculateResult() {
+        userResultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+    }
+
+    function showLeadStep() {
+        const resultData = resultsMap[userResultType];
+        document.getElementById('lead-result-preview').innerText = `${resultData.title} / ${resultData.freq}`;
+        showStep('step-lead');
+    }
+
+    async function submitLead(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const name = document.getElementById('user-name').value;
+        const email = document.getElementById('user-email').value;
+
+        btn.disabled = true;
+        btn.style.opacity = "0.7";
+        btn.innerText = "資料傳輸中...";
+
+        const resultData = resultsMap[userResultType];
+
+        const payload = {
+            name: name,
+            email: email,
+            result_type: userResultType,
+            timestamp: new Date().toISOString()
+        };
+
+        console.log('🚀 正在啟動維度傳輸...', payload);
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                console.log('✅ 頻率處方已成功同步至 TimeWaver Cloud');
+                document.getElementById('result-title').innerText = resultData.title;
+                document.getElementById('result-freq').innerText = resultData.freq;
+                document.getElementById('result-desc').innerText = resultData.desc;
+                showStep('step-result');
+            } else {
+                console.error('❌ 系統同步失敗，請檢查 Webhook 網址設定');
+                alert("伺服器同步失敗，請稍後再試。");
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                btn.innerText = "寄送我的解碼報告";
+            }
+        } catch (error) {
+            console.error('⚠️ 傳輸發生異常:', error);
+            alert("網路錯誤，請稍後再試或聯繫客服。");
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            btn.innerText = "寄送我的解碼報告";
+        }
+    }
+</script>
+</body>
+</html>
