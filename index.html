@@ -158,6 +158,28 @@
             border: 1px solid rgba(148, 163, 184, 0.14);
             background: rgba(15, 23, 42, 0.45);
         }
+        .signal-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(125, 211, 252, 0.16);
+            background:
+                linear-gradient(180deg, rgba(7, 18, 33, 0.9), rgba(2, 6, 23, 0.82)),
+                radial-gradient(circle at top right, rgba(103, 232, 249, 0.08), transparent 34%);
+        }
+        .signal-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -10% -35% auto;
+            width: 10rem;
+            height: 10rem;
+            border-radius: 9999px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 68%);
+            pointer-events: none;
+        }
+        .signal-card > * {
+            position: relative;
+            z-index: 1;
+        }
         .mobile-hero-only {
             display: none;
         }
@@ -442,22 +464,22 @@
                     </div>
                 </div>
                 <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">Quantum Frequency Assessment</p>
-                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">8 題測出你現在<br>為什麼這麼累</h1>
+                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">8 個畫面刺穿你現在<br>為什麼這麼累</h1>
                 <p class="mt-5 text-slate-300 leading-relaxed text-base sm:text-lg hero-summary desktop-hero-copy">
-                    這不是一般心理測驗。艾伯林量子調頻透過場景化問答，快速判讀你目前最明顯的壓力模式、神經負載與內在失衡方向，協助你對應最適合的頻率方案。
+                    這不是一般心理測驗，而是一場狀態辨識。艾伯林量子調頻用高壓、失眠、神經過載與深層匱乏的視覺化場景，逼你看見自己此刻真正卡住的位置，並對應專屬調頻協議。
                 </p>
                 <div class="mobile-hero-only">
                     <p class="mobile-hero-summary">
-                        不是泛用測驗，而是為高壓、過載、難以放鬆的當代狀態打造的品牌化解碼入口。90 秒內看見你此刻最需要的調頻方向。
+                        不先揭露全部內容。先讓你從畫面裡認出自己，再決定你該被帶進哪一層調頻流程。
                     </p>
                     <div class="hero-cta-cluster">
                         <div class="hero-primary-stat">
                             <span class="text-[0.68rem] uppercase tracking-[0.16em] text-cyan-100/70">Brand Signal</span>
-                            <strong>個人化狀態解碼 + Email 報告</strong>
+                            <strong>視覺刺激解碼 + 專屬結果報告</strong>
                         </div>
                         <a href="#step-start" class="hero-mobile-cta">立即開始測驗</a>
                     </div>
-                    <p class="hero-mobile-note">無需先填資料，完成後再留下 Email 即可接收結果</p>
+                    <p class="hero-mobile-note">先做測驗，完成後再留下 Email 取得你的專屬調頻入口</p>
                 </div>
             </div>
 
@@ -472,22 +494,40 @@
                 </div>
                 <div class="mini-card rounded-2xl p-4">
                     <p class="text-xs tracking-[0.16em] uppercase text-slate-500">結果交付</p>
-                    <p class="mt-2 text-lg font-semibold text-white">Email 報告</p>
+                    <p class="mt-2 text-lg font-semibold text-white">解碼報告</p>
                 </div>
             </div>
 
             <div class="mt-8 space-y-3 text-sm text-slate-300 hero-points">
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>聚焦日常高壓、過載、神經緊繃與匱乏感等真實狀態。</p>
+                    <p>用強視覺場景逼出真實反應，不靠理性分析也能辨識你的壓力底色。</p>
                 </div>
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>結果將對應專屬調頻方向，方便後續銜接體驗音頻與服務說明。</p>
+                    <p>結果只揭露你當下該進入的調頻方向，不在前端一次說破全部內容。</p>
                 </div>
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>流程僅需姓名與 Email，用於寄送你的個人化解碼結果。</p>
+                    <p>姓名與 Email 只用於寄送專屬結果與後續方案，不會打斷測驗節奏。</p>
+                </div>
+            </div>
+
+            <div class="grid gap-3 mt-8">
+                <div class="signal-card rounded-2xl p-4">
+                    <p class="text-xs tracking-[0.18em] uppercase text-cyan-200/80">Visual Proof 01</p>
+                    <p class="mt-2 text-white font-semibold">TimeWaver 儀器與操作場景</p>
+                    <p class="mt-2 text-sm text-slate-300">以儀器照片、實際操作側拍與工作紀錄，讓看不見的調頻機制先被看見。</p>
+                </div>
+                <div class="signal-card rounded-2xl p-4">
+                    <p class="text-xs tracking-[0.18em] uppercase text-cyan-200/80">Visual Proof 02</p>
+                    <p class="mt-2 text-white font-semibold">頻譜介面與腦波式圖像</p>
+                    <p class="mt-2 text-sm text-slate-300">用介面截圖、波形圖與訊號分層畫面，堆出技術背景與專業可信度。</p>
+                </div>
+                <div class="signal-card rounded-2xl p-4">
+                    <p class="text-xs tracking-[0.18em] uppercase text-cyan-200/80">Visual Proof 03</p>
+                    <p class="mt-2 text-white font-semibold">深海級安靜感的情境意象</p>
+                    <p class="mt-2 text-sm text-slate-300">以深海、遮蔽、慢速下沉與冷光包覆，讓大腦先想像那種深層修復感。</p>
                 </div>
             </div>
         </aside>
@@ -500,22 +540,22 @@
             <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
             檢測入口
         </div>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">快速看懂你現在卡在哪裡</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先看見你，才進入你的調頻方案</h2>
         <p class="text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto entry-note">
-            透過 8 個高度貼近日常的情境問題，快速定位你現在最主要的內在負載來源，並提供對應的頻率調整建議與後續體驗入口。
+            透過 8 個視覺衝擊式場景，快速定位你現在最主要的內在負載來源。這份測驗不是公開展示全部內容，而是讓你先準確看見自己目前被哪一種頻率困住。
         </p>
         <div class="grid sm:grid-cols-2 gap-3 text-left mb-8 entry-cards">
             <div class="mini-card rounded-2xl p-4">
                 <p class="text-sm font-semibold text-white">你會得到什麼</p>
-                <p class="text-sm text-slate-400 mt-2">個人狀態類型、核心說明、對應調頻方向。</p>
+                <p class="text-sm text-slate-400 mt-2">個人狀態類型、核心盲點、對應調頻協議與後續入口。</p>
             </div>
             <div class="mini-card rounded-2xl p-4">
                 <p class="text-sm font-semibold text-white">適合誰做</p>
-                <p class="text-sm text-slate-400 mt-2">長期高壓、睡前停不下來、容易過載或常感到緊繃的人。</p>
+                <p class="text-sm text-slate-400 mt-2">長期高壓、難以休眠、神經緊繃、心裡常有不明耗損感的人。</p>
             </div>
         </div>
-        <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">開始狀態解碼</button>
-        <p class="text-xs text-slate-500 mt-4">填答後可留下 Email 收取結果，不會在過程中中斷你作答。</p>
+        <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">進入視覺化測驗</button>
+        <p class="text-xs text-slate-500 mt-4">先完成測驗，再決定你要不要開啟自己的專屬結果。</p>
     </div>
 
     <!-- 測驗題目容器 -->
@@ -530,7 +570,7 @@
             </div>
         </div>
         <div class="mini-card rounded-2xl p-5 mb-6 mobile-question-card">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-3">請選擇最接近你最近狀態的一項</p>
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-3">哪一個畫面最像你最近的真實狀態</p>
             <h2 id="question-text" class="text-xl sm:text-2xl font-semibold text-white leading-relaxed mobile-question-title"></h2>
         </div>
         <div id="options-container" class="space-y-3"></div>
@@ -548,7 +588,7 @@
         </div>
         <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-white mobile-lead-title">留下資料，立即接收你的個人化調頻結果</h2>
         <p class="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed mobile-lead-copy">
-            艾伯林量子調頻會將你的狀態結果、對應說明與體驗入口寄到信箱。你只需要留下姓名與 Email，即可完成本次解碼流程。
+            艾伯林量子調頻會把你的狀態結果、調頻說明與專屬入口寄到信箱。前端不公開完整內容，避免在你還沒辨識清楚前，就把價值說得太淺。
         </p>
         <div class="mini-card rounded-2xl p-4 mb-6">
             <p class="text-xs uppercase tracking-[0.18em] text-slate-500">你的預測結果方向</p>
@@ -561,7 +601,7 @@
                 <input type="text" id="user-name" required autocomplete="name" placeholder="請輸入稱呼" class="field-input">
             </div>
             <div>
-                <label class="block text-sm font-medium text-slate-400 mb-1">電子郵件 (接收音頻用)</label>
+                <label class="block text-sm font-medium text-slate-400 mb-1">電子郵件 (接收解碼結果)</label>
                 <input type="email" id="user-email" required autocomplete="email" placeholder="you@example.com" class="field-input">
             </div>
             <button type="submit" id="submit-btn" class="primary-btn w-full py-4 px-8 mt-4">
@@ -589,9 +629,9 @@
         <div class="bg-slate-950/60 rounded-2xl p-6 text-left border border-slate-700 mb-6">
             <p id="result-desc" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
         </div>
-        <p class="text-sm text-slate-400 mb-6">請檢查你的信箱。我們已透過系統發送個人化結果與後續體驗資訊。</p>
+        <p class="text-sm text-slate-400 mb-6">請檢查你的信箱。我們已發送個人化結果與後續方案入口。</p>
         <a href="https://timewaver-audio-sales.netlify.app/" target="_blank" class="primary-btn inline-block px-8 py-3">
-            按這裡馬上了解音頻頻率
+            查看我的專屬調頻方案
         </a>
     </div>
 
@@ -604,21 +644,21 @@
     const N8N_WEBHOOK_URL = "https://erick303.app.n8n.cloud/webhook/timewaver-quiz-hook";
 
     const questions = [
-        { q: "【檢測 1/8】回想昨晚，當你終於躺在床上閉上眼睛時，第一個浮現的狀態是？", options: [ {text: "腦袋像停不下來的跑馬燈，還在反覆重播白天沒處理好的工作。", type: "A"}, {text: "身體已經累到極點，但神經系統還是很緊繃，完全無法放鬆。", type: "B"}, {text: "一直想著明天那件極度重要、高壓的任務，越想越有壓力。", type: "C"}, {text: "胸口有一種說不出的悶，對未來的某種不確定感突然湧上來。", type: "D"} ] },
-        { q: "【檢測 2/8】當你覺得大腦「過載」時，通常伴隨著以下哪一種具體的生理感受？", options: [ {text: "太陽穴兩側緊繃，甚至有點隱隱作痛，腦壓很高。", type: "A"}, {text: "肩頸僵硬，只要有一點微小的環境聲音，就會覺得煩躁。", type: "B"}, {text: "呼吸短促，心跳比平常快，覺得自己一直在準備「作戰」。", type: "C"}, {text: "覺得身體特別沉重，即使休息了，隔天醒來還是覺得被消耗過。", type: "D"} ] },
-        { q: "【檢測 3/8】如果你將現在的大腦比喻為一台電腦，它目前的狀態最接近：", options: [ {text: "開了 50 個分頁，風扇狂轉，隨時準備過熱當機。", type: "A"}, {text: "按下了關機鍵，但系統一直顯示「背景程式執行中，無法關閉」。", type: "B"}, {text: "CPU 全速運轉在預演明天的壓力，導致當下畫面完全卡死。", type: "C"}, {text: "資源被未知的木馬程式（深層恐懼）佔用，一直跳出紅色警告。", type: "D"} ] },
-        { q: "【檢測 4/8】在過去的一週裡，你用什麼方式試圖讓自己放鬆下來？", options: [ {text: "強迫自己去聽白噪音或冥想音樂，但聽著聽著反而更焦慮。", type: "A"}, {text: "吃一些保健品或放鬆劑，但隔天醒來只覺得頭暈腦脹。", type: "B"}, {text: "滑手機滑到眼睛完全睜不開才敢放下，靠極度疲勞來強迫休眠。", type: "C"}, {text: "試著跟自己說「不要想了」，但底層的匱乏感根本壓不住。", type: "D"} ] },
-        { q: "【檢測 5/8】當你看到身邊的朋友或對手獲得巨大的成功時，你的潛意識反應更偏向？", options: [ {text: "開始檢討自己是不是不夠努力，給大腦施加更大的運算壓力。", type: "A"}, {text: "其實沒什麼特別感覺，我現在只希望能好好的、安靜的休息。", type: "B"}, {text: "會有點羨慕，但一想到明天要面對的高壓任務，神經又緊繃了起來。", type: "C"}, {text: "表面恭喜，但內心會瞬間浮現對金錢與未來的強烈不安全感。", type: "D"} ] },
-        { q: "【檢測 6/8】如果有一種「頻率科技」可以介入你的神經系統，你最希望它幫你解決什麼？", options: [ {text: "釋放腦壓，讓我不要再一直重播沒有意義的雜念。", type: "A"}, {text: "強迫肉體深度放鬆，讓我隔天醒來能感受到「真的充飽電了」。", type: "B"}, {text: "預先植入從容感，讓我明天面對重大決策時不再恐懼。", type: "C"}, {text: "洗掉潛意識裡的匱乏頻率，讓我重新感受到安全與豐盛。", type: "D"} ] },
-        { q: "【檢測 7/8】TimeWaver 設備目前有四種頻率防護罩，憑你的直覺，哪個功能最能引起你的共鳴？", options: [ {text: "【腦波降壓】：像拔掉大腦插頭一樣，強制切斷表意識運轉。", type: "A"}, {text: "【環境遮蔽】：將頻率拖入深海，阻絕外界雜音的深度包覆。", type: "B"}, {text: "【神經預載】：在平靜中彩排明天的從容，消除對未知的恐懼。", type: "C"}, {text: "【匱乏清理】：洗掉內心恐懼頻率，植入絕對的信任感。", type: "D"} ] },
-        { q: "【檢測 8/8】最後，靜下心來深呼吸一次。你準備好將大腦的控制權交還給頻率了嗎？", options: [ {text: "是的，我需要立刻釋放我的高頻腦壓。", type: "A"}, {text: "是的，我需要立刻進入深度的平靜與修復。", type: "B"}, {text: "是的，我需要放下對明天的恐懼，回到當下的心流。", type: "C"}, {text: "是的，我準備好洗掉恐懼，讓自己被豐盛感重新包覆。", type: "D"} ] }
+        { q: "【檢測 1/8】回想昨晚，當房間暗下來、世界安靜後，哪個畫面最像你？", options: [ {text: "腦內像一面失控跳閃的資訊牆，白天沒做完的事一條條炸出來。", type: "A"}, {text: "身體像沉進深海前的鐵塊，明明很重，神經卻還在表面抽動。", type: "B"}, {text: "眼前反覆播放明天的高壓場景，像彩排災難一樣停不下來。", type: "C"}, {text: "胸口像被一團無形黑霧壓住，對未來的不安慢慢滲進來。", type: "D"} ] },
+        { q: "【檢測 2/8】當你覺得大腦過載時，哪一個身體畫面最強烈？", options: [ {text: "太陽穴像被金屬箍住，整個頭殼都在發熱與脹痛。", type: "A"}, {text: "肩頸像上了鎖，只要外界有一點聲響就會瞬間被刺到。", type: "B"}, {text: "心跳與呼吸一起加速，像身體已經提前進入戰鬥位置。", type: "C"}, {text: "四肢像灌了鉛，休息過後還是有種被抽乾的虛空感。", type: "D"} ] },
+        { q: "【檢測 3/8】如果把你現在的大腦變成一個視覺裝置，它最像哪一種故障現場？", options: [ {text: "一台開了 50 個視窗的主機，風扇狂轉、紅燈狂閃，隨時要燒掉。", type: "A"}, {text: "螢幕明明顯示待機，內部零件卻還在高頻運轉，完全關不下來。", type: "B"}, {text: "處理器把所有能量都拿去預演明天，當下畫面反而整個凍結。", type: "C"}, {text: "系統底層被看不見的錯誤程式佔據，警報視窗一個接一個跳出。", type: "D"} ] },
+        { q: "【檢測 4/8】最近一週，你最常用哪種方式處理自己的耗損？", options: [ {text: "一直找方法壓住雜訊，但越想控制，腦內畫面反而越爆裂。", type: "A"}, {text: "想盡辦法讓自己停機，卻始終只停在表面，深層完全沒有休息。", type: "B"}, {text: "靠拖到極限才逼自己倒下，像把系統耗到沒電才肯熄火。", type: "C"}, {text: "表面告訴自己沒事，底層的不安卻像潮水一樣一直回來。", type: "D"} ] },
+        { q: "【檢測 5/8】當你看見別人前進、成功、被看見時，你心裡最先亮起的是哪個畫面？", options: [ {text: "立刻打開檢討模式，把自己推進更高轉速的自我逼迫。", type: "A"}, {text: "其實沒力氣比較，只想躲進一個真正安靜、沒人碰得到的地方。", type: "B"}, {text: "羨慕感一出現，腦內就立刻跳到明天要面對的壓力清單。", type: "C"}, {text: "嘴上平靜，心裡卻立刻浮出資源不夠、未來不穩的陰影。", type: "D"} ] },
+        { q: "【檢測 6/8】如果有一套頻率協議現在就能介入，你最想先消失的是哪一幕？", options: [ {text: "腦中的雜訊牆熄火，讓我終於不再被自己的思緒追殺。", type: "A"}, {text: "身體整體沉入更深的靜默區，真正進到修復而不是假性休息。", type: "B"}, {text: "明天的壓力投影被關掉，讓我重新回到穩定、從容的節奏。", type: "C"}, {text: "內在一直浮出的不安全感被清走，心裡重新出現穩定與信任。", type: "D"} ] },
+        { q: "【檢測 7/8】看著以下四個調頻意象，哪一個最讓你身體先有反應？", options: [ {text: "【斷路器】整面高頻警示牆瞬間熄燈，腦內終於關機。", type: "A"}, {text: "【深海艙】世界聲音被一層層海水吞沒，只剩深層安靜包覆你。", type: "B"}, {text: "【心流校準】明天的高壓場景被重新編排成穩定、流動、可掌控的畫面。", type: "C"}, {text: "【豐盛錨點】黑霧散開，底層開始出現安全、被承接、資源充足的感覺。", type: "D"} ] },
+        { q: "【檢測 8/8】最後一題，如果現在有一道門打開，你最想先走進哪個空間？", options: [ {text: "一個能立刻替我切掉腦壓與雜訊的空間。", type: "A"}, {text: "一個像深海一樣，讓全身終於安靜下來的空間。", type: "B"}, {text: "一個讓我面對明天時不再被恐懼牽著走的空間。", type: "C"}, {text: "一個能洗掉內在匱乏，讓我重新相信自己被支持的空間。", type: "D"} ] }
     ];
 
     const resultsMap = {
-        "A": { title: "過載運轉的超級電腦 (A劑：斷路器)", desc: "你的大腦就像開了 50 個分頁的電腦，Beta波持續高頻震盪。即使躺在床上，腦袋還在跑明天的簡報與會議。你需要 A劑（Theta波）來強制切斷表意識的過載運轉，像拔掉大腦電源插頭一樣釋放腦壓。", freq: "【A劑】斷路器 (Theta 波 4-7Hz)" },
-        "B": { title: "無法休眠的伺服器 (B劑：深海艙)", desc: "即使身體躺平，神經系統依然處於備戰狀態，導致無法放鬆，早上起來全身痠痛。你需要 B劑（Delta波）的深層包覆，將頻率拖入深海，阻絕外界雜音，強迫身體進入修復期。", freq: "【B劑】深海艙 (Delta 波 0.5-4Hz)" },
-        "C": { title: "預期性焦慮的處理器 (C劑：心流校準)", desc: "因為明天有極度重要、高壓的任務，導致當下神經緊繃無法平靜。你需要 C劑（Alpha波）的「心流預載」，讓大腦在平靜中預先彩排明天的從容狀態，消除未知的恐懼感。", freq: "【C劑】心流校準 (Alpha 波 8-12Hz)" },
-        "D": { title: "充滿防衛的封閉網路 (D劑：豐盛錨點)", desc: "深層情緒恐懼導致的慢性高壓。因為對金錢、未來或人際關係充滿不安全感與匱乏感。你需要 D劑（852Hz）在最脆弱的時刻，洗掉恐懼的頻率，植入豐盛與信任的錨點。", freq: "【D劑】豐盛錨點 (Solfeggio 852Hz)" }
+        "A": { title: "過載運轉的訊號核心", desc: "你的系統現在最像一座持續閃爍的控制台。表層意識長時間高頻運轉，讓你就算停下來，腦內也還在繼續工作。你需要的不是更多資訊，而是先替這套過熱系統降壓、斷流，讓真正的安靜有空間進來。", freq: "Protocol A｜斷路器 Theta 4-7Hz" },
+        "B": { title: "無法休眠的深層神經", desc: "你的問題不是不累，而是累到極致卻還關不下來。身體看似停住，神經卻仍維持警戒，所以你醒來時依舊像沒真正修復過。你需要更深、更安靜、更有包覆感的下沉式協議，把整個人拖離外界雜訊。", freq: "Protocol B｜深海艙 Delta 0.5-4Hz" },
+        "C": { title: "被明天綁架的預演系統", desc: "你的耗損來自對未來的持續預演。大腦把大量資源拿去模擬高壓情境，於是你人在當下，神經卻早已跑到明天。你需要的是重新校準節奏，讓系統先回到穩定，再把從容感提前寫進明天。", freq: "Protocol C｜心流校準 Alpha 8-12Hz" },
+        "D": { title: "被匱乏陰影佔據的底層頻道", desc: "你真正的壓力不是單一事件，而是底層一直有個聲音在提醒你資源不夠、安全感不足、未來可能失控。這會讓你的系統長期處在隱性防衛裡。你需要的不是表面放鬆，而是把那層恐懼頻道重新洗掉，換回穩定與信任。", freq: "Protocol D｜豐盛錨點 852Hz" }
     };
 
     let currentQ = 0;
