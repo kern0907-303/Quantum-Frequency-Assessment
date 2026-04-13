@@ -1,8 +1,10 @@
-const https = require('https');
-const fs = require('fs');
+const https = require("https");
+const fs = require("fs");
 
-const NOTION_KEY = fs.readFileSync(require('os').homedir() + '/.config/notion/api_key', 'utf-8').trim();
-const DB_ID = '31f47cd4-bf8a-8134-bbcc-cf1ab8042a99'; // 社群營運與審核台 ID
+const NOTION_KEY = fs
+  .readFileSync(require("os").homedir() + "/.config/notion/api_key", "utf-8")
+  .trim();
+const DB_ID = "31f47cd4-bf8a-8134-bbcc-cf1ab8042a99"; // 社群營運與審核台 ID
 
 const postContent = `
 【為什麼你越努力賺錢，財富反而離你越遠？】
@@ -37,83 +39,116 @@ Carson 引用了一個精確的比喻：
 const postData = JSON.stringify({
   parent: { database_id: DB_ID },
   properties: {
-    "標題 (Title)": { title: [{ text: { content: "[IG長文] 為什麼越努力越賺不到錢？Billy Carson 的河流顯化法則" } }] },
+    "標題 (Title)": {
+      title: [
+        { text: { content: "[IG長文] 為什麼越努力越賺不到錢？Billy Carson 的河流顯化法則" } },
+      ],
+    },
     "狀態 (Status)": { select: { name: "👀 待審核 (Erick)" } },
     "發布平台 (Platform)": { multi_select: [{ name: "Instagram" }, { name: "Facebook" }] },
-    "內容類型 (Type)": { select: { name: "科普長文" } }
+    "內容類型 (Type)": { select: { name: "科普長文" } },
   },
   children: [
     {
       object: "block",
       type: "paragraph",
-      paragraph: { rich_text: [{ text: { content: "以下是為 FB/IG 設計的圖文配文草稿：" } }] }
+      paragraph: { rich_text: [{ text: { content: "以下是為 FB/IG 設計的圖文配文草稿：" } }] },
     },
     {
       object: "block",
       type: "divider",
-      divider: {}
+      divider: {},
     },
     {
       object: "block",
       type: "paragraph",
-      paragraph: { 
-        rich_text: [{ text: { content: postContent } }] 
-      }
+      paragraph: {
+        rich_text: [{ text: { content: postContent } }],
+      },
     },
     {
       object: "block",
       type: "divider",
-      divider: {}
+      divider: {},
     },
     {
       object: "block",
       type: "heading_3",
-      heading_3: { rich_text: [{ text: { content: "🎨 建議配圖 (Carousel 輪播圖) 設計方向：" } }] }
+      heading_3: { rich_text: [{ text: { content: "🎨 建議配圖 (Carousel 輪播圖) 設計方向：" } }] },
     },
     {
       object: "block",
       type: "bulleted_list_item",
-      bulleted_list_item: { rich_text: [{ text: { content: "P1 (封面): 深藍色宇宙背景，大字標題「為什麼越努力賺錢，財富反而離你越遠？」" } }] }
+      bulleted_list_item: {
+        rich_text: [
+          {
+            text: {
+              content:
+                "P1 (封面): 深藍色宇宙背景，大字標題「為什麼越努力賺錢，財富反而離你越遠？」",
+            },
+          },
+        ],
+      },
     },
     {
       object: "block",
       type: "bulleted_list_item",
-      bulleted_list_item: { rich_text: [{ text: { content: "P2: 引用 Billy Carson 金句：「你無法用蠻力征服河流，你必須順應它的能量。」(配上平靜河流與星空的合成圖)" } }] }
+      bulleted_list_item: {
+        rich_text: [
+          {
+            text: {
+              content:
+                "P2: 引用 Billy Carson 金句：「你無法用蠻力征服河流，你必須順應它的能量。」(配上平靜河流與星空的合成圖)",
+            },
+          },
+        ],
+      },
     },
     {
       object: "block",
       type: "bulleted_list_item",
-      bulleted_list_item: { rich_text: [{ text: { content: "P3: 對比圖：【外部蠻力 (高壓/耗時)】 vs 【內部對齊 (順流/顯化)】" } }] }
+      bulleted_list_item: {
+        rich_text: [
+          { text: { content: "P3: 對比圖：【外部蠻力 (高壓/耗時)】 vs 【內部對齊 (順流/顯化)】" } },
+        ],
+      },
     },
     {
       object: "block",
       type: "bulleted_list_item",
-      bulleted_list_item: { rich_text: [{ text: { content: "P4 (CTA): TimeWaver「財富豐盛頻率」產品圖，呼籲點擊主頁連結。" } }] }
-    }
-  ]
+      bulleted_list_item: {
+        rich_text: [
+          { text: { content: "P4 (CTA): TimeWaver「財富豐盛頻率」產品圖，呼籲點擊主頁連結。" } },
+        ],
+      },
+    },
+  ],
 });
 
-const req = https.request({
-  hostname: 'api.notion.com',
-  port: 443,
-  path: '/v1/pages',
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${NOTION_KEY}`,
-    'Content-Type': 'application/json',
-    'Notion-Version': '2022-06-28',
-    'Content-Length': Buffer.byteLength(postData)
-  }
-}, (res) => {
-  let data = '';
-  res.on('data', d => data += d);
-  res.on('end', () => {
-    if (res.statusCode === 200) {
+const req = https.request(
+  {
+    hostname: "api.notion.com",
+    port: 443,
+    path: "/v1/pages",
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${NOTION_KEY}`,
+      "Content-Type": "application/json",
+      "Notion-Version": "2022-06-28",
+      "Content-Length": Buffer.byteLength(postData),
+    },
+  },
+  (res) => {
+    let data = "";
+    res.on("data", (d) => (data += d));
+    res.on("end", () => {
+      if (res.statusCode === 200) {
         console.log(`Success! Page created.`);
-    } else {
+      } else {
         console.error(`Error: ${res.statusCode}`, data);
-    }
-  });
-});
+      }
+    });
+  },
+);
 req.write(postData);
 req.end();
