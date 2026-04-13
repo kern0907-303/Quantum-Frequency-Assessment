@@ -269,6 +269,9 @@
         .mobile-hero-only {
             display: none;
         }
+        .mobile-compact-hide {
+            display: block;
+        }
         @media (min-width: 1024px) {
             .desktop-balance {
                 display: grid;
@@ -471,43 +474,43 @@
                 box-shadow: 0 0 16px rgba(103, 232, 249, 0.7);
             }
             .mobile-side-panel h1 {
-                font-size: 1.95rem;
-                line-height: 1.05;
+                font-size: 1.8rem;
+                line-height: 1.02;
                 letter-spacing: -0.03em;
             }
             .mobile-side-panel .hero-summary {
-                font-size: 0.92rem;
-                line-height: 1.62;
+                font-size: 0.88rem;
+                line-height: 1.55;
             }
             .mobile-side-panel .mobile-hero-summary {
-                margin-top: 0.7rem;
-                font-size: 0.93rem;
-                line-height: 1.62;
+                margin-top: 0.55rem;
+                font-size: 0.88rem;
+                line-height: 1.54;
                 color: rgba(226, 232, 240, 0.92);
             }
             .mobile-side-panel .hero-cta-cluster {
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 0.6rem;
-                margin-top: 0.9rem;
+                gap: 0.5rem;
+                margin-top: 0.75rem;
             }
             .mobile-side-panel .hero-primary-stat {
-                padding: 0.85rem 0.9rem 0.8rem;
+                padding: 0.7rem 0.8rem 0.68rem;
                 border-radius: 1rem;
                 border: 1px solid rgba(125, 211, 252, 0.2);
                 background: linear-gradient(180deg, rgba(8, 47, 73, 0.42), rgba(2, 6, 23, 0.5));
             }
             .mobile-side-panel .hero-primary-stat strong {
                 display: block;
-                font-size: 1.05rem;
+                font-size: 0.96rem;
                 color: white;
-                margin-top: 0.2rem;
+                margin-top: 0.15rem;
             }
             .mobile-side-panel .hero-mobile-cta {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                min-height: 3rem;
+                min-height: 2.8rem;
                 width: 100%;
                 border: none;
                 border-radius: 9999px;
@@ -519,75 +522,82 @@
                 box-shadow: 0 16px 34px rgba(14, 165, 233, 0.24);
             }
             .mobile-side-panel .hero-mobile-note {
-                margin-top: 0.55rem;
+                margin-top: 0.4rem;
                 text-align: center;
-                font-size: 0.74rem;
+                font-size: 0.7rem;
                 color: rgba(148, 163, 184, 0.88);
             }
             .mobile-side-panel .hero-metrics {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 0.45rem;
-                margin-top: 0.8rem;
+                gap: 0.4rem;
+                margin-top: 0.65rem;
             }
             .mobile-side-panel .hero-metrics .mini-card {
-                padding: 0.65rem 0.55rem;
-                border-radius: 0.9rem;
+                padding: 0.55rem 0.45rem;
+                border-radius: 0.82rem;
                 text-align: center;
             }
+            .mobile-side-panel .hero-metrics .mini-card p:first-child {
+                font-size: 0.62rem;
+                letter-spacing: 0.12em;
+            }
             .mobile-side-panel .hero-metrics .mini-card p:last-child {
-                margin-top: 0.25rem;
-                font-size: 0.82rem;
+                margin-top: 0.18rem;
+                font-size: 0.74rem;
             }
             .mobile-side-panel .hero-points {
-                margin-top: 0.85rem;
-                gap: 0.5rem;
-                padding-top: 0.7rem;
+                margin-top: 0.7rem;
+                gap: 0.42rem;
+                padding-top: 0.55rem;
                 border-top: 1px solid rgba(148, 163, 184, 0.12);
             }
             .mobile-side-panel .hero-points p {
-                font-size: 0.78rem;
-                line-height: 1.45;
+                font-size: 0.74rem;
+                line-height: 1.38;
             }
             .mobile-side-panel .visual-stack {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 0.45rem;
-                margin-top: 0.85rem;
+                gap: 0.38rem;
+                margin-top: 0.7rem;
             }
             .mobile-side-panel .visual-stage {
-                min-height: 5.1rem;
-                border-radius: 0.95rem;
+                min-height: 4.4rem;
+                border-radius: 0.85rem;
             }
             .mobile-side-panel .visual-stage.device::before {
-                inset: 0.7rem 0.7rem auto auto;
-                width: 2.7rem;
-                height: 2.7rem;
-                border-radius: 0.7rem;
-            }
-            .mobile-side-panel .visual-stage.device::after {
-                inset: auto auto 0.6rem 0.6rem;
-                width: 68%;
-                height: 40%;
+                inset: 0.55rem 0.55rem auto auto;
+                width: 2.2rem;
+                height: 2.2rem;
                 border-radius: 0.55rem;
             }
+            .mobile-side-panel .visual-stage.device::after {
+                inset: auto auto 0.45rem 0.45rem;
+                width: 68%;
+                height: 36%;
+                border-radius: 0.45rem;
+            }
             .mobile-side-panel .visual-stage.operator::before {
-                inset: auto 0.7rem 0.55rem auto;
-                width: 2.35rem;
-                height: 3.55rem;
-                border-radius: 1rem 1rem 0.7rem 0.7rem;
-                box-shadow: -0.65rem -0.2rem 0 -0.45rem rgba(103, 232, 249, 0.18);
+                inset: auto 0.55rem 0.42rem auto;
+                width: 1.95rem;
+                height: 2.95rem;
+                border-radius: 0.8rem 0.8rem 0.55rem 0.55rem;
+                box-shadow: -0.48rem -0.18rem 0 -0.35rem rgba(103, 232, 249, 0.18);
             }
             .mobile-side-panel .visual-stage.operator::after {
-                inset: 0.7rem auto auto 0.7rem;
+                inset: 0.55rem auto auto 0.55rem;
                 width: 60%;
-                height: 42%;
-                border-radius: 0.65rem;
+                height: 38%;
+                border-radius: 0.5rem;
             }
             .mobile-side-panel .visual-stage.deepsea::before {
-                width: 5.5rem;
-                height: 5.5rem;
+                width: 4.5rem;
+                height: 4.5rem;
             }
             .mobile-side-panel .visual-stage.deepsea::after {
-                height: 62%;
+                height: 58%;
+            }
+            .mobile-compact-hide {
+                display: none;
             }
             .mobile-main-panel {
                 padding: 1rem;
@@ -601,8 +611,8 @@
                 gap: 0.65rem;
             }
             .mobile-main-panel .entry-note {
-                margin-bottom: 1rem;
-                line-height: 1.55;
+                margin-bottom: 0.85rem;
+                line-height: 1.5;
             }
             .mobile-progress {
                 flex-direction: column;
@@ -658,7 +668,7 @@
             }
             .primary-btn,
             .secondary-btn {
-                min-height: 3rem;
+                min-height: 2.85rem;
             }
         }
     </style>
@@ -714,7 +724,7 @@
                 </div>
             </div>
 
-            <div class="mt-8 space-y-3 text-sm text-slate-300 hero-points">
+            <div class="mt-8 space-y-3 text-sm text-slate-300 hero-points mobile-compact-hide">
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
                     <p>聚焦真實狀態反應，幫你更快辨識目前的壓力底色。</p>
@@ -729,7 +739,7 @@
                 </div>
             </div>
 
-            <div class="visual-stack">
+            <div class="visual-stack mobile-compact-hide">
                 <div class="visual-stage device"></div>
                 <div class="visual-stage operator"></div>
                 <div class="visual-stage deepsea"></div>
