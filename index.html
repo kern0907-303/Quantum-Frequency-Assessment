@@ -320,9 +320,90 @@
                 justify-content: flex-start;
             }
         }
+        @media (min-width: 768px) and (max-width: 1023px) {
+            body {
+                padding: 1rem;
+            }
+            .desktop-shell {
+                max-width: 980px;
+            }
+            .desktop-balance {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 1rem;
+            }
+            .desktop-side-panel,
+            .desktop-main-panel {
+                padding: 1.5rem;
+                border-radius: 1.75rem;
+            }
+            .desktop-side-panel > .mt-8,
+            .desktop-main-panel > .step.active {
+                margin-top: 0;
+            }
+            .desktop-side-panel h1 {
+                font-size: 2.8rem;
+                line-height: 1.05;
+            }
+            .hero-metrics {
+                gap: 0.75rem;
+                margin-top: 1.25rem;
+            }
+            .hero-metrics .mini-card,
+            .entry-cards .mini-card {
+                padding: 0.9rem;
+            }
+            .hero-points {
+                margin-top: 1.1rem;
+            }
+            .visual-stack {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.75rem;
+                margin-top: 1.1rem;
+            }
+            .visual-stage {
+                min-height: 8rem;
+                border-radius: 1.1rem;
+            }
+            .visual-stage.device::before {
+                width: 5.25rem;
+                height: 5.25rem;
+            }
+            .visual-stage.operator::before {
+                width: 4.2rem;
+                height: 6rem;
+            }
+            .visual-stage.deepsea::before {
+                width: 9rem;
+                height: 9rem;
+            }
+            .entry-heading {
+                font-size: 2.2rem;
+            }
+            .entry-note,
+            .mobile-lead-copy,
+            .mobile-result-copy {
+                margin-bottom: 1.25rem;
+                line-height: 1.65;
+            }
+            .entry-cards {
+                margin-bottom: 1.25rem;
+            }
+            .mobile-question-card {
+                padding: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            .mobile-question-title {
+                font-size: 1.35rem;
+                line-height: 1.6;
+            }
+            .option-btn {
+                padding: 0.9rem;
+            }
+        }
         @media (max-width: 767px) {
             body {
-                padding: 0.75rem;
+                padding: 0.65rem;
             }
             .mobile-main-first {
                 display: flex;
@@ -336,10 +417,10 @@
             }
             .mobile-main-panel,
             .mobile-side-panel {
-                border-radius: 1.5rem;
+                border-radius: 1.25rem;
             }
             .mobile-side-panel {
-                padding: 1.25rem;
+                padding: 1rem;
             }
             .mobile-side-panel {
                 position: relative;
@@ -390,35 +471,35 @@
                 box-shadow: 0 0 16px rgba(103, 232, 249, 0.7);
             }
             .mobile-side-panel h1 {
-                font-size: 2.2rem;
-                line-height: 1.08;
+                font-size: 1.95rem;
+                line-height: 1.05;
                 letter-spacing: -0.03em;
             }
             .mobile-side-panel .hero-summary {
-                font-size: 0.95rem;
-                line-height: 1.7;
+                font-size: 0.92rem;
+                line-height: 1.62;
             }
             .mobile-side-panel .mobile-hero-summary {
-                margin-top: 0.9rem;
-                font-size: 0.98rem;
-                line-height: 1.72;
+                margin-top: 0.7rem;
+                font-size: 0.93rem;
+                line-height: 1.62;
                 color: rgba(226, 232, 240, 0.92);
             }
             .mobile-side-panel .hero-cta-cluster {
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 0.75rem;
-                margin-top: 1.15rem;
+                gap: 0.6rem;
+                margin-top: 0.9rem;
             }
             .mobile-side-panel .hero-primary-stat {
-                padding: 1rem 1rem 0.95rem;
-                border-radius: 1.1rem;
+                padding: 0.85rem 0.9rem 0.8rem;
+                border-radius: 1rem;
                 border: 1px solid rgba(125, 211, 252, 0.2);
                 background: linear-gradient(180deg, rgba(8, 47, 73, 0.42), rgba(2, 6, 23, 0.5));
             }
             .mobile-side-panel .hero-primary-stat strong {
                 display: block;
-                font-size: 1.2rem;
+                font-size: 1.05rem;
                 color: white;
                 margin-top: 0.2rem;
             }
@@ -426,7 +507,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                min-height: 3.35rem;
+                min-height: 3rem;
                 width: 100%;
                 border: none;
                 border-radius: 9999px;
@@ -438,78 +519,124 @@
                 box-shadow: 0 16px 34px rgba(14, 165, 233, 0.24);
             }
             .mobile-side-panel .hero-mobile-note {
-                margin-top: 0.75rem;
+                margin-top: 0.55rem;
                 text-align: center;
-                font-size: 0.78rem;
+                font-size: 0.74rem;
                 color: rgba(148, 163, 184, 0.88);
             }
             .mobile-side-panel .hero-metrics {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 0.6rem;
-                margin-top: 1rem;
+                gap: 0.45rem;
+                margin-top: 0.8rem;
             }
             .mobile-side-panel .hero-metrics .mini-card {
-                padding: 0.75rem 0.7rem;
-                border-radius: 1rem;
+                padding: 0.65rem 0.55rem;
+                border-radius: 0.9rem;
                 text-align: center;
             }
             .mobile-side-panel .hero-metrics .mini-card p:last-child {
-                margin-top: 0.35rem;
-                font-size: 0.9rem;
+                margin-top: 0.25rem;
+                font-size: 0.82rem;
             }
             .mobile-side-panel .hero-points {
-                margin-top: 1rem;
-                gap: 0.65rem;
-                padding-top: 0.95rem;
+                margin-top: 0.85rem;
+                gap: 0.5rem;
+                padding-top: 0.7rem;
                 border-top: 1px solid rgba(148, 163, 184, 0.12);
             }
             .mobile-side-panel .hero-points p {
-                font-size: 0.82rem;
-                line-height: 1.55;
+                font-size: 0.78rem;
+                line-height: 1.45;
+            }
+            .mobile-side-panel .visual-stack {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.45rem;
+                margin-top: 0.85rem;
+            }
+            .mobile-side-panel .visual-stage {
+                min-height: 5.1rem;
+                border-radius: 0.95rem;
+            }
+            .mobile-side-panel .visual-stage.device::before {
+                inset: 0.7rem 0.7rem auto auto;
+                width: 2.7rem;
+                height: 2.7rem;
+                border-radius: 0.7rem;
+            }
+            .mobile-side-panel .visual-stage.device::after {
+                inset: auto auto 0.6rem 0.6rem;
+                width: 68%;
+                height: 40%;
+                border-radius: 0.55rem;
+            }
+            .mobile-side-panel .visual-stage.operator::before {
+                inset: auto 0.7rem 0.55rem auto;
+                width: 2.35rem;
+                height: 3.55rem;
+                border-radius: 1rem 1rem 0.7rem 0.7rem;
+                box-shadow: -0.65rem -0.2rem 0 -0.45rem rgba(103, 232, 249, 0.18);
+            }
+            .mobile-side-panel .visual-stage.operator::after {
+                inset: 0.7rem auto auto 0.7rem;
+                width: 60%;
+                height: 42%;
+                border-radius: 0.65rem;
+            }
+            .mobile-side-panel .visual-stage.deepsea::before {
+                width: 5.5rem;
+                height: 5.5rem;
+            }
+            .mobile-side-panel .visual-stage.deepsea::after {
+                height: 62%;
             }
             .mobile-main-panel {
-                padding: 1.25rem;
+                padding: 1rem;
             }
             .mobile-main-panel .entry-heading {
-                font-size: 2rem;
-                line-height: 1.2;
+                font-size: 1.6rem;
+                line-height: 1.18;
             }
             .mobile-main-panel .entry-cards {
                 grid-template-columns: 1fr;
+                gap: 0.65rem;
             }
             .mobile-main-panel .entry-note {
-                line-height: 1.6;
+                margin-bottom: 1rem;
+                line-height: 1.55;
             }
             .mobile-progress {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 0.45rem;
             }
             .mobile-progress .progress-track {
                 width: 100%;
             }
             .mobile-question-card {
-                padding: 1rem;
+                padding: 0.85rem;
+                margin-bottom: 0.85rem;
             }
             .mobile-question-title {
-                font-size: 1.15rem;
-                line-height: 1.7;
+                font-size: 1.02rem;
+                line-height: 1.55;
             }
             .option-btn {
-                padding: 0.9rem;
+                padding: 0.8rem;
                 border-radius: 0.9rem;
             }
             .option-btn .option-key {
-                width: 1.85rem;
-                height: 1.85rem;
-                font-size: 0.85rem;
+                width: 1.7rem;
+                height: 1.7rem;
+                font-size: 0.78rem;
             }
             .option-btn .option-text {
-                font-size: 0.95rem;
-                line-height: 1.65;
+                font-size: 0.89rem;
+                line-height: 1.52;
             }
             .mobile-quiz-actions {
                 flex-direction: column;
                 align-items: stretch;
+                margin-top: 0.9rem;
             }
             .mobile-quiz-actions p,
             .mobile-quiz-actions button {
@@ -518,25 +645,25 @@
             }
             .mobile-lead-title,
             .mobile-result-title {
-                font-size: 1.75rem;
-                line-height: 1.25;
+                font-size: 1.5rem;
+                line-height: 1.2;
             }
             .mobile-lead-copy,
             .mobile-result-copy {
-                font-size: 0.95rem;
-                line-height: 1.7;
+                font-size: 0.9rem;
+                line-height: 1.58;
             }
             .field-input {
                 font-size: 16px;
             }
             .primary-btn,
             .secondary-btn {
-                min-height: 3.25rem;
+                min-height: 3rem;
             }
         }
     </style>
 </head>
-<body class="p-4 sm:p-6">
+<body class="p-3 sm:p-5">
 
 <div class="max-w-6xl mx-auto desktop-shell">
     <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start mobile-main-first desktop-balance">
