@@ -427,11 +427,14 @@
                 align-items: center;
                 justify-content: center;
                 min-height: 3.35rem;
+                width: 100%;
+                border: none;
                 border-radius: 9999px;
                 background: linear-gradient(135deg, #67e8f9, #bae6fd);
                 color: #062033;
                 font-weight: 800;
                 text-decoration: none;
+                cursor: pointer;
                 box-shadow: 0 16px 34px rgba(14, 165, 233, 0.24);
             }
             .mobile-side-panel .hero-mobile-note {
@@ -550,7 +553,7 @@
                     </div>
                 </div>
                 <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">Quantum Frequency Assessment</p>
-                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">8 個畫面刺穿你現在<br>為什麼這麼累</h1>
+                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">8 題快速分析你現在<br>為什麼這麼累</h1>
                 <p class="mt-5 text-slate-300 leading-relaxed text-base sm:text-lg hero-summary desktop-hero-copy">
                     這不是一般心理測驗，而是一場狀態辨識。艾伯林量子調頻用高壓、失眠、神經過載與深層匱乏的視覺化場景，逼你看見自己此刻真正卡住的位置，並對應專屬調頻協議。
                 </p>
@@ -561,9 +564,9 @@
                     <div class="hero-cta-cluster">
                         <div class="hero-primary-stat">
                             <span class="text-[0.68rem] uppercase tracking-[0.16em] text-cyan-100/70">Brand Signal</span>
-                            <strong>視覺刺激解碼 + 專屬結果報告</strong>
+                            <strong>快速分析狀態 + 個人結果報告</strong>
                         </div>
-                        <a href="#step-start" class="hero-mobile-cta">立即開始測驗</a>
+                        <button type="button" onclick="startQuiz()" class="hero-mobile-cta">立即開始測驗</button>
                     </div>
                     <p class="hero-mobile-note">先做測驗，完成後再留下 Email 取得你的專屬調頻入口</p>
                 </div>
@@ -629,9 +632,9 @@
             <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
             檢測入口
         </div>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先看見你，才進入你的調頻方案</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先分析，再進入你的調頻方案</h2>
         <p class="text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto entry-note">
-            透過 8 個視覺衝擊式場景，快速定位你現在最主要的內在負載來源。這份測驗不是公開展示全部內容，而是讓你先準確看見自己目前被哪一種頻率困住。
+            透過 8 題測驗，快速整理你現在最主要的壓力來源與內在負載狀態。完成後你會看到自己的結果方向，並知道目前比較適合哪一種調頻方式。
         </p>
         <div class="grid sm:grid-cols-2 gap-3 text-left mb-8 entry-cards">
             <div class="mini-card rounded-2xl p-4">
