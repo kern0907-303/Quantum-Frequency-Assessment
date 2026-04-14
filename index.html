@@ -248,7 +248,7 @@
             object-position: center 36%;
         }
         .visual-card-1 {
-            aspect-ratio: 3.7 / 1;
+            aspect-ratio: 2.55 / 1;
         }
         .visual-card-2 {
             aspect-ratio: 1 / 1;
@@ -260,7 +260,7 @@
             aspect-ratio: 1 / 1;
         }
         .visual-card-5 {
-            aspect-ratio: 2.85 / 1;
+            aspect-ratio: 2.55 / 1;
         }
         .start-feature-image {
             margin-top: 1.25rem;
@@ -283,6 +283,9 @@
             display: block;
         }
         @media (min-width: 1024px) {
+            .visual-frame-middle {
+                grid-template-columns: minmax(0, 2.7fr) minmax(0, 0.78fr);
+            }
             .desktop-balance {
                 display: grid;
                 grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
