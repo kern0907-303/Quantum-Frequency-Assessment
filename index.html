@@ -203,10 +203,6 @@
         .visual-frame-middle {
             grid-template-columns: minmax(0, 2.4fr) minmax(0, 0.58fr);
         }
-        .visual-frame-shift-right {
-            width: 31.5%;
-            margin-left: auto;
-        }
         .visual-card {
             position: relative;
             overflow: hidden;
@@ -264,7 +260,24 @@
             aspect-ratio: 1 / 1;
         }
         .visual-card-5 {
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 2.85 / 1;
+        }
+        .start-feature-image {
+            margin-top: 1.25rem;
+            overflow: hidden;
+            border-radius: 1.4rem;
+            border: 1px solid rgba(103, 232, 249, 0.18);
+            background:
+                linear-gradient(180deg, rgba(10, 21, 38, 0.12), rgba(2, 6, 23, 0.58)),
+                rgba(2, 6, 23, 0.82);
+            box-shadow:
+                0 16px 38px rgba(2, 8, 23, 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+        .start-feature-image img {
+            display: block;
+            width: 100%;
+            height: auto;
         }
         .mobile-hero-only {
             display: none;
@@ -367,14 +380,14 @@
                 padding: 0.75rem;
                 border-radius: 1.2rem;
             }
-            .visual-frame-shift-right {
-                width: 33%;
-            }
             .visual-frame-grid {
                 gap: 0.7rem;
             }
             .visual-card {
                 border-radius: 0.95rem;
+            }
+            .start-feature-image {
+                border-radius: 1.15rem;
             }
             .visual-card-1 img {
                 padding: 0;
@@ -562,10 +575,6 @@
                 padding: 0.45rem;
                 border-radius: 0.95rem;
             }
-            .mobile-side-panel .visual-frame-shift-right {
-                width: 100%;
-                margin-left: 0;
-            }
             .mobile-side-panel .visual-frame-grid {
                 gap: 0.42rem;
             }
@@ -574,6 +583,10 @@
             }
             .mobile-side-panel .visual-card-1 img {
                 padding: 0;
+            }
+            .mobile-main-panel .start-feature-image {
+                margin-top: 1rem;
+                border-radius: 1rem;
             }
             .mobile-side-panel .mobile-compact-hide.visual-stack {
                 display: grid;
@@ -748,11 +761,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="visual-frame visual-frame-shift-right">
-                    <div class="visual-card visual-card-5">
-                        <img src="assets/5.png" alt="人物側臉與發光腦部意象">
-                    </div>
-                </div>
             </div>
         </aside>
 
@@ -779,6 +787,9 @@
             </div>
         </div>
         <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">開始測驗</button>
+        <div class="start-feature-image">
+            <img src="assets/5.png" alt="人物側臉與發光腦部意象">
+        </div>
         <p class="text-xs text-slate-500 mt-4">先完成測驗，再決定你要不要開啟自己的專屬結果。</p>
     </div>
 
