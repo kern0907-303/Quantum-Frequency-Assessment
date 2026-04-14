@@ -279,9 +279,6 @@
             width: 100%;
             height: auto;
         }
-        .mobile-hero-only {
-            display: none;
-        }
         .mobile-compact-hide {
             display: block;
         }
@@ -459,32 +456,6 @@
                 font-size: 0.7rem;
                 letter-spacing: 0.14em;
             }
-            .mobile-side-panel .desktop-hero-copy {
-                display: none;
-            }
-            .mobile-side-panel .mobile-hero-only {
-                display: block;
-            }
-            .mobile-side-panel .hero-brow {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.45rem;
-                padding: 0.45rem 0.8rem;
-                border: 1px solid rgba(125, 211, 252, 0.28);
-                border-radius: 9999px;
-                background: rgba(8, 47, 73, 0.35);
-                color: #d8fbff;
-                font-size: 0.68rem;
-                letter-spacing: 0.16em;
-                text-transform: uppercase;
-            }
-            .mobile-side-panel .hero-brow-dot {
-                width: 0.4rem;
-                height: 0.4rem;
-                border-radius: 9999px;
-                background: #67e8f9;
-                box-shadow: 0 0 16px rgba(103, 232, 249, 0.7);
-            }
             .mobile-side-panel h1 {
                 font-size: 1.8rem;
                 line-height: 1.02;
@@ -493,51 +464,6 @@
             .mobile-side-panel .hero-summary {
                 font-size: 0.88rem;
                 line-height: 1.55;
-            }
-            .mobile-side-panel .mobile-hero-summary {
-                margin-top: 0.55rem;
-                font-size: 0.88rem;
-                line-height: 1.54;
-                color: rgba(226, 232, 240, 0.92);
-            }
-            .mobile-side-panel .hero-cta-cluster {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-                margin-top: 0.75rem;
-            }
-            .mobile-side-panel .hero-primary-stat {
-                padding: 0.7rem 0.8rem 0.68rem;
-                border-radius: 1rem;
-                border: 1px solid rgba(125, 211, 252, 0.2);
-                background: linear-gradient(180deg, rgba(8, 47, 73, 0.42), rgba(2, 6, 23, 0.5));
-            }
-            .mobile-side-panel .hero-primary-stat strong {
-                display: block;
-                font-size: 0.96rem;
-                color: white;
-                margin-top: 0.15rem;
-            }
-            .mobile-side-panel .hero-mobile-cta {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 2.8rem;
-                width: 100%;
-                border: none;
-                border-radius: 9999px;
-                background: linear-gradient(135deg, #67e8f9, #bae6fd);
-                color: #062033;
-                font-weight: 800;
-                text-decoration: none;
-                cursor: pointer;
-                box-shadow: 0 16px 34px rgba(14, 165, 233, 0.24);
-            }
-            .mobile-side-panel .hero-mobile-note {
-                margin-top: 0.4rem;
-                text-align: center;
-                font-size: 0.7rem;
-                color: rgba(148, 163, 184, 0.88);
             }
             .mobile-side-panel .hero-metrics {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -596,9 +522,6 @@
             }
             .mobile-side-panel .visual-frame-middle {
                 grid-template-columns: minmax(0, 2.05fr) minmax(0, 0.82fr);
-            }
-            .mobile-compact-hide {
-                display: none;
             }
             .mobile-main-panel {
                 padding: 1rem;
@@ -684,30 +607,11 @@
                 艾伯林量子調頻
             </div>
             <div class="mt-8">
-                <div class="mobile-hero-only">
-                    <div class="hero-brow">
-                        <span class="hero-brow-dot"></span>
-                        Quantum Frequency Assessment
-                    </div>
-                </div>
                 <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">Quantum Frequency Assessment</p>
                 <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">8 題快速分析你現在<br>為什麼這麼累</h1>
-                <p class="mt-5 text-slate-300 leading-relaxed text-base sm:text-lg hero-summary desktop-hero-copy">
+                <p class="mt-5 text-slate-300 leading-relaxed text-base sm:text-lg hero-summary">
                     這不是一般心理測驗，而是一場狀態辨識。艾伯林量子調頻聚焦高壓、失眠、神經過載與深層匱乏等常見狀態，幫你快速整理自己此刻真正卡住的位置，並對應專屬調頻協議。
                 </p>
-                <div class="mobile-hero-only">
-                    <p class="mobile-hero-summary">
-                        先透過測驗分析你目前的狀態，再找到對應支持與協助你的頻率方向。
-                    </p>
-                    <div class="hero-cta-cluster">
-                        <div class="hero-primary-stat">
-                            <span class="text-[0.68rem] uppercase tracking-[0.16em] text-cyan-100/70">Brand Signal</span>
-                            <strong>快速分析狀態 + 個人結果報告</strong>
-                        </div>
-                        <button type="button" onclick="startQuiz()" class="hero-mobile-cta">立即開始測驗</button>
-                    </div>
-                    <p class="hero-mobile-note">先做測驗，完成後再留下 Email 取得你的專屬調頻入口</p>
-                </div>
             </div>
 
             <div class="grid sm:grid-cols-3 gap-3 mt-8 hero-metrics">
@@ -725,7 +629,7 @@
                 </div>
             </div>
 
-            <div class="mt-8 space-y-3 text-sm text-slate-300 hero-points mobile-compact-hide">
+            <div class="mt-8 space-y-3 text-sm text-slate-300 hero-points">
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
                     <p>聚焦真實狀態反應，幫你更快辨識目前的壓力底色。</p>
@@ -740,7 +644,7 @@
                 </div>
             </div>
 
-            <div class="visual-stack mobile-compact-hide" aria-label="量子調頻視覺展示">
+            <div class="visual-stack" aria-label="量子調頻視覺展示">
                 <div class="visual-frame">
                     <div class="visual-frame-grid visual-frame-top">
                         <div class="visual-card visual-card-1">
