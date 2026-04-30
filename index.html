@@ -222,7 +222,7 @@
             align-items: stretch;
         }
         .visual-frame-top {
-            grid-template-columns: minmax(0, 1fr);
+            grid-template-columns: minmax(0, 2.7fr) minmax(0, 0.78fr);
         }
         .visual-frame-middle {
             grid-template-columns: minmax(0, 1fr);
@@ -255,17 +255,14 @@
             padding: 0;
             background: transparent;
         }
-        .visual-card-1 img {
-            padding: 0;
-            object-position: center 28%;
-        }
+        .visual-card-3 img,
         .visual-card-4 img {
             object-position: center center;
         }
         .visual-card-5 img {
             object-position: center 36%;
         }
-        .visual-card-1 {
+        .visual-card-3 {
             aspect-ratio: 2.55 / 1;
         }
         .visual-card-4 {
@@ -401,9 +398,6 @@
             .start-feature-image {
                 border-radius: 1.15rem;
             }
-            .visual-card-1 img {
-                padding: 0;
-            }
             .entry-heading {
                 font-size: 2.2rem;
             }
@@ -522,9 +516,6 @@
             .mobile-side-panel .visual-card {
                 border-radius: 0.68rem;
             }
-            .mobile-side-panel .visual-card-1 img {
-                padding: 0;
-            }
             .mobile-main-panel .start-feature-image {
                 margin-top: 1rem;
                 border-radius: 1rem;
@@ -533,7 +524,7 @@
                 display: grid;
             }
             .mobile-side-panel .visual-frame-top {
-                grid-template-columns: minmax(0, 1fr);
+                grid-template-columns: minmax(0, 2.2fr) minmax(0, 0.9fr);
             }
             .mobile-side-panel .visual-frame-middle {
                 grid-template-columns: minmax(0, 1fr);
@@ -662,15 +653,11 @@
             <div class="visual-stack" aria-label="量子調頻視覺展示">
                 <div class="visual-frame">
                     <div class="visual-frame-grid visual-frame-top">
-                        <div class="visual-card visual-card-1">
-                            <img src="assets/1.png" alt="量子頻率裝置與訊號波形介面">
+                        <div class="visual-card visual-card-3">
+                            <img src="assets/3.png" alt="手掌上方的腦波與耳機頻率影像">
                         </div>
-                    </div>
-                </div>
-                <div class="visual-frame">
-                    <div class="visual-frame-grid visual-frame-middle">
                         <div class="visual-card visual-card-4">
-                            <img src="assets/4.png" alt="掌心上方的腦波與耳機全息影像">
+                            <img src="assets/4.png" alt="側臉與發光腦部意象">
                         </div>
                     </div>
                 </div>
