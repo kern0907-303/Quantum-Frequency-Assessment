@@ -28,6 +28,71 @@
 
         gtag('config', 'AW-626919500');
     </script>
+    <script>
+        const ABL_ANALYTICS_ENDPOINT = "https://abl-conversion-dashboard.netlify.app/api/track";
+        const ABL_ANALYTICS_SITE_ID = "quantum_frequency_assessment";
+
+        function getAblId(storage, key, prefix) {
+            const existing = storage.getItem(key);
+            if (existing) return existing;
+            const randomId = window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : Math.random().toString(36).slice(2);
+            const next = `${prefix}_${randomId}`;
+            storage.setItem(key, next);
+            return next;
+        }
+
+        function getAblUtm() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                utm_source: params.get("utm_source") || null,
+                utm_medium: params.get("utm_medium") || null,
+                utm_campaign: params.get("utm_campaign") || null,
+                utm_content: params.get("utm_content") || null
+            };
+        }
+
+        function trackAblEvent(eventName, metadata = {}) {
+            const payload = {
+                site_id: ABL_ANALYTICS_SITE_ID,
+                event_name: eventName,
+                visitor_id: getAblId(window.localStorage, "abl_visitor_id", "visitor"),
+                session_id: getAblId(window.sessionStorage, "abl_session_id", "session"),
+                page_url: window.location.href,
+                referrer: document.referrer || null,
+                ...getAblUtm(),
+                metadata
+            };
+
+            fetch(ABL_ANALYTICS_ENDPOINT, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+                keepalive: true
+            }).catch(() => {});
+        }
+
+        trackAblEvent("page_view");
+
+        document.addEventListener("click", (event) => {
+            const target = event.target.closest("a,button");
+            if (!target) return;
+
+            const href = target.href || "";
+            const text = (target.textContent || "").trim();
+
+            if (href.includes("timewaver-audio-sales.netlify.app")) {
+                trackAblEvent("audio_purchase_click", { target: "timewaver_audio_sales" });
+            }
+
+            if (/line|lin\.ee|line\.me/i.test(href) || /LINE/i.test(text)) {
+                trackAblEvent("line_click", { label: text.slice(0, 80) });
+            }
+
+            if (/預約|諮詢|consult/i.test(text + " " + href)) {
+                trackAblEvent("consultation_booking", { label: text.slice(0, 80) });
+            }
+        });
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -906,6 +971,7 @@
 
             if (response.ok) {
                 console.log('✅ 頻率處方已成功同步至 TimeWaver Cloud');
+                trackAblEvent('assessment_submit', { result_type: userResultType });
                 if (typeof fbq === 'function') {
                     fbq('track', 'Lead');
                 }
