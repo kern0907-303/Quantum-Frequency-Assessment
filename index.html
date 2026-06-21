@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>艾伯林量子調頻｜測出你現在為什麼這麼累</title>
+    <title>60 秒睡前卡點檢測｜你不是不夠累，是大腦還沒下班</title>
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -82,6 +82,10 @@
 
             if (href.includes("timewaver-audio-sales.netlify.app")) {
                 trackAblEvent("audio_purchase_click", { target: "timewaver_audio_sales" });
+            }
+
+            if (target.id === "result-sales-link") {
+                trackAblEvent("recommended_audio_click", { result_type: target.dataset.resultType || null });
             }
 
             if (/line|lin\.ee|line\.me/i.test(href) || /LINE/i.test(text)) {
@@ -675,43 +679,43 @@
         <aside class="glass-panel desktop-panel desktop-side-panel hero-grid rounded-[2rem] p-6 sm:p-8 overflow-hidden mobile-side-panel">
             <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-sm tracking-[0.18em] uppercase">
                 <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
-                艾伯林量子調頻
+                60 秒睡前卡點檢測
             </div>
             <div class="mt-8">
-                <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">Quantum Frequency Assessment</p>
-                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">６０秒快速分析你現在<br>為什麼這麼累</h1>
+                <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">Sleep Checkpoint Assessment</p>
+                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">你不是不夠累，<br>是大腦還沒下班</h1>
                 <p class="mt-5 text-slate-300 leading-relaxed text-base sm:text-lg hero-summary">
-                    這不是一般心理測驗，而是一場狀態辨識。艾伯林量子調頻聚焦高壓、睡眠品質不穩、神經過載與深層匱乏等常見狀態，幫你快速整理自己此刻真正卡住的位置，並對應專屬調頻協議。
+                    躺下後還在復盤、淺眠易醒、明天壓力一直跑？用 60 秒找出你今晚睡不安穩的主因，對應 A/B/C/D 四種睡前卡點。
                 </p>
             </div>
 
             <div class="grid sm:grid-cols-3 gap-3 mt-8 hero-metrics">
                 <div class="mini-card rounded-2xl p-4">
-                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">測驗時間</p>
-                    <p class="mt-2 text-lg font-semibold text-white">６０秒</p>
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">完成時間</p>
+                    <p class="mt-2 text-lg font-semibold text-white">60 秒</p>
                 </div>
                 <div class="mini-card rounded-2xl p-4">
-                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">解碼維度</p>
-                    <p class="mt-2 text-lg font-semibold text-white">4 種狀態類型</p>
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">檢測題數</p>
+                    <p class="mt-2 text-lg font-semibold text-white">8 題完成</p>
                 </div>
                 <div class="mini-card rounded-2xl p-4">
-                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">結果交付</p>
-                    <p class="mt-2 text-lg font-semibold text-white">解碼報告</p>
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">購買門檻</p>
+                    <p class="mt-2 text-lg font-semibold text-white">不用先購買</p>
                 </div>
             </div>
 
             <div class="mt-8 space-y-3 text-sm text-slate-300 hero-points">
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>聚焦真實狀態反應，幫你更快辨識目前的壓力底色。</p>
+                    <p>先分清楚你是腦內雜訊、淺眠修復、明天壓力，還是底層不安。</p>
                 </div>
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>結果只揭露你當下該進入的調頻方向，不在前端一次說破全部內容。</p>
+                    <p>完成後看到你的睡前卡點、今晚第一步與對應聲音路徑。</p>
                 </div>
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>姓名與 Email 只用於寄送專屬結果與後續方案，不會打斷測驗節奏。</p>
+                    <p>姓名與 Email 只用於寄送專屬結果與後續方案，不會打斷檢測節奏。</p>
                 </div>
             </div>
 
@@ -735,27 +739,27 @@
     <div id="step-start" class="step active text-center">
         <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
             <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
-            檢測入口
+            睡前檢測入口
         </div>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先分析，再進入你的調頻方案</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先找出你卡在哪一型</h2>
         <p class="text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto entry-note">
-            透過 8 題測驗，快速整理你現在最主要的壓力來源與內在負載狀態。完成後你會看到自己的結果方向，並知道目前比較適合哪一種調頻方式。
+            如果你試過早點躺、聽白噪音、滑手機放空，卻還是睡不深，問題可能不是方法不夠多，而是你還沒分清楚自己卡在哪一型。
         </p>
         <div class="grid sm:grid-cols-2 gap-3 text-left mb-8 entry-cards">
             <div class="mini-card rounded-2xl p-4">
                 <p class="text-sm font-semibold text-white">你會得到什麼</p>
-                <p class="text-sm text-slate-400 mt-2">個人狀態類型、核心盲點、對應調頻協議與後續入口。</p>
+                <p class="text-sm text-slate-400 mt-2">你的睡前卡點、今晚第一步、對應聲音路徑與後續入口。</p>
             </div>
             <div class="mini-card rounded-2xl p-4">
                 <p class="text-sm font-semibold text-white">適合誰做</p>
                 <p class="text-sm text-slate-400 mt-2">長期高壓、淺眠易醒、睡醒仍累、神經緊繃、心裡常有不明耗損感的人。</p>
             </div>
         </div>
-        <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">開始測驗</button>
+        <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">開始 60 秒睡前檢測</button>
         <div class="start-feature-image">
             <img src="assets/5.png" alt="人物側臉與發光腦部意象">
         </div>
-        <p class="text-xs text-slate-500 mt-4">先完成測驗，再決定你要不要開啟自己的專屬結果。</p>
+        <p class="text-xs text-slate-500 mt-4">先完成檢測，再決定今晚要不要使用對應音頻。</p>
     </div>
 
     <!-- 測驗題目容器 -->
@@ -784,14 +788,14 @@
     <div id="step-lead" class="step">
         <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
             <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
-            解碼完成，準備寄送結果
+            分析完成，準備解鎖結果
         </div>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-white mobile-lead-title">留下資料，立即接收你的個人化調頻結果</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-white mobile-lead-title">你的睡前卡點已經分析完成</h2>
         <p class="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed mobile-lead-copy">
-            艾伯林量子調頻會把你的狀態結果、調頻說明與專屬入口寄到信箱。前端不公開完整內容，避免在你還沒辨識清楚前，就把價值說得太淺。
+            留下 Email，我們會把完整結果與今晚可使用的聲音路徑寄給你。
         </p>
         <div class="mini-card rounded-2xl p-4 mb-6">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500">你的預測結果方向</p>
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500">你的預測睡前卡點</p>
             <p id="lead-result-preview" class="mt-2 text-base font-semibold text-cyan-200"></p>
         </div>
         
@@ -805,7 +809,7 @@
                 <input type="email" id="user-email" required autocomplete="email" placeholder="you@example.com" class="field-input">
             </div>
             <button type="submit" id="submit-btn" class="primary-btn w-full py-4 px-8 mt-4">
-                寄送我的解碼報告
+                解鎖我的睡前卡點報告
             </button>
             <p class="text-xs text-slate-500">送出後將直接進入結果頁，同步由系統發送 Email。</p>
         </form>
@@ -818,21 +822,37 @@
         </div>
         <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
             <span class="w-2 h-2 rounded-full bg-green-300"></span>
-            艾伯林量子調頻 已完成同步
+            睡前卡點報告 已完成
         </div>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-white mobile-result-title">你的調頻解碼已生成</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-white mobile-result-title">你的睡前卡點已生成</h2>
         <p class="text-slate-300 mb-6 mobile-result-copy">本次主要結果為：<span id="result-title" class="font-bold text-cyan-300"></span></p>
         <div class="mini-card rounded-2xl p-6 text-left mb-4">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">對應頻率方向</p>
-            <p id="result-freq" class="text-base font-semibold text-white"></p>
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">你的主卡點</p>
+            <p id="result-checkpoint" class="text-base font-semibold text-white"></p>
         </div>
         <div class="bg-slate-950/60 rounded-2xl p-6 text-left border border-slate-700 mb-6">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">為什麼你會睡不安穩</p>
             <p id="result-desc" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
         </div>
-        <p class="text-sm text-slate-400 mb-6">請檢查你的信箱。我們已發送個人化結果與後續方案入口。</p>
-        <a href="https://timewaver-audio-sales.netlify.app/" target="_blank" class="primary-btn inline-block px-8 py-3">
-            查看我的專屬調頻方案
-        </a>
+        <div class="grid sm:grid-cols-2 gap-4 text-left mb-6">
+            <div class="mini-card rounded-2xl p-5">
+                <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">今晚第一步</p>
+                <p id="result-first-step" class="text-sm text-slate-300 leading-relaxed"></p>
+            </div>
+            <div class="mini-card rounded-2xl p-5">
+                <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">對應音頻</p>
+                <p id="result-audio-name" class="text-sm font-semibold text-cyan-200 leading-relaxed"></p>
+            </div>
+        </div>
+        <p class="text-sm text-slate-400 mb-6">完整結果已同步寄到信箱。你也可以先看今晚最對應的一款音頻。</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-3">
+            <a id="result-sales-link" href="https://timewaver-audio-sales.netlify.app/" target="_blank" class="primary-btn inline-block px-8 py-3">
+                查看我的對應音頻 NT$299
+            </a>
+            <a href="https://timewaver-audio-sales.netlify.app/#purchase" target="_blank" class="secondary-btn inline-block px-8 py-3">
+                我想先看完整四款方案
+            </a>
+        </div>
     </div>
 
 </div>
@@ -849,16 +869,44 @@
         { q: "【檢測 3/8】如果把你現在的身心系統比喻成一台電腦，它最像哪一種狀態？", options: [ {text: "開了很多分頁，白天的資訊和想法一直佔用記憶體。", type: "A"}, {text: "看似進入睡眠模式，但背景程式仍在跑，休息品質很淺。", type: "B"}, {text: "正在提前運算明天的壓力，導致今晚很難真正放鬆。", type: "C"}, {text: "被深層不安全感佔用資源，常在安靜時跳出警示訊號。", type: "D"} ] },
         { q: "【檢測 4/8】在過去一週，你通常怎麼處理睡前或休息時的緊繃感？", options: [ {text: "聽音樂、白噪音或滑內容轉移注意，但腦袋反而更難安靜。", type: "A"}, {text: "試著早點躺下或補眠，但醒來仍覺得頭重、身體沒修復。", type: "B"}, {text: "滑手機、做雜事或拖到很累才停下來，避免面對明天的壓力。", type: "C"}, {text: "告訴自己不要想太多，但內在的不安感還是會慢慢冒出來。", type: "D"} ] },
         { q: "【檢測 5/8】白天遇到外界刺激或比較時，哪一種反應最容易延續到晚上？", options: [ {text: "開始檢討自己、反覆復盤，讓大腦到晚上仍停不下來。", type: "A"}, {text: "刺激太多後只想躲起來休息，但真正躺下又不一定恢復得了。", type: "B"}, {text: "想到還有責任、期限或重要任務，神經就一路緊到睡前。", type: "C"}, {text: "表面沒事，但心裡會冒出對金錢、關係或未來的安全感焦慮。", type: "D"} ] },
-        { q: "【檢測 6/8】如果有一種「頻率科技」能協助你調整睡眠與神經狀態，你最希望它先處理什麼？", options: [ {text: "降低腦內雜訊，讓我不要一直復盤、思考或分心。", type: "A"}, {text: "加深身體放鬆，讓睡眠不只是有睡，而是真的有修復感。", type: "B"}, {text: "安定面對明天的壓力，讓我睡前不用一直預演和擔心。", type: "C"}, {text: "鬆開底層的不安全感，讓身心重新感到穩定、被支持。", type: "D"} ] },
+        { q: "【檢測 6/8】如果今晚只能先改善一件事，你最希望睡前先鬆開什麼？", options: [ {text: "降低腦內雜訊，讓我不要一直復盤、思考或分心。", type: "A"}, {text: "加深身體放鬆，讓睡眠不只是有睡，而是真的有修復感。", type: "B"}, {text: "安定面對明天的壓力，讓我睡前不用一直預演和擔心。", type: "C"}, {text: "鬆開底層的不安全感，讓身心重新感到穩定、被支持。", type: "D"} ] },
         { q: "【檢測 7/8】當壓力突然升高、事情變得不可控時，你最常出現的自動反應是？", options: [ {text: "立刻開始分析、查資料、排流程，腦袋停不下來，晚上也容易延續。", type: "A"}, {text: "整個人想退到安靜的地方，不想說話、不想被打擾，只想把刺激降到最低。", type: "B"}, {text: "反覆預演最壞情況，想先把所有風險想清楚，避免明天出錯。", type: "C"}, {text: "心裡突然浮現不安全感，會擔心自己不夠好、資源不夠，或未來撐不住。", type: "D"} ] },
         { q: "【檢測 8/8】最後，靜下心來深呼吸一次。你現在最想把哪一種狀態交還給頻率？", options: [ {text: "我想釋放停不下來的腦內雜訊與高頻腦壓。", type: "A"}, {text: "我想進入更深層的平靜，讓睡眠真正產生修復感。", type: "B"}, {text: "我想放下對明天的預演與壓力，回到當下的穩定心流。", type: "C"}, {text: "我想鬆開深層恐懼，重新感到安全、信任與豐盛。", type: "D"} ] }
     ];
 
     const resultsMap = {
-        "A": { title: "過載運轉的超級電腦 (A劑：斷路器)", desc: "你的大腦就像開了 50 個分頁的電腦，Beta波持續高頻震盪。即使躺在床上，腦袋還在跑明天的簡報與會議。你需要 A劑（Theta波）來強制切斷表意識的過載運轉，像拔掉大腦電源插頭一樣釋放腦壓。", freq: "【A劑】斷路器 (Theta 波 4-7Hz)" },
-        "B": { title: "淺層修復的待機系統 (B劑：深海艙)", desc: "你的睡眠問題不只是入睡，而是睡眠深度不足、容易醒，或醒來仍覺得像沒有真正休息。這代表身體可能進入了睡眠，神經系統卻沒有完整切換到修復模式。你需要 B劑（Delta波）的深層包覆，將頻率拖入更安靜的狀態，協助身體從淺層待機進入更有修復感的休息。", freq: "【B劑】深海艙 (Delta 波 0.5-4Hz)" },
-        "C": { title: "預期性焦慮的處理器 (C劑：心流校準)", desc: "因為明天有極度重要、高壓的任務，導致當下神經緊繃無法平靜。你需要 C劑（Alpha波）的「心流預載」，讓大腦在平靜中預先彩排明天的從容狀態，消除未知的恐懼感。", freq: "【C劑】心流校準 (Alpha 波 8-12Hz)" },
-        "D": { title: "充滿防衛的封閉網路 (D劑：豐盛錨點)", desc: "深層情緒恐懼導致的慢性高壓。因為對金錢、未來或人際關係充滿不安全感與匱乏感。你需要 D劑（852Hz）在最脆弱的時刻，洗掉恐懼的頻率，植入豐盛與信任的錨點。", freq: "【D劑】豐盛錨點 (Solfeggio 852Hz)" }
+        "A": {
+            title: "A 型：腦內雜訊與復盤",
+            checkpoint: "大腦還沒下班的過載型",
+            desc: "你真正卡住的不是不想睡，而是注意力還被白天的資訊、對話、決策和明天的安排佔住。當腦內分頁一直開著，身體躺下了，大腦卻還在工作。",
+            firstStep: "今晚先把手機放遠，讓燈光降下來，播放一段能協助思考降速的聲音路徑，讓注意力慢慢離開腦內復盤。",
+            audioName: "【A劑】斷路器・沉靜頻率",
+            freq: "Theta 波 4-7Hz"
+        },
+        "B": {
+            title: "B 型：淺眠易醒與修復不足",
+            checkpoint: "睡了卻沒有真正恢復的待機型",
+            desc: "你的問題不一定是睡不著，而是睡眠深度不夠穩。身體像進入待機模式，神經系統卻沒有完整切換到修復節奏，所以醒來仍覺得沉重。",
+            firstStep: "今晚先不要追求立刻睡著，而是建立固定下沉節奏。讓聲音維持穩定、低刺激，協助身體慢慢進入更深的休息感。",
+            audioName: "【B劑】深海艙・放鬆頻率",
+            freq: "Delta 波 0.5-4Hz"
+        },
+        "C": {
+            title: "C 型：明天壓力與神經備戰",
+            checkpoint: "還沒發生就先緊繃的預演型",
+            desc: "你的神經系統很可能正在提前替明天備戰。你不是單純想太多，而是身體把會議、責任、期限或未知風險當成需要預先處理的任務。",
+            firstStep: "今晚先把明天最重要的一件事寫下來，讓大腦知道它已經被安放，再用穩定的聲音路徑把注意力帶回當下。",
+            audioName: "【C劑】心流校準・專注頻率",
+            freq: "Alpha 波 8-12Hz"
+        },
+        "D": {
+            title: "D 型：底層不安與安全感牽動",
+            checkpoint: "安靜下來後不安浮出的防衛型",
+            desc: "你夜裡卡住的點，可能不是今天事情太多，而是安靜下來後，安全感、匱乏感或情緒牽動開始浮出。這時候需要的不是壓下情緒，而是先讓身心感到被支撐。",
+            firstStep: "今晚先把注意力放回呼吸和身體重量，讓自己知道此刻是安全的，再用溫和的聲音路徑協助底層不安慢慢降下來。",
+            audioName: "【D劑】豐盛錨點・安定頻率",
+            freq: "Solfeggio 852Hz"
+        }
     };
 
     let currentQ = 0;
@@ -875,6 +923,7 @@
         currentQ = 0;
         scores = { A:0, B:0, C:0, D:0 };
         answers = [];
+        trackAblEvent('quiz_start');
         showStep('quiz-container');
         renderQuestion();
     }
@@ -915,6 +964,7 @@
                 renderQuestion();
             } else {
                 calculateResult();
+                trackAblEvent('quiz_complete', { result_type: userResultType });
                 showLeadStep();
             }
         }, 180);
@@ -937,7 +987,8 @@
 
     function showLeadStep() {
         const resultData = resultsMap[userResultType];
-        document.getElementById('lead-result-preview').innerText = `${resultData.title} / ${resultData.freq}`;
+        document.getElementById('lead-result-preview').innerText = `${resultData.title} / ${resultData.checkpoint}`;
+        trackAblEvent('lead_form_view', { result_type: userResultType });
         showStep('step-lead');
     }
 
@@ -976,8 +1027,14 @@
                     fbq('track', 'Lead');
                 }
                 document.getElementById('result-title').innerText = resultData.title;
-                document.getElementById('result-freq').innerText = resultData.freq;
+                document.getElementById('result-checkpoint').innerText = `${resultData.checkpoint} / ${resultData.freq}`;
                 document.getElementById('result-desc').innerText = resultData.desc;
+                document.getElementById('result-first-step').innerText = resultData.firstStep;
+                document.getElementById('result-audio-name').innerText = resultData.audioName;
+                const resultSalesLink = document.getElementById('result-sales-link');
+                resultSalesLink.href = `https://timewaver-audio-sales.netlify.app/?result=${userResultType}#purchase`;
+                resultSalesLink.dataset.resultType = userResultType;
+                trackAblEvent('result_view', { result_type: userResultType });
                 showStep('step-result');
             } else {
                 console.error('❌ 系統同步失敗，請檢查 Webhook 網址設定');
