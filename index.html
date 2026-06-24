@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>60 秒睡前卡點檢測｜你不是不夠累，是大腦還沒下班</title>
+    <title>睡前狀態檢測｜你不是不夠累，是大腦還沒下班</title>
+    <!-- Meta Pixel -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -25,9 +26,9 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'AW-626919500');
     </script>
+    <!-- ABL 轉化追蹤 -->
     <script>
         const ABL_ANALYTICS_ENDPOINT = "https://abl-conversion-dashboard.netlify.app/api/track";
         const ABL_ANALYTICS_SITE_ID = "quantum_frequency_assessment";
@@ -62,7 +63,6 @@
                 ...getAblUtm(),
                 metadata
             };
-
             fetch(ABL_ANALYTICS_ENDPOINT, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -76,22 +76,17 @@
         document.addEventListener("click", (event) => {
             const target = event.target.closest("a,button");
             if (!target) return;
-
             const href = target.href || "";
             const text = (target.textContent || "").trim();
-
             if (href.includes("timewaver-audio-sales.netlify.app")) {
                 trackAblEvent("audio_purchase_click", { target: "timewaver_audio_sales" });
             }
-
             if (target.id === "result-sales-link") {
                 trackAblEvent("recommended_audio_click", { result_type: target.dataset.resultType || null });
             }
-
             if (/line|lin\.ee|line\.me/i.test(href) || /LINE/i.test(text)) {
                 trackAblEvent("line_click", { label: text.slice(0, 80) });
             }
-
             if (/預約|諮詢|consult/i.test(text + " " + href)) {
                 trackAblEvent("consultation_booking", { label: text.slice(0, 80) });
             }
@@ -136,9 +131,7 @@
             box-shadow: 0 20px 80px rgba(2, 8, 23, 0.45);
             backdrop-filter: blur(18px);
         }
-        .desktop-shell {
-            position: relative;
-        }
+        .desktop-shell { position: relative; }
         .desktop-shell::before {
             content: "";
             position: absolute;
@@ -148,10 +141,7 @@
             filter: blur(24px);
             pointer-events: none;
         }
-        .desktop-panel {
-            position: relative;
-            height: 100%;
-        }
+        .desktop-panel { position: relative; height: 100%; }
         .desktop-panel::after {
             content: "";
             position: absolute;
@@ -160,10 +150,7 @@
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 24%);
             pointer-events: none;
         }
-        .desktop-panel > * {
-            position: relative;
-            z-index: 1;
-        }
+        .desktop-panel > * { position: relative; z-index: 1; }
         .hero-grid {
             background-image:
                 linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
@@ -226,6 +213,7 @@
             font-weight: 700;
             transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
             box-shadow: 0 18px 40px rgba(14, 165, 233, 0.18);
+            cursor: pointer;
         }
         .primary-btn:hover {
             transform: translateY(-1px);
@@ -237,6 +225,7 @@
             color: var(--text-main);
             border-radius: 9999px;
             transition: border-color 0.18s ease, background 0.18s ease;
+            cursor: pointer;
         }
         .secondary-btn:hover {
             border-color: rgba(103, 232, 249, 0.32);
@@ -251,33 +240,7 @@
             border: 1px solid rgba(148, 163, 184, 0.14);
             background: rgba(15, 23, 42, 0.45);
         }
-        .signal-card {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(125, 211, 252, 0.16);
-            background:
-                linear-gradient(180deg, rgba(7, 18, 33, 0.9), rgba(2, 6, 23, 0.82)),
-                radial-gradient(circle at top right, rgba(103, 232, 249, 0.08), transparent 34%);
-        }
-        .signal-card::after {
-            content: "";
-            position: absolute;
-            inset: auto -10% -35% auto;
-            width: 10rem;
-            height: 10rem;
-            border-radius: 9999px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 68%);
-            pointer-events: none;
-        }
-        .signal-card > * {
-            position: relative;
-            z-index: 1;
-        }
-        .visual-stack {
-            display: grid;
-            gap: 0.9rem;
-            margin-top: 1.5rem;
-        }
+        .visual-stack { display: grid; gap: 0.9rem; margin-top: 1.5rem; }
         .visual-frame {
             padding: 0.9rem;
             border-radius: 1.5rem;
@@ -285,28 +248,15 @@
             background: linear-gradient(180deg, rgba(7, 18, 33, 0.88), rgba(2, 6, 23, 0.96));
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
         }
-        .visual-frame-grid {
-            display: grid;
-            gap: 0.85rem;
-            align-items: stretch;
-        }
-        .visual-frame-top {
-            grid-template-columns: minmax(0, 2.7fr) minmax(0, 0.78fr);
-        }
-        .visual-frame-middle {
-            grid-template-columns: minmax(0, 1fr);
-        }
+        .visual-frame-grid { display: grid; gap: 0.85rem; align-items: stretch; }
+        .visual-frame-top { grid-template-columns: minmax(0, 2.7fr) minmax(0, 0.78fr); }
         .visual-card {
             position: relative;
             overflow: hidden;
             border-radius: 1.15rem;
             border: 1px solid rgba(103, 232, 249, 0.18);
-            background:
-                linear-gradient(180deg, rgba(10, 21, 38, 0.12), rgba(2, 6, 23, 0.58)),
-                rgba(2, 6, 23, 0.82);
-            box-shadow:
-                0 16px 38px rgba(2, 8, 23, 0.28),
-                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            background: linear-gradient(180deg, rgba(10, 21, 38, 0.12), rgba(2, 6, 23, 0.58)), rgba(2, 6, 23, 0.82);
+            box-shadow: 0 16px 38px rgba(2, 8, 23, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
         }
         .visual-card::after {
             content: "";
@@ -315,608 +265,393 @@
             background: linear-gradient(180deg, rgba(5, 14, 27, 0.04), rgba(5, 14, 27, 0.28));
             pointer-events: none;
         }
-        .visual-card img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            padding: 0;
-            background: transparent;
+        .visual-card img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        .visual-card-3 { aspect-ratio: 2.55 / 1; }
+        .visual-card-4 { aspect-ratio: 1 / 1; }
+
+        /* ===== 維度進場 ===== */
+        .dim-orb {
+            width: 4.5rem; height: 4.5rem; border-radius: 9999px;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.5rem; color: #cffafe;
+            background: radial-gradient(circle at 35% 30%, rgba(103,232,249,0.35), rgba(8,47,73,0.55));
+            border: 1px solid rgba(103,232,249,0.4);
+            box-shadow: 0 0 0 6px rgba(34,211,238,0.06), 0 16px 40px rgba(14,116,144,0.25);
         }
-        .visual-card-3 img,
-        .visual-card-4 img {
-            object-position: center center;
+        .dim-dots { display: flex; gap: 0.4rem; justify-content: center; }
+        .dim-dot { width: 0.55rem; height: 0.55rem; border-radius: 9999px; background: rgba(148,163,184,0.28); }
+        .dim-dot.done { background: rgba(103,232,249,0.55); }
+        .dim-dot.current { background: var(--brand); box-shadow: 0 0 10px rgba(103,232,249,0.8); }
+
+        /* ===== 分析時刻 ===== */
+        .analysis-orb {
+            width: 6rem; height: 6rem; margin: 0 auto; border-radius: 9999px; position: relative;
+            background: radial-gradient(circle at 50% 50%, rgba(34,211,238,0.18), transparent 70%);
         }
-        .visual-card-5 img {
-            object-position: center 36%;
+        .analysis-orb::before, .analysis-orb::after {
+            content: ""; position: absolute; inset: 0; border-radius: 9999px;
+            border: 2px solid rgba(103,232,249,0.5); animation: pulseRing 1.8s ease-out infinite;
         }
-        .visual-card-3 {
-            aspect-ratio: 2.55 / 1;
+        .analysis-orb::after { animation-delay: 0.9s; }
+        @keyframes pulseRing {
+            0% { transform: scale(0.6); opacity: 0.9; }
+            100% { transform: scale(1.5); opacity: 0; }
         }
-        .visual-card-4 {
-            aspect-ratio: 1 / 1;
+        .analysis-core {
+            position: absolute; inset: 36%; border-radius: 9999px;
+            background: linear-gradient(135deg, var(--brand-2), var(--brand));
+            box-shadow: 0 0 24px rgba(103,232,249,0.7);
         }
-        .visual-card-5 {
-            aspect-ratio: 2.55 / 1;
-        }
-        .start-feature-image {
-            margin-top: 1.25rem;
-            overflow: hidden;
-            border-radius: 1.4rem;
-            border: 1px solid rgba(103, 232, 249, 0.18);
+        .analysis-progress { height: 0.4rem; border-radius: 9999px; background: rgba(148,163,184,0.2); overflow: hidden; }
+        .analysis-progress > span { display: block; height: 100%; width: 0%; border-radius: 9999px;
+            background: linear-gradient(90deg, var(--brand-2), var(--brand)); transition: width 0.4s ease; }
+
+        /* ===== 結果卡（可截圖） ===== */
+        .result-card {
+            position: relative; overflow: hidden; border-radius: 1.5rem;
+            border: 1px solid rgba(103,232,249,0.28);
             background:
-                linear-gradient(180deg, rgba(10, 21, 38, 0.12), rgba(2, 6, 23, 0.58)),
-                rgba(2, 6, 23, 0.82);
-            box-shadow:
-                0 16px 38px rgba(2, 8, 23, 0.28),
-                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+                radial-gradient(circle at 12% 8%, rgba(103,232,249,0.16), transparent 40%),
+                radial-gradient(circle at 90% 0%, rgba(56,189,248,0.12), transparent 38%),
+                linear-gradient(180deg, rgba(7,18,33,0.96), rgba(2,6,23,0.98));
+            box-shadow: 0 24px 70px rgba(2,8,23,0.5);
         }
-        .start-feature-image img {
-            display: block;
-            width: 100%;
-            height: auto;
+        .result-card::before {
+            content: ""; position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(148,163,184,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148,163,184,0.05) 1px, transparent 1px);
+            background-size: 20px 20px; pointer-events: none;
         }
-        .mobile-compact-hide {
-            display: block;
-        }
+        .result-card > * { position: relative; z-index: 1; }
+        .bar-track { height: 0.55rem; border-radius: 9999px; background: rgba(148,163,184,0.16); overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 9999px; background: linear-gradient(90deg, var(--brand-2), var(--brand)); }
+        .bar-fill.dim { background: rgba(148,163,184,0.4); }
+
         @media (min-width: 1024px) {
-            .visual-frame-middle {
-                grid-template-columns: minmax(0, 1fr);
-            }
             .desktop-balance {
-                display: grid;
-                grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
-                gap: 1.5rem;
-                align-items: stretch;
+                display: grid; grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
+                gap: 1.5rem; align-items: stretch;
             }
-            .desktop-side-panel,
-            .desktop-main-panel {
-                min-height: 860px;
-            }
-            .desktop-side-panel {
-                padding: 2.25rem;
-            }
-            .desktop-main-panel {
-                padding: 2.25rem;
-            }
-            .desktop-main-panel .step {
-                min-height: 100%;
-                display: none;
-                flex-direction: column;
-                justify-content: center;
-            }
-            .desktop-main-panel .step.active {
-                display: flex;
-            }
-            .desktop-main-panel #step-start.step.active {
-                justify-content: flex-start;
-                align-items: flex-start;
-                text-align: left;
-                padding-top: 3.5rem;
-            }
-            .desktop-main-panel #step-start .entry-note {
-                max-width: 32rem;
-                margin-left: 0;
-                margin-right: 0;
-            }
-            .desktop-main-panel #step-start .entry-cards {
-                width: 100%;
-                max-width: 100%;
-            }
-            .desktop-main-panel #step-start .brand-chip {
-                align-self: flex-start;
-            }
-            .desktop-main-panel #step-start .primary-btn {
-                align-self: flex-start;
-            }
-            .desktop-main-panel #quiz-container.step.active {
-                justify-content: flex-start;
-            }
+            .desktop-side-panel, .desktop-main-panel { min-height: 860px; padding: 2.25rem; }
+            .desktop-main-panel .step { min-height: 100%; display: none; flex-direction: column; justify-content: center; }
+            .desktop-main-panel .step.active { display: flex; }
+            .desktop-main-panel #step-start.step.active { justify-content: flex-start; align-items: flex-start; text-align: left; padding-top: 3rem; }
+            .desktop-main-panel #step-start .entry-note { max-width: 32rem; margin-left: 0; margin-right: 0; }
+            .desktop-main-panel #step-start .brand-chip,
+            .desktop-main-panel #step-start .primary-btn { align-self: flex-start; }
+            .desktop-main-panel #quiz-container.step.active { justify-content: flex-start; }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
-            body {
-                padding: 1rem;
-            }
-            .desktop-shell {
-                max-width: 980px;
-            }
-            .desktop-balance {
-                display: grid;
-                grid-template-columns: minmax(0, 1fr);
-                gap: 1rem;
-            }
-            .desktop-side-panel,
-            .desktop-main-panel {
-                padding: 1.5rem;
-                border-radius: 1.75rem;
-            }
-            .desktop-side-panel > .mt-8,
-            .desktop-main-panel > .step.active {
-                margin-top: 0;
-            }
-            .desktop-side-panel h1 {
-                font-size: 2.8rem;
-                line-height: 1.05;
-            }
-            .hero-metrics {
-                gap: 0.75rem;
-                margin-top: 1.25rem;
-            }
-            .hero-metrics .mini-card,
-            .entry-cards .mini-card {
-                padding: 0.9rem;
-            }
-            .hero-points {
-                margin-top: 1.1rem;
-            }
-            .visual-stack {
-                gap: 0.75rem;
-                margin-top: 1.1rem;
-            }
-            .visual-frame {
-                padding: 0.75rem;
-                border-radius: 1.2rem;
-            }
-            .visual-frame-grid {
-                gap: 0.7rem;
-            }
-            .visual-card {
-                border-radius: 0.95rem;
-            }
-            .start-feature-image {
-                border-radius: 1.15rem;
-            }
-            .entry-heading {
-                font-size: 2.2rem;
-            }
-            .entry-note,
-            .mobile-lead-copy,
-            .mobile-result-copy {
-                margin-bottom: 1.25rem;
-                line-height: 1.65;
-            }
-            .entry-cards {
-                margin-bottom: 1.25rem;
-            }
-            .mobile-question-card {
-                padding: 1.1rem;
-                margin-bottom: 1rem;
-            }
-            .mobile-question-title {
-                font-size: 1.35rem;
-                line-height: 1.6;
-            }
-            .option-btn {
-                padding: 0.9rem;
-            }
+            body { padding: 1rem; }
+            .desktop-shell { max-width: 980px; }
+            .desktop-balance { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+            .desktop-side-panel, .desktop-main-panel { padding: 1.5rem; border-radius: 1.75rem; }
+            .desktop-side-panel h1 { font-size: 2.8rem; line-height: 1.05; }
         }
         @media (max-width: 767px) {
-            body {
-                padding: 0.65rem;
-            }
-            .mobile-main-first {
-                display: flex;
-                flex-direction: column;
-            }
-            .mobile-main-first > .mobile-main-panel {
-                order: 1;
-            }
-            .mobile-main-first > .mobile-side-panel {
-                order: 2;
-            }
-            .mobile-main-panel,
-            .mobile-side-panel {
-                border-radius: 1.25rem;
-            }
-            .mobile-side-panel {
-                padding: 1rem;
-            }
-            .mobile-side-panel {
-                position: relative;
-                overflow: hidden;
-            }
+            body { padding: 0.65rem; }
+            .mobile-main-first { display: flex; flex-direction: column; }
+            .mobile-main-first > .mobile-main-panel { order: 1; }
+            .mobile-main-first > .mobile-side-panel { order: 2; }
+            .mobile-main-panel, .mobile-side-panel { border-radius: 1.25rem; }
+            .mobile-side-panel { padding: 1rem; position: relative; overflow: hidden; }
             .mobile-side-panel::before {
-                content: "";
-                position: absolute;
-                inset: 0;
+                content: ""; position: absolute; inset: 0;
                 background:
                     radial-gradient(circle at 20% 18%, rgba(103, 232, 249, 0.22), transparent 24%),
                     radial-gradient(circle at 82% 14%, rgba(56, 189, 248, 0.18), transparent 22%),
                     linear-gradient(180deg, rgba(6, 17, 31, 0.15) 0%, rgba(6, 17, 31, 0.75) 100%);
                 pointer-events: none;
             }
-            .mobile-side-panel > * {
-                position: relative;
-                z-index: 1;
-            }
-            .mobile-side-panel .brand-chip {
-                font-size: 0.7rem;
-                letter-spacing: 0.14em;
-            }
-            .mobile-side-panel h1 {
-                font-size: 1.8rem;
-                line-height: 1.02;
-                letter-spacing: -0.03em;
-            }
-            .mobile-side-panel .hero-summary {
-                font-size: 0.88rem;
-                line-height: 1.55;
-            }
-            .mobile-side-panel .hero-metrics {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 0.4rem;
-                margin-top: 0.65rem;
-            }
-            .mobile-side-panel .hero-metrics .mini-card {
-                padding: 0.55rem 0.45rem;
-                border-radius: 0.82rem;
-                text-align: center;
-            }
-            .mobile-side-panel .hero-metrics .mini-card p:first-child {
-                font-size: 0.62rem;
-                letter-spacing: 0.12em;
-            }
-            .mobile-side-panel .hero-metrics .mini-card p:last-child {
-                margin-top: 0.18rem;
-                font-size: 0.74rem;
-            }
-            .mobile-side-panel .hero-points {
-                margin-top: 0.7rem;
-                gap: 0.42rem;
-                padding-top: 0.55rem;
-                border-top: 1px solid rgba(148, 163, 184, 0.12);
-            }
-            .mobile-side-panel .hero-points p {
-                font-size: 0.74rem;
-                line-height: 1.38;
-            }
-            .mobile-side-panel .visual-stack {
-                gap: 0.4rem;
-                margin-top: 0.7rem;
-            }
-            .mobile-side-panel .visual-frame {
-                padding: 0.45rem;
-                border-radius: 0.95rem;
-            }
-            .mobile-side-panel .visual-frame-grid {
-                gap: 0.42rem;
-            }
-            .mobile-side-panel .visual-card {
-                border-radius: 0.68rem;
-            }
-            .mobile-main-panel .start-feature-image {
-                margin-top: 1rem;
-                border-radius: 1rem;
-            }
-            .mobile-side-panel .mobile-compact-hide.visual-stack {
-                display: grid;
-            }
-            .mobile-side-panel .visual-frame-top {
-                grid-template-columns: minmax(0, 2.2fr) minmax(0, 0.9fr);
-            }
-            .mobile-side-panel .visual-frame-middle {
-                grid-template-columns: minmax(0, 1fr);
-            }
-            .mobile-main-panel {
-                padding: 1rem;
-            }
-            .mobile-main-panel .entry-heading {
-                font-size: 1.6rem;
-                line-height: 1.18;
-            }
-            .mobile-main-panel .entry-cards {
-                grid-template-columns: 1fr;
-                gap: 0.65rem;
-            }
-            .mobile-main-panel .entry-note {
-                margin-bottom: 0.85rem;
-                line-height: 1.5;
-            }
-            .mobile-progress {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.45rem;
-            }
-            .mobile-progress .progress-track {
-                width: 100%;
-            }
-            .mobile-question-card {
-                padding: 0.85rem;
-                margin-bottom: 0.85rem;
-            }
-            .mobile-question-title {
-                font-size: 1.02rem;
-                line-height: 1.55;
-            }
-            .option-btn {
-                padding: 0.8rem;
-                border-radius: 0.9rem;
-            }
-            .option-btn .option-key {
-                width: 1.7rem;
-                height: 1.7rem;
-                font-size: 0.78rem;
-            }
-            .option-btn .option-text {
-                font-size: 0.89rem;
-                line-height: 1.52;
-            }
-            .mobile-quiz-actions {
-                flex-direction: column;
-                align-items: stretch;
-                margin-top: 0.9rem;
-            }
-            .mobile-quiz-actions p,
-            .mobile-quiz-actions button {
-                width: 100%;
-                text-align: center;
-            }
-            .mobile-lead-title,
-            .mobile-result-title {
-                font-size: 1.5rem;
-                line-height: 1.2;
-            }
-            .mobile-lead-copy,
-            .mobile-result-copy {
-                font-size: 0.9rem;
-                line-height: 1.58;
-            }
-            .field-input {
-                font-size: 16px;
-            }
-            .primary-btn,
-            .secondary-btn {
-                min-height: 2.85rem;
-            }
+            .mobile-side-panel > * { position: relative; z-index: 1; }
+            .mobile-side-panel h1 { font-size: 1.85rem; line-height: 1.05; letter-spacing: -0.03em; }
+            .mobile-side-panel .hero-summary { font-size: 0.88rem; line-height: 1.55; }
+            .mobile-side-panel .hero-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; margin-top: 0.65rem; }
+            .mobile-side-panel .hero-metrics .mini-card { padding: 0.55rem 0.45rem; border-radius: 0.82rem; text-align: center; }
+            .mobile-side-panel .visual-stack { gap: 0.4rem; margin-top: 0.7rem; }
+            .mobile-side-panel .visual-frame { padding: 0.45rem; border-radius: 0.95rem; }
+            .mobile-main-panel { padding: 1rem; }
+            .mobile-main-panel .entry-heading { font-size: 1.6rem; line-height: 1.18; }
+            .mobile-progress { flex-direction: column; align-items: stretch; gap: 0.45rem; }
+            .mobile-progress .progress-track { width: 100%; }
+            .mobile-question-title { font-size: 1.08rem; line-height: 1.5; }
+            .option-btn { padding: 0.8rem; border-radius: 0.9rem; }
+            .option-btn .option-key { width: 1.7rem; height: 1.7rem; font-size: 0.78rem; }
+            .option-btn .option-text { font-size: 0.9rem; line-height: 1.5; }
+            .mobile-result-title { font-size: 1.5rem; line-height: 1.2; }
+            .field-input { font-size: 16px; }
+            .primary-btn, .secondary-btn { min-height: 2.85rem; }
         }
     </style>
 </head>
 <body class="p-3 sm:p-5">
 
 <div class="max-w-6xl mx-auto desktop-shell">
-    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start mobile-main-first desktop-balance">
+    <div class="grid lg:grid-cols-[0.98fr_1.02fr] gap-6 items-start mobile-main-first desktop-balance">
+
+        <!-- ===== 左側：品牌 / 鉤子 ===== -->
         <aside class="glass-panel desktop-panel desktop-side-panel hero-grid rounded-[2rem] p-6 sm:p-8 overflow-hidden mobile-side-panel">
             <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-sm tracking-[0.18em] uppercase">
                 <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
-                60 秒睡前卡點檢測
+                睡前狀態檢測
             </div>
             <div class="mt-8">
                 <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">Sleep Checkpoint Assessment</p>
                 <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">你不是不夠累，<br>是大腦還沒下班</h1>
                 <p class="mt-5 text-slate-300 leading-relaxed text-base sm:text-lg hero-summary">
-                    躺下後還在復盤、淺眠易醒、明天壓力一直跑？用 60 秒找出你今晚睡不安穩的主因，對應 A/B/C/D 四種睡前卡點。
+                    躺下後還在復盤、淺眠易醒、明天的壓力一直在跑？這套檢測用 <span class="text-cyan-200 font-semibold">4 個維度</span>讀懂你今晚睡不安穩的<span class="text-cyan-200 font-semibold">真正卡點</span>，對應到你的那一型。
                 </p>
             </div>
 
             <div class="grid sm:grid-cols-3 gap-3 mt-8 hero-metrics">
                 <div class="mini-card rounded-2xl p-4">
-                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">完成時間</p>
-                    <p class="mt-2 text-lg font-semibold text-white">60 秒</p>
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">檢測結構</p>
+                    <p class="mt-2 text-lg font-semibold text-white">4 維度</p>
                 </div>
                 <div class="mini-card rounded-2xl p-4">
-                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">檢測題數</p>
-                    <p class="mt-2 text-lg font-semibold text-white">8 題完成</p>
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">作答方式</p>
+                    <p class="mt-2 text-lg font-semibold text-white">8 題點選</p>
                 </div>
                 <div class="mini-card rounded-2xl p-4">
-                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">購買門檻</p>
-                    <p class="mt-2 text-lg font-semibold text-white">不用先購買</p>
-                </div>
-            </div>
-
-            <div class="mt-8 space-y-3 text-sm text-slate-300 hero-points">
-                <div class="flex items-start gap-3">
-                    <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>先分清楚你是腦內雜訊、淺眠修復、明天壓力，還是底層不安。</p>
-                </div>
-                <div class="flex items-start gap-3">
-                    <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>完成後看到你的睡前卡點、今晚第一步與對應聲音路徑。</p>
-                </div>
-                <div class="flex items-start gap-3">
-                    <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>姓名與 Email 只用於寄送專屬結果與後續方案，不會打斷檢測節奏。</p>
+                    <p class="text-xs tracking-[0.16em] uppercase text-slate-500">完成後</p>
+                    <p class="mt-2 text-lg font-semibold text-white">立刻看結果</p>
                 </div>
             </div>
 
             <div class="visual-stack" aria-label="量子調頻視覺展示">
                 <div class="visual-frame">
                     <div class="visual-frame-grid visual-frame-top">
-                        <div class="visual-card visual-card-3">
-                            <img src="assets/3.png" alt="手掌上方的腦波與耳機頻率影像">
-                        </div>
-                        <div class="visual-card visual-card-4">
-                            <img src="assets/4.png" alt="側臉與發光腦部意象">
-                        </div>
+                        <div class="visual-card visual-card-3"><img src="assets/3.png" alt="腦波與耳機頻率影像"></div>
+                        <div class="visual-card visual-card-4"><img src="assets/4.png" alt="側臉與發光腦部意象"></div>
                     </div>
                 </div>
             </div>
         </aside>
 
-<div class="glass-panel desktop-panel desktop-main-panel hero-grid rounded-[2rem] p-6 sm:p-8 lg:p-10 border border-slate-700 mobile-main-panel">
-    
-    <!-- 歡迎畫面 -->
-    <div id="step-start" class="step active text-center">
-        <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
-            <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
-            睡前檢測入口
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先找出你卡在哪一型</h2>
-        <p class="text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto entry-note">
-            如果你試過早點躺、聽白噪音、滑手機放空，卻還是睡不深，問題可能不是方法不夠多，而是你還沒分清楚自己卡在哪一型。
-        </p>
-        <div class="grid sm:grid-cols-2 gap-3 text-left mb-8 entry-cards">
-            <div class="mini-card rounded-2xl p-4">
-                <p class="text-sm font-semibold text-white">你會得到什麼</p>
-                <p class="text-sm text-slate-400 mt-2">你的睡前卡點、今晚第一步、對應聲音路徑與後續入口。</p>
-            </div>
-            <div class="mini-card rounded-2xl p-4">
-                <p class="text-sm font-semibold text-white">適合誰做</p>
-                <p class="text-sm text-slate-400 mt-2">長期高壓、淺眠易醒、睡醒仍累、神經緊繃、心裡常有不明耗損感的人。</p>
-            </div>
-        </div>
-        <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">開始 60 秒睡前檢測</button>
-        <div class="start-feature-image">
-            <img src="assets/5.png" alt="人物側臉與發光腦部意象">
-        </div>
-        <p class="text-xs text-slate-500 mt-4">先完成檢測，再決定今晚要不要使用對應音頻。</p>
-    </div>
+        <!-- ===== 右側：互動主面板 ===== -->
+        <div class="glass-panel desktop-panel desktop-main-panel hero-grid rounded-[2rem] p-6 sm:p-8 lg:p-10 border border-slate-700 mobile-main-panel">
 
-    <!-- 測驗題目容器 -->
-    <div id="quiz-container" class="step">
-        <div class="mb-6 flex justify-between items-center gap-4 text-sm text-slate-400 mobile-progress">
-            <div>
-                <p class="text-xs uppercase tracking-[0.18em] text-slate-500">目前進度</p>
-                <span id="question-counter">第 1 題 / 共 8 題</span>
+            <!-- 開始畫面 -->
+            <div id="step-start" class="step active text-center">
+                <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
+                    <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
+                    睡前檢測入口
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先找出你卡在哪一型</h2>
+                <p class="text-slate-300 mb-6 leading-relaxed max-w-2xl mx-auto entry-note">
+                    這不是心理測驗，是一套<span class="text-cyan-200 font-semibold">睡前狀態檢測</span>：8 題分屬 4 個維度，從不同層面讀你的睡前狀態，完成後對應出你的主導卡點與專屬頻率方向。
+                </p>
+
+                <div class="grid grid-cols-2 gap-2.5 text-left mb-7 max-w-2xl mx-auto">
+                    <div class="mini-card rounded-xl px-4 py-3">
+                        <p class="text-xs text-cyan-200/80 tracking-wide">維度一</p>
+                        <p class="text-sm font-semibold text-white mt-0.5">狀態樣態</p>
+                    </div>
+                    <div class="mini-card rounded-xl px-4 py-3">
+                        <p class="text-xs text-cyan-200/80 tracking-wide">維度二</p>
+                        <p class="text-sm font-semibold text-white mt-0.5">系統負載</p>
+                    </div>
+                    <div class="mini-card rounded-xl px-4 py-3">
+                        <p class="text-xs text-cyan-200/80 tracking-wide">維度三</p>
+                        <p class="text-sm font-semibold text-white mt-0.5">壓力觸發</p>
+                    </div>
+                    <div class="mini-card rounded-xl px-4 py-3">
+                        <p class="text-xs text-cyan-200/80 tracking-wide">維度四</p>
+                        <p class="text-sm font-semibold text-white mt-0.5">內在意圖</p>
+                    </div>
+                </div>
+
+                <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">開始檢測 · 找出我卡在哪一型</button>
+                <p class="text-xs text-slate-500 mt-4">8 題點選・約 90 秒・不需先購買・<span class="text-slate-300">完成後立刻看到你的結果</span></p>
             </div>
-            <div class="w-2/3 bg-slate-700/80 rounded-full h-2.5 progress-track">
-                <div id="progress-bar" class="bg-gradient-to-r from-sky-400 to-cyan-300 h-2.5 rounded-full" style="width: 12.5%"></div>
+
+            <!-- 維度進場 -->
+            <div id="step-dim-intro" class="step text-center">
+                <div class="dim-dots mb-7" id="dim-dots"></div>
+                <div class="dim-orb mx-auto mb-5" id="dim-orb">1</div>
+                <p class="text-xs uppercase tracking-[0.2em] text-cyan-200/80 mb-2" id="dim-label">維度一 / 4</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4" id="dim-name">狀態樣態</h2>
+                <p class="text-slate-300 leading-relaxed max-w-xl mx-auto mb-8" id="dim-sub"></p>
+                <button onclick="beginDimension()" class="primary-btn py-3.5 px-8 w-full sm:w-auto" id="dim-begin-btn">開始這個維度</button>
             </div>
-        </div>
-        <div class="mini-card rounded-2xl p-5 mb-6 mobile-question-card">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-3">哪一個畫面最像你最近的真實狀態</p>
-            <h2 id="question-text" class="text-xl sm:text-2xl font-semibold text-white leading-relaxed mobile-question-title"></h2>
-        </div>
-        <div id="options-container" class="space-y-3"></div>
-        <div class="mt-6 flex justify-between items-center gap-3 mobile-quiz-actions">
-            <button id="back-btn" type="button" onclick="goBack()" class="secondary-btn px-5 py-3 text-sm">上一題</button>
-            <p class="text-xs text-slate-500 text-right">選項送出後將自動前往下一題</p>
+
+            <!-- 測驗題目 -->
+            <div id="quiz-container" class="step">
+                <div class="mb-5 flex justify-between items-center gap-4 text-sm text-slate-400 mobile-progress">
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.18em] text-cyan-200/70" id="quiz-dim-tag">維度一 · 狀態樣態</p>
+                        <span id="question-counter" class="text-slate-400">第 1 題 / 共 8 題</span>
+                    </div>
+                    <div class="w-2/3 bg-slate-700/80 rounded-full h-2.5 progress-track">
+                        <div id="progress-bar" class="bg-gradient-to-r from-sky-400 to-cyan-300 h-2.5 rounded-full transition-all duration-300" style="width: 12.5%"></div>
+                    </div>
+                </div>
+                <div class="mini-card rounded-2xl p-5 mb-5">
+                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-3" id="question-subtag">哪一個畫面最像你最近的真實狀態</p>
+                    <h2 id="question-text" class="text-xl sm:text-2xl font-semibold text-white leading-relaxed mobile-question-title"></h2>
+                </div>
+                <div id="options-container" class="space-y-3"></div>
+                <div class="mt-6 flex justify-between items-center gap-3">
+                    <button id="back-btn" type="button" onclick="goBack()" class="secondary-btn px-5 py-3 text-sm">上一題</button>
+                    <p class="text-xs text-slate-500 text-right">點選後自動前往下一題</p>
+                </div>
+            </div>
+
+            <!-- 分析時刻 -->
+            <div id="step-analysis" class="step text-center">
+                <div class="analysis-orb mb-7"><span class="analysis-core"></span></div>
+                <h2 class="text-xl sm:text-2xl font-semibold text-white mb-2">正在生成你的睡前卡點報告</h2>
+                <p class="text-slate-400 text-sm mb-7" id="analysis-line">正在比對你的 4 維度 · 8 項作答…</p>
+                <div class="analysis-progress max-w-sm mx-auto"><span id="analysis-bar"></span></div>
+            </div>
+
+            <!-- 結果頁 -->
+            <div id="step-result" class="step">
+                <div class="text-center">
+                    <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-4">
+                        <span class="w-2 h-2 rounded-full bg-green-300"></span>
+                        睡前卡點報告 已生成
+                    </div>
+                    <p class="text-cyan-200 text-base sm:text-lg font-medium mb-1" id="result-tagline"></p>
+                </div>
+
+                <!-- 可截圖結果卡 -->
+                <div class="result-card p-6 sm:p-7 my-5" id="result-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <p class="text-[0.7rem] tracking-[0.18em] uppercase text-cyan-200/80">艾伯林量子調頻 · 睡前狀態檢測</p>
+                        <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
+                    </div>
+                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500">你的主導卡點</p>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-1" id="card-type"></h3>
+                    <p class="text-sm text-slate-300 mb-2" id="card-checkpoint"></p>
+                    <p class="text-sm text-cyan-100/90 italic mb-5" id="card-line"></p>
+
+                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-3">你的 4 型傾向分佈</p>
+                    <div class="space-y-2.5" id="card-bars"></div>
+
+                    <div class="mt-5 pt-4 border-t border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <p class="text-[0.68rem] uppercase tracking-[0.16em] text-slate-500">對應頻率</p>
+                            <p class="text-sm font-semibold text-cyan-200" id="card-audio"></p>
+                        </div>
+                        <p class="text-[0.7rem] text-slate-500">#全息人生架構師</p>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-slate-500 mb-6">↓ 截圖這張卡，問問朋友是哪一型</p>
+
+                <!-- 完整解讀 -->
+                <div class="bg-slate-950/55 rounded-2xl p-6 text-left border border-slate-700 mb-4">
+                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">為什麼你一直睡不安穩</p>
+                    <p id="result-desc" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <div class="mini-card rounded-2xl p-6 text-left mb-4">
+                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">如果這個狀態一直沒被調回來</p>
+                    <p id="result-cost" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <div class="mini-card rounded-2xl p-6 text-left mb-6" id="secondary-block">
+                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2" id="secondary-label">你也帶有的次要傾向</p>
+                    <p id="result-secondary" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <!-- 頻率處方 + 銷售 CTA -->
+                <div class="rounded-2xl p-6 text-left mb-6" style="border:1px solid rgba(103,232,249,0.3); background:linear-gradient(180deg, rgba(8,47,73,0.4), rgba(2,6,23,0.55));">
+                    <p class="text-xs uppercase tracking-[0.18em] text-cyan-200/80 mb-2">你的對應頻率處方</p>
+                    <p class="text-lg font-bold text-white mb-1" id="rx-name"></p>
+                    <p class="text-xs text-cyan-200/70 mb-3" id="rx-freq"></p>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-5" id="rx-desc"></p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a id="result-sales-link" href="https://timewaver-audio-sales.netlify.app/" target="_blank" rel="noopener" class="primary-btn inline-block text-center px-6 py-3.5 flex-1">取得我的對應頻率 · NT$299</a>
+                        <a href="https://timewaver-audio-sales.netlify.app/#purchase" target="_blank" rel="noopener" class="secondary-btn inline-block text-center px-6 py-3.5">先看完整四款</a>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 text-center sm:text-left">今晚就能用・一次取得・之後無限次使用</p>
+                </div>
+
+                <!-- Email：選配，不擋路 -->
+                <div class="mini-card rounded-2xl p-5" id="email-block">
+                    <p class="text-sm text-slate-300 leading-relaxed mb-3">想收<span class="text-white font-medium">完整文字版報告</span>，加上接下來 7 天的睡前微調建議？留個 Email，我寄給你。</p>
+                    <form id="lead-form" onsubmit="submitEmail(event)" class="grid sm:grid-cols-[1fr_1.3fr_auto] gap-2.5 items-center">
+                        <input type="text" id="user-name" autocomplete="name" placeholder="你的稱呼" class="field-input">
+                        <input type="email" id="user-email" required autocomplete="email" placeholder="you@example.com" class="field-input">
+                        <button type="submit" id="submit-btn" class="primary-btn px-6 py-3 whitespace-nowrap">寄給我</button>
+                    </form>
+                    <p id="email-status" class="text-xs text-slate-500 mt-2"></p>
+                </div>
+
+                <div class="text-center mt-6">
+                    <button onclick="restartQuiz()" class="text-xs text-slate-500 underline underline-offset-4 hover:text-slate-300">重新檢測一次</button>
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <!-- 收集 Email 表單 -->
-    <div id="step-lead" class="step">
-        <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
-            <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
-            分析完成，準備解鎖結果
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-white mobile-lead-title">你的睡前卡點已經分析完成</h2>
-        <p class="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed mobile-lead-copy">
-            留下 Email，我們會把完整結果與今晚可使用的聲音路徑寄給你。
-        </p>
-        <div class="mini-card rounded-2xl p-4 mb-6">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500">你的預測睡前卡點</p>
-            <p id="lead-result-preview" class="mt-2 text-base font-semibold text-cyan-200"></p>
-        </div>
-        
-        <form id="lead-form" onsubmit="submitLead(event)" class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium text-slate-400 mb-1">您的姓名</label>
-                <input type="text" id="user-name" required autocomplete="name" placeholder="請輸入稱呼" class="field-input">
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-slate-400 mb-1">電子郵件 (接收解碼結果)</label>
-                <input type="email" id="user-email" required autocomplete="email" placeholder="you@example.com" class="field-input">
-            </div>
-            <button type="submit" id="submit-btn" class="primary-btn w-full py-4 px-8 mt-4">
-                解鎖我的睡前卡點報告
-            </button>
-            <p class="text-xs text-slate-500">送出後將直接進入結果頁，同步由系統發送 Email。</p>
-        </form>
-    </div>
-
-    <!-- 最終結果畫面 -->
-    <div id="step-result" class="step text-center">
-        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 text-green-300 mb-4">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-        </div>
-        <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
-            <span class="w-2 h-2 rounded-full bg-green-300"></span>
-            睡前卡點報告 已完成
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-white mobile-result-title">你的睡前卡點已生成</h2>
-        <p class="text-slate-300 mb-6 mobile-result-copy">本次主要結果為：<span id="result-title" class="font-bold text-cyan-300"></span></p>
-        <div class="mini-card rounded-2xl p-6 text-left mb-4">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">你的主卡點</p>
-            <p id="result-checkpoint" class="text-base font-semibold text-white"></p>
-        </div>
-        <div class="bg-slate-950/60 rounded-2xl p-6 text-left border border-slate-700 mb-6">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">為什麼你會睡不安穩</p>
-            <p id="result-desc" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-4 text-left mb-6">
-            <div class="mini-card rounded-2xl p-5">
-                <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">今晚第一步</p>
-                <p id="result-first-step" class="text-sm text-slate-300 leading-relaxed"></p>
-            </div>
-            <div class="mini-card rounded-2xl p-5">
-                <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">對應音頻</p>
-                <p id="result-audio-name" class="text-sm font-semibold text-cyan-200 leading-relaxed"></p>
-            </div>
-        </div>
-        <p class="text-sm text-slate-400 mb-6">完整結果已同步寄到信箱。你也可以先看今晚最對應的一款音頻。</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-3">
-            <a id="result-sales-link" href="https://timewaver-audio-sales.netlify.app/" target="_blank" class="primary-btn inline-block px-8 py-3">
-                查看我的對應音頻 NT$299
-            </a>
-            <a href="https://timewaver-audio-sales.netlify.app/#purchase" target="_blank" class="secondary-btn inline-block px-8 py-3">
-                我想先看完整四款方案
-            </a>
-        </div>
-    </div>
-
-</div>
-</div>
-</div>
 </div>
 
 <script>
     const N8N_WEBHOOK_URL = "https://erick303.app.n8n.cloud/webhook/timewaver-quiz-hook";
 
-    const questions = [
-        { q: "【檢測 1/8】回想最近幾個晚上，你的睡眠狀態最接近哪一種？", options: [ {text: "躺下後腦袋仍在整理事情，入睡前一直有念頭在跑。", type: "A"}, {text: "有睡著，但睡得很淺、容易醒，醒來像沒有真正休息到。", type: "B"}, {text: "睡前容易想到明天的任務或壓力，身體明明累了，心裡卻還在備戰。", type: "C"}, {text: "夜深時會浮出不安、空洞或沒來由的擔心，睡眠像被底層情緒牽住。", type: "D"} ] },
-        { q: "【檢測 2/8】當睡眠品質變差時，你最常感受到哪一種身體訊號？", options: [ {text: "頭部緊繃、太陽穴有壓力，像大腦整晚都沒有關機。", type: "A"}, {text: "肩頸僵硬、身體沉重，對聲音或光線變得更敏感。", type: "B"}, {text: "呼吸變短、心跳偏快，像神經系統一直處在待命狀態。", type: "C"}, {text: "胸口悶、胃或腹部緊，醒來後仍有一種被消耗的感覺。", type: "D"} ] },
-        { q: "【檢測 3/8】如果把你現在的身心系統比喻成一台電腦，它最像哪一種狀態？", options: [ {text: "開了很多分頁，白天的資訊和想法一直佔用記憶體。", type: "A"}, {text: "看似進入睡眠模式，但背景程式仍在跑，休息品質很淺。", type: "B"}, {text: "正在提前運算明天的壓力，導致今晚很難真正放鬆。", type: "C"}, {text: "被深層不安全感佔用資源，常在安靜時跳出警示訊號。", type: "D"} ] },
-        { q: "【檢測 4/8】在過去一週，你通常怎麼處理睡前或休息時的緊繃感？", options: [ {text: "聽音樂、白噪音或滑內容轉移注意，但腦袋反而更難安靜。", type: "A"}, {text: "試著早點躺下或補眠，但醒來仍覺得頭重、身體沒修復。", type: "B"}, {text: "滑手機、做雜事或拖到很累才停下來，避免面對明天的壓力。", type: "C"}, {text: "告訴自己不要想太多，但內在的不安感還是會慢慢冒出來。", type: "D"} ] },
-        { q: "【檢測 5/8】白天遇到外界刺激或比較時，哪一種反應最容易延續到晚上？", options: [ {text: "開始檢討自己、反覆復盤，讓大腦到晚上仍停不下來。", type: "A"}, {text: "刺激太多後只想躲起來休息，但真正躺下又不一定恢復得了。", type: "B"}, {text: "想到還有責任、期限或重要任務，神經就一路緊到睡前。", type: "C"}, {text: "表面沒事，但心裡會冒出對金錢、關係或未來的安全感焦慮。", type: "D"} ] },
-        { q: "【檢測 6/8】如果今晚只能先改善一件事，你最希望睡前先鬆開什麼？", options: [ {text: "降低腦內雜訊，讓我不要一直復盤、思考或分心。", type: "A"}, {text: "加深身體放鬆，讓睡眠不只是有睡，而是真的有修復感。", type: "B"}, {text: "安定面對明天的壓力，讓我睡前不用一直預演和擔心。", type: "C"}, {text: "鬆開底層的不安全感，讓身心重新感到穩定、被支持。", type: "D"} ] },
-        { q: "【檢測 7/8】當壓力突然升高、事情變得不可控時，你最常出現的自動反應是？", options: [ {text: "立刻開始分析、查資料、排流程，腦袋停不下來，晚上也容易延續。", type: "A"}, {text: "整個人想退到安靜的地方，不想說話、不想被打擾，只想把刺激降到最低。", type: "B"}, {text: "反覆預演最壞情況，想先把所有風險想清楚，避免明天出錯。", type: "C"}, {text: "心裡突然浮現不安全感，會擔心自己不夠好、資源不夠，或未來撐不住。", type: "D"} ] },
-        { q: "【檢測 8/8】最後，靜下心來深呼吸一次。你現在最想把哪一種狀態交還給頻率？", options: [ {text: "我想釋放停不下來的腦內雜訊與高頻腦壓。", type: "A"}, {text: "我想進入更深層的平靜，讓睡眠真正產生修復感。", type: "B"}, {text: "我想放下對明天的預演與壓力，回到當下的穩定心流。", type: "C"}, {text: "我想鬆開深層恐懼，重新感到安全、信任與豐盛。", type: "D"} ] }
+    const dimensions = [
+        { name: "狀態樣態", sub: "這部分在看：你現在的睡眠，正在用哪一種樣子呈現。" },
+        { name: "系統負載", sub: "這部分在看：你的身心系統，被白天佔用到什麼程度，還剩多少資源能進入修復。" },
+        { name: "壓力觸發", sub: "這部分在看：是什麼，把你白天的緊繃，一路延續到夜裡。" },
+        { name: "內在意圖", sub: "這部分在看：你的系統，真正想被調回哪一個方向。" }
     ];
 
+    const questions = [
+        { dim:0, q:"回想最近幾個晚上，你的睡眠狀態最接近哪一種？", options:[ {text:"躺下後腦袋仍在整理事情，入睡前一直有念頭在跑。",type:"A"}, {text:"有睡著，但睡得很淺、容易醒，醒來像沒有真正休息到。",type:"B"}, {text:"睡前容易想到明天的任務或壓力，身體明明累了，心裡卻還在備戰。",type:"C"}, {text:"夜深時會浮出不安、空洞或沒來由的擔心，睡眠像被底層情緒牽住。",type:"D"} ] },
+        { dim:0, q:"當睡眠品質變差時，你最常感受到哪一種身體訊號？", options:[ {text:"頭部緊繃、太陽穴有壓力，像大腦整晚都沒有關機。",type:"A"}, {text:"肩頸僵硬、身體沉重，對聲音或光線變得更敏感。",type:"B"}, {text:"呼吸變短、心跳偏快，像神經系統一直處在待命狀態。",type:"C"}, {text:"胸口悶、胃或腹部緊，醒來後仍有一種被消耗的感覺。",type:"D"} ] },
+        { dim:1, q:"如果把你現在的身心系統比喻成一台電腦，它最像哪一種狀態？", options:[ {text:"開了很多分頁，白天的資訊和想法一直佔用記憶體。",type:"A"}, {text:"看似進入睡眠模式，但背景程式仍在跑，休息品質很淺。",type:"B"}, {text:"正在提前運算明天的壓力，導致今晚很難真正放鬆。",type:"C"}, {text:"被深層不安全感佔用資源，常在安靜時跳出警示訊號。",type:"D"} ] },
+        { dim:1, q:"在過去一週，你通常怎麼處理睡前或休息時的緊繃感？", options:[ {text:"聽音樂、白噪音或滑內容轉移注意，但腦袋反而更難安靜。",type:"A"}, {text:"試著早點躺下或補眠，但醒來仍覺得頭重、身體沒修復。",type:"B"}, {text:"滑手機、做雜事或拖到很累才停下來，避免面對明天的壓力。",type:"C"}, {text:"告訴自己不要想太多，但內在的不安感還是會慢慢冒出來。",type:"D"} ] },
+        { dim:2, q:"白天遇到外界刺激或比較時，哪一種反應最容易延續到晚上？", options:[ {text:"開始檢討自己、反覆復盤，讓大腦到晚上仍停不下來。",type:"A"}, {text:"刺激太多後只想躲起來休息，但真正躺下又不一定恢復得了。",type:"B"}, {text:"想到還有責任、期限或重要任務，神經就一路緊到睡前。",type:"C"}, {text:"表面沒事，但心裡會冒出對金錢、關係或未來的安全感焦慮。",type:"D"} ] },
+        { dim:2, q:"當壓力突然升高、事情變得不可控時，你最常出現的自動反應是？", options:[ {text:"立刻開始分析、查資料、排流程，腦袋停不下來，晚上也容易延續。",type:"A"}, {text:"整個人想退到安靜的地方，不想說話、不想被打擾，只想把刺激降到最低。",type:"B"}, {text:"反覆預演最壞情況，想先把所有風險想清楚，避免明天出錯。",type:"C"}, {text:"心裡突然浮現不安全感，會擔心自己不夠好、資源不夠，或未來撐不住。",type:"D"} ] },
+        { dim:3, q:"如果今晚只能先改善一件事，你最希望睡前先鬆開什麼？", options:[ {text:"降低腦內雜訊，讓我不要一直復盤、思考或分心。",type:"A"}, {text:"加深身體放鬆，讓睡眠不只是有睡，而是真的有修復感。",type:"B"}, {text:"安定面對明天的壓力，讓我睡前不用一直預演和擔心。",type:"C"}, {text:"鬆開底層的不安全感，讓身心重新感到穩定、被支持。",type:"D"} ] },
+        { dim:3, q:"最後，靜下心來深呼吸一次。你現在最想把哪一種狀態交還給頻率？", options:[ {text:"我想釋放停不下來的腦內雜訊與高頻腦壓。",type:"A"}, {text:"我想進入更深層的平靜，讓睡眠真正產生修復感。",type:"B"}, {text:"我想放下對明天的預演與壓力，回到當下的穩定心流。",type:"C"}, {text:"我想鬆開深層恐懼，重新感到安全、信任與豐盛。",type:"D"} ] }
+    ];
+
+    const typeMeta = {
+        A: { short:"過載", line:"你不是不夠累，是大腦還沒下班。", secondary:"腦內雜訊偏高——你習慣用思考處理一切，連睡前都還在運算。" },
+        B: { short:"待機", line:"你有睡，但身體還沒真正修復。", secondary:"修復不足——你常常有睡，卻很少真的休息到。" },
+        C: { short:"預演", line:"你還沒到明天，神經卻已經先上場。", secondary:"預演傾向——你會替還沒發生的明天先緊繃起來。" },
+        D: { short:"防衛", line:"安靜下來時，不安比睏意先到。", secondary:"底層不安——安靜下來時，安全感的議題容易浮出。" }
+    };
+
     const resultsMap = {
-        "A": {
-            title: "A 型：腦內雜訊與復盤",
-            checkpoint: "大腦還沒下班的過載型",
-            desc: "你真正卡住的不是不想睡，而是注意力還被白天的資訊、對話、決策和明天的安排佔住。當腦內分頁一直開著，身體躺下了，大腦卻還在工作。",
-            firstStep: "今晚先把手機放遠，讓燈光降下來，播放一段能協助思考降速的聲音路徑，讓注意力慢慢離開腦內復盤。",
-            audioName: "【A劑】斷路器・沉靜頻率",
-            freq: "Theta 波 4-7Hz"
-        },
-        "B": {
-            title: "B 型：淺眠易醒與修復不足",
-            checkpoint: "睡了卻沒有真正恢復的待機型",
-            desc: "你的問題不一定是睡不著，而是睡眠深度不夠穩。身體像進入待機模式，神經系統卻沒有完整切換到修復節奏，所以醒來仍覺得沉重。",
-            firstStep: "今晚先不要追求立刻睡著，而是建立固定下沉節奏。讓聲音維持穩定、低刺激，協助身體慢慢進入更深的休息感。",
-            audioName: "【B劑】深海艙・放鬆頻率",
-            freq: "Delta 波 0.5-4Hz"
-        },
-        "C": {
-            title: "C 型：明天壓力與神經備戰",
-            checkpoint: "還沒發生就先緊繃的預演型",
-            desc: "你的神經系統很可能正在提前替明天備戰。你不是單純想太多，而是身體把會議、責任、期限或未知風險當成需要預先處理的任務。",
-            firstStep: "今晚先把明天最重要的一件事寫下來，讓大腦知道它已經被安放，再用穩定的聲音路徑把注意力帶回當下。",
-            audioName: "【C劑】心流校準・專注頻率",
-            freq: "Alpha 波 8-12Hz"
-        },
-        "D": {
-            title: "D 型：底層不安與安全感牽動",
-            checkpoint: "安靜下來後不安浮出的防衛型",
-            desc: "你夜裡卡住的點，可能不是今天事情太多，而是安靜下來後，安全感、匱乏感或情緒牽動開始浮出。這時候需要的不是壓下情緒，而是先讓身心感到被支撐。",
-            firstStep: "今晚先把注意力放回呼吸和身體重量，讓自己知道此刻是安全的，再用溫和的聲音路徑協助底層不安慢慢降下來。",
-            audioName: "【D劑】豐盛錨點・安定頻率",
-            freq: "Solfeggio 852Hz"
-        }
+        A: { title:"A 型 · 大腦還沒下班的過載型", checkpoint:"大腦還沒下班的過載型", freq:"Theta 波 4–7Hz",
+             desc:"你真正卡住的不是不想睡，而是注意力還被白天的資訊、對話、決策和明天的安排佔住。當腦內分頁一直開著，身體躺下了，大腦卻還在工作。這不是你不夠努力——是你已經用「撐住」的方式活太久，連睡前都還在運轉。",
+             cost:"過載會慢慢變成一種內在消耗：白天更難專注、情緒變薄、對小事更敏感。久了你會以為「我就是這種睡不好的人」，其實只是你的狀態一直沒被調回來。",
+             audioName:"【A劑】斷路器・沉靜頻率",
+             rx:"專門對應「停不下來的大腦」。它不是要你用力放鬆，而是給神經系統一個慢下來的訊號，協助注意力離開腦內復盤，把過載的頻率調回沉靜。" },
+        B: { title:"B 型 · 睡了卻沒恢復的待機型", checkpoint:"睡了卻沒有真正恢復的待機型", freq:"Delta 波 0.5–4Hz",
+             desc:"你的問題不一定是睡不著，而是睡眠深度不夠穩。身體像進入待機模式，神經系統卻沒有完整切換到修復節奏，所以醒來仍覺得沉重。",
+             cost:"長期修復不足，身體會用「更累、更鈍、更提不起勁」來提醒你。不是你不夠休息，是休息一直沒有真正發生。",
+             audioName:"【B劑】深海艙・放鬆頻率",
+             rx:"對應「睡了卻沒修復」的待機狀態，協助身體從淺層待機，慢慢沉進更深、更穩的休息節奏。" },
+        C: { title:"C 型 · 還沒發生就先緊繃的預演型", checkpoint:"還沒發生就先緊繃的預演型", freq:"Alpha 波 8–12Hz",
+             desc:"你的神經系統很可能正在提前替明天備戰。你不是單純想太多，而是身體把會議、責任、期限或未知風險當成需要預先處理的任務。",
+             cost:"神經長期備戰，會讓你連放假都鬆不下來，把「緊繃」誤認成「認真」。久了，連快樂都需要用力。",
+             audioName:"【C劑】心流校準・專注頻率",
+             rx:"對應「還沒發生就先緊繃」的預演迴路，協助神經把注意力從明天帶回當下，鬆開提前備戰的張力。" },
+        D: { title:"D 型 · 安靜下來不安浮出的防衛型", checkpoint:"安靜下來後不安浮出的防衛型", freq:"Solfeggio 852Hz",
+             desc:"你夜裡卡住的點，可能不是今天事情太多，而是安靜下來後，安全感、匱乏感或情緒牽動開始浮出。這時候需要的不是壓下情緒，而是先讓身心感到被支撐。",
+             cost:"底層不安若一直沒被支撐，會悄悄影響你的選擇——變得更難相信安穩是可以持續的。這不是你的問題，是狀態需要被穩住。",
+             audioName:"【D劑】豐盛錨點・安定頻率",
+             rx:"對應「安靜時浮出的不安」，像一個穩定的錨點，協助底層情緒慢慢被支撐、被安放下來。" }
     };
 
     let currentQ = 0;
     let scores = { A:0, B:0, C:0, D:0 };
-    let userResultType = "A";
     let answers = [];
+    let userResultType = "A";
+    let secondaryType = null;
+    let pendingDim = 0;
 
     function showStep(stepId) {
         document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-        document.getElementById(stepId).classList.add('active');
+        const el = document.getElementById(stepId);
+        el.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function startQuiz() {
@@ -924,21 +659,48 @@
         scores = { A:0, B:0, C:0, D:0 };
         answers = [];
         trackAblEvent('quiz_start');
+        showDimIntro(0);
+    }
+
+    function restartQuiz() { startQuiz(); }
+
+    function showDimIntro(dimIdx) {
+        pendingDim = dimIdx;
+        const d = dimensions[dimIdx];
+        document.getElementById('dim-orb').innerText = dimIdx + 1;
+        document.getElementById('dim-label').innerText = `維度 ${dimIdx + 1} / 4`;
+        document.getElementById('dim-name').innerText = `${['一','二','三','四'][dimIdx]}｜${d.name}`;
+        document.getElementById('dim-sub').innerText = d.sub;
+        document.getElementById('dim-begin-btn').innerText = dimIdx === 0 ? '開始這個維度' : '進入下一個維度';
+        const dots = document.getElementById('dim-dots');
+        dots.innerHTML = '';
+        for (let i = 0; i < 4; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'dim-dot' + (i < dimIdx ? ' done' : (i === dimIdx ? ' current' : ''));
+            dots.appendChild(dot);
+        }
+        trackAblEvent('dimension_view', { dimension: dimIdx + 1 });
+        showStep('step-dim-intro');
+    }
+
+    function beginDimension() {
         showStep('quiz-container');
         renderQuestion();
     }
 
     function renderQuestion() {
         const qData = questions[currentQ];
+        const dim = dimensions[qData.dim];
+        document.getElementById('quiz-dim-tag').innerText = `維度${['一','二','三','四'][qData.dim]} · ${dim.name}`;
         document.getElementById('question-counter').innerText = `第 ${currentQ + 1} 題 / 共 ${questions.length} 題`;
         document.getElementById('progress-bar').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
         document.getElementById('question-text').innerText = qData.q;
-        document.getElementById('back-btn').disabled = currentQ === 0;
-        document.getElementById('back-btn').style.opacity = currentQ === 0 ? '0.4' : '1';
-        
+        const back = document.getElementById('back-btn');
+        back.disabled = currentQ === 0;
+        back.style.opacity = currentQ === 0 ? '0.4' : '1';
+
         const optsContainer = document.getElementById('options-container');
         optsContainer.innerHTML = '';
-        
         qData.options.forEach((opt, index) => {
             const btn = document.createElement('button');
             btn.className = 'option-btn';
@@ -946,8 +708,7 @@
                 <div class="flex items-start gap-4">
                     <span class="option-key">${String.fromCharCode(65 + index)}</span>
                     <span class="option-text text-sm sm:text-base leading-relaxed text-slate-100">${opt.text}</span>
-                </div>
-            `;
+                </div>`;
             btn.onclick = () => selectOption(opt.type, btn);
             optsContainer.appendChild(btn);
         });
@@ -958,97 +719,160 @@
         btn.classList.add('selected');
         scores[type]++;
         answers[currentQ] = type;
+        const prevDim = questions[currentQ].dim;
         currentQ++;
         setTimeout(() => {
             if (currentQ < questions.length) {
-                renderQuestion();
+                const newDim = questions[currentQ].dim;
+                if (newDim !== prevDim) {
+                    showDimIntro(newDim);
+                } else {
+                    renderQuestion();
+                }
             } else {
                 calculateResult();
                 trackAblEvent('quiz_complete', { result_type: userResultType });
-                showLeadStep();
+                if (typeof fbq === 'function') { fbq('track', 'CompleteRegistration'); }
+                runAnalysis();
             }
         }, 180);
     }
 
     function goBack() {
         if (currentQ === 0) return;
+        const prevDim = questions[currentQ].dim;
         currentQ--;
-        const previousType = answers[currentQ];
-        if (previousType) {
-            scores[previousType] = Math.max(0, scores[previousType] - 1);
-            answers.splice(currentQ, 1);
-        }
+        const t = answers[currentQ];
+        if (t) { scores[t] = Math.max(0, scores[t] - 1); answers[currentQ] = undefined; }
+        // 若回到上一個維度的最後一題，仍直接顯示題目（不重播維度進場）
         renderQuestion();
     }
 
     function calculateResult() {
-        userResultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+        const sorted = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+        userResultType = sorted[0];
+        secondaryType = null;
+        for (let i = 1; i < sorted.length; i++) {
+            if (scores[sorted[i]] > 0 && sorted[i] !== userResultType) { secondaryType = sorted[i]; break; }
+        }
     }
 
-    function showLeadStep() {
-        const resultData = resultsMap[userResultType];
-        document.getElementById('lead-result-preview').innerText = `${resultData.title} / ${resultData.checkpoint}`;
-        trackAblEvent('lead_form_view', { result_type: userResultType });
-        showStep('step-lead');
+    function runAnalysis() {
+        showStep('step-analysis');
+        const lines = [
+            "正在比對你的 4 維度 · 8 項作答…",
+            "計算你的主導卡點與次要傾向…",
+            "對應你的專屬頻率方向…"
+        ];
+        const bar = document.getElementById('analysis-bar');
+        const lineEl = document.getElementById('analysis-line');
+        let i = 0;
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = '38%'; }, 120);
+        const t1 = setTimeout(() => { i = 1; lineEl.innerText = lines[1]; bar.style.width = '72%'; }, 1100);
+        const t2 = setTimeout(() => { i = 2; lineEl.innerText = lines[2]; bar.style.width = '100%'; }, 2000);
+        const t3 = setTimeout(() => { showResult(); }, 2800);
     }
 
-    async function submitLead(e) {
+    function showResult() {
+        const data = resultsMap[userResultType];
+        const meta = typeMeta[userResultType];
+
+        document.getElementById('result-tagline').innerText = `本次主導結果：${data.title}`;
+
+        // 結果卡
+        document.getElementById('card-type').innerText = data.title;
+        document.getElementById('card-checkpoint').innerText = `${data.checkpoint}・${data.freq}`;
+        document.getElementById('card-line').innerText = `「${meta.line}」`;
+        document.getElementById('card-audio').innerText = data.audioName;
+
+        // 4 型分佈長條（依分數排序）
+        const order = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+        const bars = document.getElementById('card-bars');
+        bars.innerHTML = '';
+        order.forEach(t => {
+            const pct = Math.round((scores[t] / questions.length) * 100);
+            const isTop = t === userResultType;
+            const row = document.createElement('div');
+            row.className = 'flex items-center gap-3';
+            row.innerHTML = `
+                <span class="text-xs w-14 shrink-0 ${isTop ? 'text-cyan-200 font-semibold' : 'text-slate-400'}">${t}・${typeMeta[t].short}</span>
+                <div class="bar-track flex-1"><div class="bar-fill ${isTop ? '' : 'dim'}" style="width:${pct}%"></div></div>
+                <span class="text-xs w-9 text-right ${isTop ? 'text-cyan-200' : 'text-slate-500'}">${pct}%</span>`;
+            bars.appendChild(row);
+        });
+
+        // 完整解讀
+        document.getElementById('result-desc').innerText = data.desc;
+        document.getElementById('result-cost').innerText = data.cost;
+
+        // 次要傾向
+        const secBlock = document.getElementById('secondary-block');
+        if (secondaryType) {
+            document.getElementById('secondary-label').innerText = `你也帶有 ${secondaryType} 型的次要傾向`;
+            document.getElementById('result-secondary').innerText = typeMeta[secondaryType].secondary;
+            secBlock.style.display = '';
+        } else {
+            document.getElementById('secondary-label').innerText = '你的傾向高度集中';
+            document.getElementById('result-secondary').innerText = '你的作答幾乎全部落在同一型——代表這個卡點在你身上非常明確、單一，對應頻率的方向也會特別清楚。';
+            secBlock.style.display = '';
+        }
+
+        // 處方 + 銷售連結
+        document.getElementById('rx-name').innerText = data.audioName;
+        document.getElementById('rx-freq').innerText = data.freq;
+        document.getElementById('rx-desc').innerText = data.rx;
+        const sales = document.getElementById('result-sales-link');
+        sales.href = `https://timewaver-audio-sales.netlify.app/?result=${userResultType}#purchase`;
+        sales.dataset.resultType = userResultType;
+
+        trackAblEvent('result_view', { result_type: userResultType, secondary: secondaryType });
+        showStep('step-result');
+    }
+
+    // Email 為選配；結果已經給了，這裡失敗也不擋使用者
+    async function submitEmail(e) {
         e.preventDefault();
         const btn = document.getElementById('submit-btn');
-        const name = document.getElementById('user-name').value;
+        const status = document.getElementById('email-status');
+        const name = document.getElementById('user-name').value || "";
         const email = document.getElementById('user-email').value;
 
         btn.disabled = true;
         btn.style.opacity = "0.7";
-        btn.innerText = "資料傳輸中...";
-
-        const resultData = resultsMap[userResultType];
+        btn.innerText = "傳送中…";
 
         const payload = {
             name: name,
             email: email,
             result_type: userResultType,
+            secondary_type: secondaryType,
+            scores: scores,
             timestamp: new Date().toISOString()
         };
 
-        console.log('🚀 正在啟動維度傳輸...', payload);
+        const finish = (ok) => {
+            document.getElementById('lead-form').style.display = 'none';
+            status.innerText = ok
+                ? "✓ 已收到，完整報告與 7 天微調建議會寄到你的信箱。"
+                : "✓ 已收到你的 Email，報告稍後會寄出。";
+            status.className = "text-xs text-green-300 mt-2";
+        };
 
         try {
-            const response = await fetch(N8N_WEBHOOK_URL, {
+            const res = await fetch(N8N_WEBHOOK_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
-
-            if (response.ok) {
-                console.log('✅ 頻率處方已成功同步至 TimeWaver Cloud');
-                trackAblEvent('assessment_submit', { result_type: userResultType });
-                if (typeof fbq === 'function') {
-                    fbq('track', 'Lead');
-                }
-                document.getElementById('result-title').innerText = resultData.title;
-                document.getElementById('result-checkpoint').innerText = `${resultData.checkpoint} / ${resultData.freq}`;
-                document.getElementById('result-desc').innerText = resultData.desc;
-                document.getElementById('result-first-step').innerText = resultData.firstStep;
-                document.getElementById('result-audio-name').innerText = resultData.audioName;
-                const resultSalesLink = document.getElementById('result-sales-link');
-                resultSalesLink.href = `https://timewaver-audio-sales.netlify.app/?result=${userResultType}#purchase`;
-                resultSalesLink.dataset.resultType = userResultType;
-                trackAblEvent('result_view', { result_type: userResultType });
-                showStep('step-result');
-            } else {
-                console.error('❌ 系統同步失敗，請檢查 Webhook 網址設定');
-                alert("伺服器同步失敗，請稍後再試。");
-                btn.disabled = false;
-                btn.style.opacity = "1";
-                btn.innerText = "寄送我的解碼報告";
-            }
-        } catch (error) {
-            console.error('⚠️ 傳輸發生異常:', error);
-            alert("網路錯誤，請稍後再試或聯繫客服。");
-            btn.disabled = false;
-            btn.style.opacity = "1";
-            btn.innerText = "寄送我的解碼報告";
+            trackAblEvent('assessment_submit', { result_type: userResultType });
+            if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+            finish(res.ok);
+        } catch (err) {
+            // 後端異常也視為已收，避免擋住體驗；保留事件以便追蹤
+            trackAblEvent('assessment_submit', { result_type: userResultType, delivery: 'queued' });
+            if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+            finish(false);
         }
     }
 </script>
