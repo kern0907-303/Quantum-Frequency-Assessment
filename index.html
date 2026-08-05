@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>60 秒睡前卡點檢測｜你不是不夠累，是大腦還沒下班</title>
+    <title>60 秒睡前卡點檢測｜白噪音、早點躺都沒錯，錯在沒先分清你卡在哪一型</title>
+    <meta name="description" content="用 60 秒回答 8 題，不用先購買，先找出你今晚卡在哪一型，再選擇適合的睡前聲音路徑。">
+    <link rel="canonical" href="https://timewaver-audio-sales.netlify.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://timewaver-audio-sales.netlify.app/">
+    <meta property="og:title" content="60 秒睡前卡點檢測｜白噪音、早點躺都沒錯，錯在沒先分清你卡在哪一型">
+    <meta property="og:description" content="用 60 秒回答 8 題，不用先購買，先找出你今晚卡在哪一型，再選擇適合的睡前聲音路徑。">
+    <!-- TODO: 製作 1200×630 分享圖後，放置於 assets/og-cover.jpg。 -->
+    <meta property="og:image" content="https://timewaver-audio-sales.netlify.app/assets/og-cover.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="60 秒睡前卡點檢測｜白噪音、早點躺都沒錯，錯在沒先分清你卡在哪一型">
+    <meta name="twitter:description" content="用 60 秒回答 8 題，不用先購買，先找出你今晚卡在哪一型，再選擇適合的睡前聲音路徑。">
+    <meta name="twitter:image" content="https://timewaver-audio-sales.netlify.app/assets/og-cover.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -79,10 +92,6 @@
 
             const href = target.href || "";
             const text = (target.textContent || "").trim();
-
-            if (href.includes("timewaver-audio-sales.netlify.app")) {
-                trackAblEvent("audio_purchase_click", { target: "timewaver_audio_sales" });
-            }
 
             if (target.id === "result-sales-link") {
                 trackAblEvent("recommended_audio_click", { result_type: target.dataset.resultType || null });
@@ -251,6 +260,28 @@
             border: 1px solid rgba(148, 163, 184, 0.14);
             background: rgba(15, 23, 42, 0.45);
         }
+        .funnel-content { max-width: 46rem; margin-left: auto; margin-right: auto; }
+        .funnel-stage { padding: clamp(1.5rem, 5vw, 3.5rem); }
+        .funnel-stage .grid { grid-template-columns: minmax(0, 1fr) !important; }
+        .funnel-stage .hero-metrics { display: block; margin-top: 1.75rem; }
+        .funnel-stage .hero-metrics .mini-card { display: flex; align-items: baseline; justify-content: space-between; padding: 0.9rem 0; border: 0; border-bottom: 1px solid rgba(148, 163, 184, 0.14); background: transparent; border-radius: 0; }
+        .funnel-stage .hero-metrics .mini-card p:first-child { margin: 0; }
+        .funnel-stage .hero-metrics .mini-card p:last-child { margin: 0; font-size: 1rem; }
+        .funnel-stage .visual-stack { margin-top: 1.5rem; }
+        .funnel-stage .visual-frame-grid { display: block; }
+        .funnel-stage .visual-card-4 { display: none; }
+        .funnel-stage .entry-cards .mini-card { padding: 0; border: 0; background: transparent; }
+        .funnel-stage .entry-cards .mini-card + .mini-card { border-top: 1px solid rgba(148, 163, 184, 0.14); padding-top: 1rem; }
+        .funnel-stage .flex.flex-col { align-items: stretch; }
+        .funnel-section { padding: clamp(1.75rem, 5vw, 3.5rem); }
+        .funnel-section .grid { grid-template-columns: minmax(0, 1fr) !important; }
+        .funnel-list > * + * { border-top: 1px solid rgba(148, 163, 184, 0.14); }
+        .flow-step { display: grid; grid-template-columns: 2.25rem 1fr; gap: 1rem; padding: 1.1rem 0; }
+        .flow-step-number { display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 999px; background: rgba(34, 211, 238, 0.14); color: #a5f3fc; font-weight: 700; }
+        .offer-stack-item { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr) auto; gap: 0.75rem; align-items: start; padding: 1rem 0; }
+        .offer-stack-check { color: #67e8f9; font-weight: 700; }
+        .offer-stack-value { color: #a5f3fc; font-weight: 700; white-space: nowrap; }
+        .offer-stack-todo { color: #fcd34d; }
         .signal-card {
             position: relative;
             overflow: hidden;
@@ -359,6 +390,9 @@
         }
         .mobile-compact-hide {
             display: block;
+        }
+        .sticky-mobile-cta {
+            display: none;
         }
         @media (min-width: 1024px) {
             .visual-frame-middle {
@@ -670,23 +704,499 @@
                 min-height: 2.85rem;
             }
         }
+        @media (max-width: 639px) {
+            body {
+                padding-bottom: calc(5.9rem + env(safe-area-inset-bottom));
+            }
+            .sticky-mobile-cta {
+                display: block;
+                position: fixed;
+                z-index: 60;
+                right: 0.65rem;
+                bottom: 0;
+                left: 0.65rem;
+                padding: 0.65rem 0.65rem calc(0.65rem + env(safe-area-inset-bottom));
+                border-radius: 1.25rem 1.25rem 0 0;
+                transition: opacity 0.22s ease, transform 0.22s ease;
+            }
+            .sticky-mobile-cta.is-hidden {
+                opacity: 0;
+                transform: translateY(120%);
+                pointer-events: none;
+            }
+            .sticky-mobile-cta .primary-btn {
+                min-height: 3.2rem;
+            }
+        }
+
+        /* Reference direction: timewaver-audio-sales.netlify.app
+           深海軍藍的信任感、暖白閱讀面與香檳金重點；保留本頁檢測漏斗功能。 */
+        :root {
+            --primary: #0a0f1d;
+            --secondary: #1f3a5f;
+            --gold: #d4af37;
+            --paper: #f8f9fa;
+            --paper-muted: #eef1f5;
+            --ink: #17253a;
+            --muted: #46566a;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            padding: 0 !important;
+            font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+            font-size: 18px;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.07), transparent 23rem),
+                linear-gradient(180deg, #ffffff 0%, #fbfaf7 55%, #f5f6f7 100%);
+            letter-spacing: 0.012em;
+        }
+        .funnel-content { max-width: 68rem; }
+        .funnel-section { padding: clamp(2rem, 6vw, 4.75rem); }
+        .glass-panel {
+            background: #ffffff;
+            border: 1px solid #e4e7eb;
+            box-shadow: 0 10px 30px rgba(23, 37, 58, 0.05);
+            backdrop-filter: none;
+        }
+        .mini-card {
+            background: #ffffff;
+            border-color: #e2e6eb;
+            box-shadow: none;
+        }
+        .funnel-list > * + * { border-top-color: rgba(10, 15, 29, 0.1); }
+        .flow-step-number {
+            background: rgba(212, 175, 55, 0.15);
+            color: #8c6812;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+        }
+        .offer-stack-check, .offer-stack-value { color: #987517; }
+        .brand-chip {
+            border-color: rgba(212, 175, 55, 0.38);
+            background: rgba(212, 175, 55, 0.12);
+            color: #86640f;
+        }
+        .primary-btn {
+            background: linear-gradient(135deg, #d8b33f, #b98e17);
+            color: #101723;
+            box-shadow: 0 16px 32px rgba(185, 142, 23, 0.22);
+        }
+        .primary-btn:hover { box-shadow: 0 20px 40px rgba(185, 142, 23, 0.30); }
+        .secondary-btn {
+            border-color: rgba(10, 15, 29, 0.18);
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--secondary);
+        }
+        .secondary-btn:hover { border-color: rgba(31, 58, 95, 0.5); background: #fff; }
+        .field-input {
+            background: rgba(255,255,255,0.96);
+            border-color: rgba(10,15,29,0.16);
+            color: var(--ink);
+        }
+        .field-input::placeholder { color: #8a95a5; }
+        .field-input:focus { border-color: rgba(212,175,55,0.85); box-shadow: 0 0 0 4px rgba(212,175,55,0.13); }
+        .option-btn {
+            background: rgba(255,255,255,0.88);
+            border-color: rgba(10,15,29,0.13);
+            color: var(--ink);
+        }
+        .option-btn:hover { border-color: rgba(31,58,95,0.45); background: #fff; box-shadow: 0 12px 24px rgba(10,15,29,0.08); }
+        .option-key { border-color: rgba(212,175,55,0.4); background: rgba(212,175,55,0.12); color: #8c6812; }
+        .option-btn.selected { background: #fff6dc; color: var(--ink); box-shadow: 0 12px 24px rgba(185,142,23,0.12); }
+        .option-btn.selected .option-key { color: #77570a; border-color: rgba(185,142,23,0.45); background: rgba(212,175,55,0.16); }
+        .hero-grid { background-image: none; }
+        .hero-panel {
+            position: relative;
+            color: var(--ink);
+            background: #fffdfa;
+            border-color: #e5dfcf;
+            box-shadow: 0 10px 30px rgba(23,37,58,0.05);
+        }
+        .hero-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(255,255,255,0.62), rgba(255,255,255,0.90));
+        }
+        .hero-panel > * { position: relative; z-index: 1; }
+        .hero-panel .mini-card, .hero-panel .visual-frame, .hero-panel .visual-card, .hero-panel .start-feature-image {
+            background: #ffffff;
+            border-color: #e2e6eb;
+            box-shadow: none;
+        }
+        .hero-panel .brand-chip { color: #86640f; background: rgba(212,175,55,0.13); border-color: rgba(212,175,55,0.42); }
+        .hero-panel .text-white { color: var(--primary) !important; }
+        .hero-panel .text-slate-500 { color: #788598 !important; }
+        .hero-panel .text-slate-300 { color: var(--muted) !important; }
+        .hero-panel .text-slate-400 { color: #627083 !important; }
+        .hero-panel .text-cyan-200\/80, .hero-panel .text-cyan-200, .hero-panel .text-cyan-300 { color: #927017 !important; }
+        .hero-panel .bg-cyan-300 { background-color: var(--gold) !important; }
+        .hero-intro {
+            min-height: 44rem;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 86% 28%, rgba(212,175,55,0.13), transparent 14rem),
+                linear-gradient(135deg, #fffdf8 0%, #faf7ef 100%);
+        }
+        .hero-intro h1,
+        .hero-intro .hero-summary,
+        .hero-intro .hero-metrics,
+        .hero-intro .hero-points,
+        .hero-intro .visual-stack { max-width: 43rem; }
+        .hero-cta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+        .hero-cta-row span {
+            color: #627083;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+        .hero-art {
+            position: absolute;
+            top: 3.25rem;
+            right: 3.25rem;
+            width: 13rem;
+            height: 13rem;
+            border: 1px solid rgba(185,142,23,0.42);
+            border-radius: 50%;
+            background: rgba(255,255,255,0.55);
+            box-shadow: 0 0 0 1.2rem rgba(212,175,55,0.06), 0 0 0 3.2rem rgba(212,175,55,0.035);
+        }
+        .hero-art::before,
+        .hero-art::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(185,142,23,0.28);
+        }
+        .hero-art::before { inset: 1.1rem; }
+        .hero-art::after { inset: 2.25rem; border-color: rgba(23,37,58,0.16); }
+        .hero-art-core {
+            position: absolute;
+            inset: 3.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(23,37,58,0.08);
+            color: var(--primary);
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .hero-art-core small { margin-top: 0.38rem; color: #8c6812; font-size: 0.78rem; letter-spacing: 0.18em; }
+        .hero-art-caption {
+            position: absolute;
+            right: -1.2rem;
+            bottom: -2.5rem;
+            margin: 0;
+            color: #745b20;
+            font-size: 0.84rem !important;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            line-height: 1.7 !important;
+            text-align: right;
+        }
+        @media (max-width: 640px) {
+            .hero-cta-row { align-items: flex-start; flex-direction: column; }
+        }
+        .impact-panel {
+            max-width: 68rem;
+            margin: 0 auto 2.25rem;
+            border: 0;
+            color: var(--ink);
+            background: #fffdfa;
+            border: 1px solid #e5dfcf;
+            box-shadow: 0 10px 30px rgba(23,37,58,0.05);
+        }
+        .impact-panel .text-white { color: var(--primary) !important; }
+        .impact-panel .text-slate-400 { color: #627083 !important; }
+        .impact-panel .text-cyan-200\/80 { color: #927017 !important; }
+        .impact-panel .primary-btn { background: linear-gradient(135deg, #d8b33f, #b98e17); color: #101723; box-shadow: none; }
+        .impact-panel { position: relative; overflow: hidden; }
+        .impact-panel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 9%;
+            width: 8rem;
+            height: 0.25rem;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+        main .text-white, main strong.text-white, .funnel-content:not(.impact-panel):not(.desktop-shell) .text-white { color: var(--primary) !important; }
+        main .text-slate-300, .funnel-content:not(.impact-panel):not(.desktop-shell) .text-slate-300 { color: var(--muted) !important; }
+        main .text-slate-400, .funnel-content:not(.impact-panel):not(.desktop-shell) .text-slate-400 { color: #627083 !important; }
+        main .text-slate-500, .funnel-content:not(.impact-panel):not(.desktop-shell) .text-slate-500 { color: #7c8796 !important; }
+        main .text-cyan-200, main .text-cyan-200\/80, main .text-cyan-300 { color: #927017 !important; }
+        main .border-slate-700, main .border-cyan-300\/20, main .border-cyan-400\/20 { border-color: rgba(10,15,29,0.11) !important; }
+        main .bg-slate-950\/60 { background: rgba(238,241,245,0.80) !important; }
+        main .bg-green-500\/20 { background: rgba(16,185,129,0.12) !important; }
+        main .text-green-300 { color: #08765a !important; }
+        main .text-amber-200\/70 { color: #8c6812 !important; }
+        #purchase, #guarantee { border-color: rgba(212,175,55,0.28); }
+        #purchase { background: linear-gradient(145deg, #fffdf6, rgba(255,255,255,0.96)); }
+        #guarantee { background: linear-gradient(145deg, #fffdf6, #f4f6f8); }
+        #guarantee .text-white { color: var(--primary) !important; }
+        #guarantee .text-slate-300, #guarantee .text-slate-400 { color: var(--muted) !important; }
+        #guarantee .text-cyan-200\/80 { color: #927017 !important; }
+        main .text-slate-200 { color: #38485f !important; }
+        .funnel-section p, .funnel-section li { font-size: 1.1rem; line-height: 1.9; }
+        .funnel-section .text-xs { font-size: 0.9rem !important; }
+        .funnel-section .text-sm { font-size: 1rem !important; }
+        .funnel-section h2 { line-height: 1.32; letter-spacing: -0.018em; }
+        .funnel-section h3, .funnel-section strong { letter-spacing: 0; }
+        .price-decision { font-size: 1.45rem !important; color: var(--primary) !important; }
+        .price-highlight { color: #c7362f !important; font-size: 1.65em; letter-spacing: 0.02em; }
+        .price-note { font-size: 1.12rem !important; color: #7d2430 !important; font-weight: 600; }
+        #abl-method-title + p { color: #263750 !important; font-size: 1.16rem !important; line-height: 2 !important; font-weight: 500; }
+        footer { color: #748093 !important; }
+        .desktop-shell::before { display: none; }
+        .sticky-mobile-cta { background: #ffffff; border-color: #e5dfcf; box-shadow: 0 -8px 26px rgba(23,37,58,0.09); }
+        @media (max-width: 767px) {
+            .funnel-section { border-radius: 1.35rem !important; }
+            .impact-panel { margin: 0 0.65rem 1rem; }
+            .hero-panel { border-radius: 1.35rem !important; }
+            .hero-panel::before { background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,255,255,0.94)); }
+            .hero-intro { min-height: auto; }
+            .hero-intro h1,
+            .hero-intro .hero-summary,
+            .hero-intro .hero-metrics,
+            .hero-intro .hero-points,
+            .hero-intro .visual-stack { max-width: none; }
+            .hero-art { display: none; }
+        }
+
+        /* ===== 視覺層級系統 ===== */
+        .section-eyebrow {
+            font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #7dd3fc; font-weight: 600;
+        }
+        main .section-eyebrow, .funnel-content:not(.desktop-shell) .section-eyebrow { color: #927017; }
+
+        .tier-hero { padding-top: 3.25rem !important; padding-bottom: 3.25rem !important; position: relative; }
+        .tier-hero::before {
+            content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+            border: 1px solid rgba(125,211,252,0.30);
+            box-shadow: inset 0 0 60px rgba(56,189,248,0.07);
+        }
+        main .tier-hero::before, .funnel-content:not(.desktop-shell) .tier-hero::before {
+            border-color: rgba(212,175,55,0.42);
+            box-shadow: inset 0 0 60px rgba(212,175,55,0.06);
+        }
+        .tier-hero-title { font-size: 1.9rem; line-height: 1.25; font-weight: 800; letter-spacing: -0.01em; color: #fff; }
+        main .tier-hero-title { color: var(--primary) !important; }
+        @media (min-width: 640px) { .tier-hero-title { font-size: 2.6rem; } }
+
+        .tier-support { padding-top: 2rem !important; padding-bottom: 2rem !important; opacity: 0.97; }
+        .tier-support h2 { font-size: 1.5rem !important; }
+        @media (min-width: 640px) { .tier-support h2 { font-size: 1.85rem !important; } }
+
+        .tier-fine { background: transparent !important; border: 1px dashed rgba(70,86,106,0.28) !important;
+            box-shadow: none !important; padding-top: 1.75rem !important; padding-bottom: 1.75rem !important; }
+        .tier-fine h2 { font-size: 1.3rem !important; }
+        .tier-fine p, .tier-fine .text-sm { font-size: 0.86rem; }
+
+        /* ===== 三層結構 ===== */
+        .layer-stack { display: grid; gap: 0.85rem; max-width: 44rem; margin: 0 auto; }
+        .layer-band {
+            display: flex; align-items: center; gap: 1.15rem;
+            padding: 1.25rem 1.5rem; border-radius: 1.15rem;
+            border: 1px solid rgba(148,163,184,0.20);
+            transition: transform .25s ease, border-color .25s ease;
+        }
+        .layer-band:hover { transform: translateX(4px); border-color: rgba(125,211,252,0.5); }
+        .layer-band-1 { background: linear-gradient(100deg, rgba(103,232,249,0.16), rgba(103,232,249,0.04)); }
+        .layer-band-2 { background: linear-gradient(100deg, rgba(56,189,248,0.16), rgba(56,189,248,0.04)); margin-left: 1.5rem; }
+        .layer-band-3 { background: linear-gradient(100deg, rgba(212,175,55,0.18), rgba(212,175,55,0.04)); margin-left: 3rem; }
+        @media (max-width: 640px) { .layer-band-2, .layer-band-3 { margin-left: 0; } }
+        .layer-index { font-size: 0.8rem; letter-spacing: 0.15em; color: #7dd3fc; font-weight: 700; min-width: 2rem; }
+        .layer-band-3 .layer-index { color: #e3c96a; }
+        .layer-name { font-size: 1.2rem; font-weight: 700; color: #fff; }
+        .layer-desc { font-size: 0.92rem; color: #94a3b8; margin-top: 0.15rem; }
+        .layer-note { text-align: center; margin-top: 2rem; color: #cbd5e1; font-size: 1rem; }
+        .layer-note strong { color: #7dd3fc; }
+
+        /* ===== 價格錨定 ===== */
+        .price-anchor {
+            display: grid; grid-template-columns: 1fr auto minmax(9rem, 1fr); align-items: center; gap: 1.25rem;
+            max-width: 40rem; margin: 1.75rem auto 0; text-align: center;
+        }
+        @media (max-width: 640px) { .price-anchor { grid-template-columns: 1fr; gap: 0.6rem; } }
+        .price-anchor-side { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
+        .price-anchor-arrow { font-size: 1.4rem; color: #b98e17; }
+        .price-anchor-main {
+            display: flex; align-items: baseline; justify-content: center; gap: 0.12em;
+            font-size: 3rem; font-weight: 800; color: var(--primary);
+            line-height: 1; letter-spacing: -0.02em; white-space: nowrap;
+        }
+        @media (min-width: 640px) { .price-anchor-main { font-size: 3.6rem; } }
+        .price-anchor-unit {
+            font-size: 0.46em; font-weight: 800; letter-spacing: 0.01em;
+            vertical-align: baseline; position: relative; top: -0.02em;
+        }
+
+        /* ===== 中段 CTA ===== */
+        .mid-cta { text-align: center; margin-top: 2.25rem; }
+        .mid-cta .primary-btn { padding: 0.95rem 2rem; }
+        .mid-cta-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.65rem; }
+
+        /* ===== 淺色主題校正（機制區塊在 desktop-shell 內，不吃 main 的色彩覆寫） ===== */
+        #mechanism .text-white, #mechanism .tier-hero-title, #mechanism .layer-name { color: var(--primary) !important; }
+        #mechanism .text-slate-300 { color: var(--muted) !important; }
+        #mechanism .text-slate-500 { color: #7c8796 !important; }
+        #mechanism .section-eyebrow { color: #927017; }
+        #mechanism .tier-hero::before, #mechanism.tier-hero::before {
+            border-color: rgba(212,175,55,0.42);
+            box-shadow: inset 0 0 60px rgba(212,175,55,0.06);
+        }
+        #mechanism .layer-band { border-color: rgba(23,37,58,0.10); }
+        #mechanism .layer-band:hover { border-color: rgba(185,142,23,0.45); }
+        #mechanism .layer-band-1 { background: linear-gradient(100deg, rgba(212,175,55,0.16), rgba(212,175,55,0.03)); }
+        #mechanism .layer-band-2 { background: linear-gradient(100deg, rgba(31,58,95,0.12), rgba(31,58,95,0.03)); }
+        #mechanism .layer-band-3 { background: linear-gradient(100deg, rgba(146,112,23,0.18), rgba(146,112,23,0.04)); }
+        #mechanism .layer-index { color: #b98e17; }
+        #mechanism .layer-band-2 .layer-index { color: #1f3a5f; }
+        #mechanism .layer-desc { color: var(--muted); }
+        #mechanism .layer-note { color: var(--ink); }
+        #mechanism .layer-note strong { color: #8c6812; }
+
+        /* ===== 測驗選項文字（淺色主題） ===== */
+        .option-btn .option-text { color: var(--ink); }
+        .option-btn.selected .option-text { color: var(--primary); font-weight: 600; }
+
+        /* ===== 已選商品強調 ===== */
+        .selection-highlight {
+            color: #c2410c !important; font-weight: 600; font-size: 1.05rem;
+            background: rgba(194,65,12,0.07); border-left: 3px solid #c2410c;
+            padding: 0.7rem 1rem; border-radius: 0 0.6rem 0.6rem 0; display: inline-block;
+        }
+        .selection-highlight strong { color: #9a3412; font-weight: 800; }
+
+        /* ===== 加贈項目 ===== */
+        .offer-bonus { background: rgba(212,175,55,0.07); border-radius: 0.9rem;
+            padding: 0.85rem 1rem; margin: 0.25rem -0.35rem; border: 1px dashed rgba(185,142,23,0.38); }
+        .offer-bonus .offer-stack-check { color: #b98e17 !important; }
+        .bonus-tag { display: inline-block; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em;
+            color: #7a5a08; background: rgba(212,175,55,0.28); border-radius: 0.4rem;
+            padding: 0.12rem 0.45rem; margin-right: 0.35rem; vertical-align: 0.08em; }
+
+        /* ===== 今晚的代價 ===== */
+        .cost-of-delay { max-width: 40rem; margin: 2.25rem auto 0; text-align: center;
+            padding: 1.35rem 1.5rem; border-radius: 1.1rem;
+            background: rgba(194,65,12,0.055); border: 1px solid rgba(194,65,12,0.18); }
+        .cost-of-delay p { color: #9a3412; font-size: 1.02rem; line-height: 1.85; margin: 0; }
+        .cost-of-delay strong { color: #7c2d12; }
+        .guarantee-strong { color: #c2410c; font-weight: 800; }
+
+        /* ===== 淺色主題補完：hero-panel / desktop-shell 內遺漏的深色 utility ===== */
+        .hero-panel .bg-slate-950\/60,
+        .desktop-shell .bg-slate-950\/60 {
+            background: #ffffff !important;
+            box-shadow: 0 6px 18px rgba(23,37,58,0.05);
+        }
+        .hero-panel .border-slate-700,
+        .desktop-shell .border-slate-700 { border-color: #e2e6eb !important; }
+        .hero-panel .border-cyan-400\/20 { border-color: rgba(185,142,23,0.30) !important; }
+        .hero-panel .border-amber-300\/15 { border-color: rgba(185,142,23,0.28) !important; }
+        .hero-panel .bg-slate-700\/80 { background: #e6e9ee !important; }
+        .hero-panel .text-slate-200,
+        .desktop-shell .text-slate-200 { color: #2b3a4d !important; }
+        .hero-panel .text-slate-100,
+        .desktop-shell .text-slate-100 { color: var(--ink) !important; }
+        .hero-panel .text-amber-200\/70 { color: #8c6812 !important; }
+        .hero-panel .text-green-300 { color: #08765a !important; }
+
+        /* 結果頁小標籤：加深、加重，不再是淡灰 */
+        #step-result .text-xs.uppercase { color: #6a4f0b !important; font-weight: 700; letter-spacing: 0.16em; }
+        #step-result .text-slate-300 { color: #2b3a4d !important; }
+        #step-result .text-slate-500 { color: #5b6875 !important; }
+        #step-result [id^="result-"] { color: var(--ink) !important; }
+        .hero-panel .bg-green-500\/20, .desktop-shell .bg-green-500\/20 { background: rgba(8,118,90,0.10) !important; }
+        .hero-panel .bg-green-300, .desktop-shell .bg-green-300 { background: #08765a !important; }
+        main .border-cyan-300\/20, .funnel-content:not(.desktop-shell) .border-cyan-300\/20 { border-color: rgba(185,142,23,0.28) !important; }
+        /* ===== 同意勾選 ===== */
+        .consent-row {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            font-size: 0.85rem !important; line-height: 1.7; color: var(--muted);
+            margin: 0.25rem 0 0.5rem; cursor: pointer;
+        }
+        .consent-row input[type="checkbox"] {
+            flex: 0 0 auto; width: 1.05rem; height: 1.05rem; margin-top: 0.22rem;
+            accent-color: #b98e17; cursor: pointer;
+        }
+        .consent-row a { color: #8c6812; text-decoration: underline; text-underline-offset: 3px; }
+        .footer-links { margin-bottom: 0.75rem; }
+        .footer-links a { color: #7c8796; text-decoration: underline; text-underline-offset: 3px; }
+        /* ===== 價格階梯 ===== */
+        .tier-board { max-width: 40rem; margin: 2rem auto 0; }
+        .tier-board-title { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #927017; font-weight: 600; text-align: center; margin-bottom: 0.9rem; }
+        .tier-list { display: grid; gap: 0.7rem; }
+        .tier-item {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1rem 1.25rem; border-radius: 1rem;
+            border: 1px solid rgba(23,37,58,0.10); background: #fff;
+            transition: border-color .2s ease;
+        }
+        .tier-item.is-open { border-color: rgba(185,142,23,0.55); background: rgba(212,175,55,0.07);
+            box-shadow: 0 6px 20px rgba(185,142,23,0.10); }
+        .tier-item.is-done { opacity: 0.55; }
+        .tier-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); min-width: 6.2rem; white-space: nowrap; }
+        .tier-item.is-done .tier-price { text-decoration: line-through; }
+        .tier-main { flex: 1 1 auto; }
+        .tier-label { font-weight: 700; color: var(--primary); font-size: 1rem; }
+        .tier-sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.15rem; }
+        .tier-badge { flex: 0 0 auto; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em;
+            padding: 0.3rem 0.7rem; border-radius: 999px; white-space: nowrap; }
+        .badge-open { background: rgba(185,142,23,0.20); color: #6a4f0b; }
+        .badge-done { background: rgba(23,37,58,0.08); color: #5b6875; }
+        .badge-next { background: rgba(31,58,95,0.10); color: #2b3a4d; }
+        .tier-note { font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 0.9rem; }
+        .story-note { display: block; margin-top: 0.5rem; font-size: 0.86rem; color: var(--muted); }
+        .tier-pact {
+            margin-top: 1.25rem; padding: 1.35rem 1.5rem; font-size: 0.9rem; line-height: 1.9;
+            color: #5c4a1f; background: rgba(212,175,55,0.09);
+            border: 1px solid rgba(185,142,23,0.32); border-radius: 1rem;
+        }
+        .tier-pact p { margin: 0 0 0.85rem; color: #5c4a1f; font-size: 0.9rem !important; line-height: 1.9; }
+        .tier-pact p:last-child { margin-bottom: 0; }
+        .tier-pact strong { color: #7a5a08; font-weight: 700; }
+        .tier-pact-title {
+            font-weight: 700; color: #6a4f0b !important; font-size: 0.95rem !important;
+            letter-spacing: 0.02em; margin-bottom: 0.9rem !important;
+        }
+        .tier-pact-close { font-style: normal; color: #7a5a08 !important; }
     </style>
 </head>
 <body class="p-3 sm:p-5">
 
-<div class="max-w-6xl mx-auto desktop-shell">
-    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start mobile-main-first desktop-balance">
-        <aside class="glass-panel desktop-panel desktop-side-panel hero-grid rounded-[2rem] p-6 sm:p-8 overflow-hidden mobile-side-panel">
+<div class="funnel-content desktop-shell">
+    <div class="space-y-5">
+        <aside class="hero-intro hero-panel glass-panel hero-grid rounded-[2rem] funnel-stage overflow-hidden">
             <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-sm tracking-[0.18em] uppercase">
                 <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
                 60 秒睡前卡點檢測
             </div>
             <div class="mt-8">
                 <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">Sleep Checkpoint Assessment</p>
-                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">你不是不夠累，<br>是大腦還沒下班</h1>
+                <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-white mt-3">白噪音、早點躺、放鬆 App 都沒錯。<br>錯在沒先分清你卡在哪一型。</h1>
                 <p class="mt-5 text-slate-300 leading-relaxed text-base sm:text-lg hero-summary">
-                    躺下後還在復盤、淺眠易醒、明天壓力一直跑？用 60 秒找出你今晚睡不安穩的主因，對應 A/B/C/D 四種睡前卡點。
+                    今晚睡不著，可能不是你不夠累，而是大腦還沒下班。躺下後還在復盤、淺眠易醒、明天壓力一直跑，或安靜下來就不安？用 60 秒測出你的睡前卡點，找到今晚最適合的聲音路徑。
                 </p>
+                <div class="hero-cta-row">
+                    <a href="#step-start" class="primary-btn inline-flex items-center justify-center px-7 py-4">開始 60 秒檢測</a>
+                    <span>8 題完成・不用先購買</span>
+                </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="hero-art-core">60<small>秒分型</small></div>
+                <p class="hero-art-caption">先分清楚<br>再開始今晚</p>
             </div>
 
             <div class="grid sm:grid-cols-3 gap-3 mt-8 hero-metrics">
@@ -715,7 +1225,7 @@
                 </div>
                 <div class="flex items-start gap-3">
                     <span class="mt-1 w-2 h-2 rounded-full bg-cyan-300"></span>
-                    <p>姓名與 Email 只用於寄送專屬結果與後續方案，不會打斷檢測節奏。</p>
+                    <p>結果直接公開；想保留完整解讀時，再選擇留下 Email 即可。</p>
                 </div>
             </div>
 
@@ -733,7 +1243,57 @@
             </div>
         </aside>
 
-<div class="glass-panel desktop-panel desktop-main-panel hero-grid rounded-[2rem] p-6 sm:p-8 lg:p-10 border border-slate-700 mobile-main-panel">
+<section class="impact-panel glass-panel rounded-[2rem] funnel-section tier-support mb-5">
+    <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">睡眠品質，不只影響夜晚</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-3">當夜裡沒有真的休息，白天會先開始付代價</h2>
+    <div class="funnel-list mt-8">
+        <article class="flow-step"><span class="flow-step-number">1</span><div><h3 class="font-semibold text-white">思緒更難收回</h3><p class="text-sm text-slate-400 mt-2">白天的對話、決策與待辦，容易一路延續到躺下後。</p></div></article>
+        <article class="flow-step"><span class="flow-step-number">2</span><div><h3 class="font-semibold text-white">醒來仍像沒充電</h3><p class="text-sm text-slate-400 mt-2">睡了卻沒有恢復感，身體和注意力都更難回到穩定節奏。</p></div></article>
+        <article class="flow-step"><span class="flow-step-number">3</span><div><h3 class="font-semibold text-white">壓力更容易放大</h3><p class="text-sm text-slate-400 mt-2">當系統一直待命，明天的壓力與底層不安也更容易佔住今晚。</p></div></article>
+    </div>
+    <a href="#step-start" class="primary-btn inline-block px-8 py-4 mt-8">了解我目前卡在哪裡</a>
+</section>
+
+<section id="mechanism" class="glass-panel rounded-[2rem] funnel-section tier-hero mb-5" aria-labelledby="mechanism-title">
+    <div class="text-center max-w-3xl mx-auto">
+        <p class="section-eyebrow">睡前卡點四型 · Sleep Checkpoint Types</p>
+        <h2 id="mechanism-title" class="tier-hero-title mt-3">每一款，是三層疊起來的</h2>
+        <p class="text-slate-300 mt-4 leading-relaxed">免費音樂通常是一段做給所有人聽的背景聲。這裡的每一款不是找一段好聽的音檔，而是三個東西疊在一起。</p>
+    </div>
+
+    <div class="layer-stack mt-10">
+        <article class="layer-band layer-band-1">
+            <span class="layer-index">01</span>
+            <div>
+                <h3 class="layer-name">引導</h3>
+                <p class="layer-desc">把注意力從白天收回來</p>
+            </div>
+        </article>
+        <article class="layer-band layer-band-2">
+            <span class="layer-index">02</span>
+            <div>
+                <h3 class="layer-name">音樂</h3>
+                <p class="layer-desc">為那一型設計的聲音</p>
+            </div>
+        </article>
+        <article class="layer-band layer-band-3">
+            <span class="layer-index">03</span>
+            <div>
+                <h3 class="layer-name">頻率</h3>
+                <p class="layer-desc">對應該型狀態的頻率</p>
+            </div>
+        </article>
+    </div>
+
+    <p class="layer-note">四種卡點各做一版，<strong>不是同一段音檔換個封面</strong>。</p>
+
+    <div class="text-center mt-8">
+        <button type="button" onclick="jumpToQuiz('mechanism')" class="primary-btn inline-flex items-center justify-center px-7 py-4">先測出我是哪一型</button>
+        <p class="text-xs text-slate-500 mt-3">60 秒、8 題，不用先購買。</p>
+    </div>
+</section>
+
+<div class="hero-panel glass-panel hero-grid rounded-[2rem] funnel-stage border border-slate-700">
     
     <!-- 歡迎畫面 -->
     <div id="step-start" class="step active text-center">
@@ -741,9 +1301,9 @@
             <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
             睡前檢測入口
         </div>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先找出你卡在哪一型</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white leading-tight entry-heading">先找出你今晚卡在哪一型</h2>
         <p class="text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto entry-note">
-            如果你試過早點躺、聽白噪音、滑手機放空，卻還是睡不深，問題可能不是方法不夠多，而是你還沒分清楚自己卡在哪一型。
+            我們不是要你再多學一個助眠方法，而是先幫你分清楚：你是腦內雜訊停不下來、睡眠修復不夠深、明天壓力還在預演，還是底層不安一直拉扯。
         </p>
         <div class="grid sm:grid-cols-2 gap-3 text-left mb-8 entry-cards">
             <div class="mini-card rounded-2xl p-4">
@@ -755,7 +1315,7 @@
                 <p class="text-sm text-slate-400 mt-2">長期高壓、淺眠易醒、睡醒仍累、神經緊繃、心裡常有不明耗損感的人。</p>
             </div>
         </div>
-        <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">開始 60 秒睡前檢測</button>
+        <button onclick="startQuiz()" class="primary-btn py-4 px-8 w-full sm:w-auto">按這裡開始檢測</button>
         <div class="start-feature-image">
             <img src="assets/5.png" alt="人物側臉與發光腦部意象">
         </div>
@@ -784,37 +1344,6 @@
         </div>
     </div>
 
-    <!-- 收集 Email 表單 -->
-    <div id="step-lead" class="step">
-        <div class="inline-flex items-center gap-2 brand-chip rounded-full px-4 py-2 text-xs sm:text-sm mb-5">
-            <span class="w-2 h-2 rounded-full bg-cyan-300"></span>
-            分析完成，準備解鎖結果
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-white mobile-lead-title">你的睡前卡點已經分析完成</h2>
-        <p class="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed mobile-lead-copy">
-            留下 Email，我們會把完整結果與今晚可使用的聲音路徑寄給你。
-        </p>
-        <div class="mini-card rounded-2xl p-4 mb-6">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500">你的預測睡前卡點</p>
-            <p id="lead-result-preview" class="mt-2 text-base font-semibold text-cyan-200"></p>
-        </div>
-        
-        <form id="lead-form" onsubmit="submitLead(event)" class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium text-slate-400 mb-1">您的姓名</label>
-                <input type="text" id="user-name" required autocomplete="name" placeholder="請輸入稱呼" class="field-input">
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-slate-400 mb-1">電子郵件 (接收解碼結果)</label>
-                <input type="email" id="user-email" required autocomplete="email" placeholder="you@example.com" class="field-input">
-            </div>
-            <button type="submit" id="submit-btn" class="primary-btn w-full py-4 px-8 mt-4">
-                解鎖我的睡前卡點報告
-            </button>
-            <p class="text-xs text-slate-500">送出後將直接進入結果頁，同步由系統發送 Email。</p>
-        </form>
-    </div>
-
     <!-- 最終結果畫面 -->
     <div id="step-result" class="step text-center">
         <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 text-green-300 mb-4">
@@ -834,6 +1363,14 @@
             <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">為什麼你會睡不安穩</p>
             <p id="result-desc" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
         </div>
+        <div class="bg-slate-950/60 rounded-2xl p-6 text-left border border-cyan-400/20 mb-6">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">為什麼之前的方法不一定有效</p>
+            <p id="result-failure" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
+        </div>
+        <div class="mini-card rounded-2xl p-5 text-left mb-6 border border-amber-300/15">
+            <p class="text-xs uppercase tracking-[0.18em] text-amber-200/70 mb-2">如果今晚先不處理</p>
+            <p id="result-cost" class="text-sm text-slate-300 leading-relaxed"></p>
+        </div>
         <div class="grid sm:grid-cols-2 gap-4 text-left mb-6">
             <div class="mini-card rounded-2xl p-5">
                 <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-2">今晚第一步</p>
@@ -844,24 +1381,218 @@
                 <p id="result-audio-name" class="text-sm font-semibold text-cyan-200 leading-relaxed"></p>
             </div>
         </div>
-        <p class="text-sm text-slate-400 mb-6">完整結果已同步寄到信箱。你也可以先看今晚最對應的一款音頻。</p>
+        <div class="mini-card rounded-2xl p-5 text-left mb-6">
+            <p class="text-sm font-semibold text-white">把你這一型的完整解讀寄給你</p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-400 leading-relaxed">
+                <li>• 你這一型的完整解讀</li>
+                <li>• 今晚可以做的第一步</li>
+                <li>• 接下來 7 個晚上怎麼用（純文字節奏，非檔案）</li>
+            </ul>
+            <p class="text-sm text-slate-400 mt-3">選填即可，不影響你查看結果或直接購買。</p>
+            <form id="lead-form" onsubmit="submitOptionalEmail(event)" class="grid sm:grid-cols-3 gap-3 mt-4">
+                <input type="text" id="user-name" autocomplete="name" placeholder="姓名（選填）" class="field-input">
+                <input type="email" id="user-email" required autocomplete="email" placeholder="Email" class="field-input">
+                <button type="submit" id="submit-btn" class="secondary-btn px-4 py-3 text-sm">把我的完整解讀寄到信箱</button>
+                <label class="consent-row sm:col-span-3">
+                    <input type="checkbox" id="lead-consent" required>
+                    <span>我同意依 <a href="privacy.html" target="_blank" rel="noopener">隱私權政策</a> 使用我的 Email 寄送這份解讀。不寄廣告、隨時可退訂。</span>
+                </label>
+            </form>
+            <p class="text-xs text-slate-500 mt-3">不寄廣告、隨時可退訂。</p>
+            <p id="lead-status" class="text-xs text-slate-500 mt-3" aria-live="polite"></p>
+        </div>
         <div class="flex flex-col sm:flex-row justify-center gap-3">
-            <a id="result-sales-link" href="https://timewaver-audio-sales.netlify.app/" target="_blank" class="primary-btn inline-block px-8 py-3">
-                查看我的對應音頻 NT$299
-            </a>
-            <a href="https://timewaver-audio-sales.netlify.app/#purchase" target="_blank" class="secondary-btn inline-block px-8 py-3">
-                我想先看完整四款方案
-            </a>
+            <button id="result-sales-link" type="button" onclick="chooseRecommendedProduct()" class="primary-btn inline-block px-8 py-3">
+                今晚就用對應音頻 NT$<span data-price>299</span>
+            </button>
         </div>
     </div>
 
 </div>
 </div>
 </div>
+
+
+<main class="funnel-content space-y-5 pb-8">
+
+    <section id="offer-stack" class="glass-panel rounded-[2rem] funnel-section tier-hero" aria-labelledby="offer-stack-title">
+        <p class="section-eyebrow">21 晚睡前節奏計畫</p>
+        <h2 id="offer-stack-title" class="tier-hero-title mt-3">三週後，睡前那半小時不再需要靠意志力撐</h2>
+        <p class="text-slate-300 mt-4 leading-relaxed">不是要你今晚立刻睡死，而是先讓夜晚有一個固定的收尾方式。以下是你今晚就會拿到的東西。</p>
+        <div class="funnel-list mt-7">
+            <div class="offer-stack-item"><span class="offer-stack-check">✓</span><div><strong class="text-white">今晚睡前就能用的那一款</strong><p class="text-sm text-slate-400 mt-1">付款後最晚 12 小時內送達，多數在數分鐘內。MP3 檔約 50MB、33–37 分鐘，下載後離線可聽。今晚躺下前就用得到，不用等。</p></div><span class="offer-stack-value">已含</span></div>
+            <div class="offer-stack-item"><span class="offer-stack-check">✓</span><div><strong class="text-white">對應你主卡點的核心音頻</strong><p class="text-sm text-slate-400 mt-1">依檢測結果對應 A／B／C／D 其中一款，單軌 33–37 分鐘。引導、音樂、頻率三層，四種卡點各做一版。</p></div><span class="offer-stack-value">已含</span></div>
+            <div class="offer-stack-item"><span class="offer-stack-check">✓</span><div><strong class="text-white">你的睡前卡點完整解讀</strong><p class="text-sm text-slate-400 mt-1">你卡在哪一型、為什麼之前的方法對你沒用、今晚可以做的第一步。</p></div><span class="offer-stack-value">已含</span></div>
+            <div class="offer-stack-item"><span class="offer-stack-check">✓</span><div><strong class="text-white">21 天睡前節奏陪跑（5 封信）</strong><p class="text-sm text-slate-400 mt-1">多數人買了助眠音檔，第三個晚上就忘了。第 1、3、7、14、21 晚各一封，告訴你今晚該觀察什麼、哪些反應是正常的，讓它真的變成你的睡前習慣，而不是手機裡又一個沒在用的檔案。</p></div><span class="offer-stack-value">已含</span></div>
+            <div class="offer-stack-item offer-bonus"><span class="offer-stack-check">★</span><div><strong class="text-white"><span class="bonus-tag">加贈</span> 四型全解讀對照</strong><p class="text-sm text-slate-400 mt-1">除了你自己那一型，另外三型的解讀也一併給你。你會看懂為什麼枕邊人跟你睡不著的原因不一樣，也知道他們該從哪裡開始。</p></div><span class="offer-stack-value">已含</span></div>
+            <div class="offer-stack-item"><span class="offer-stack-check">✓</span><div><strong class="text-white">7 晚無條件退費保證</strong><p class="text-sm text-slate-400 mt-1">先用 7 個晚上再決定。不滿意來信即全額退還，不問原因。你也可以改成換另一款方案，我們重寄新方案的 Day 1。</p></div><span class="offer-stack-value">已含</span></div>
+            <!-- TODO 可再加一項加贈：「睡前 3 分鐘收尾清單」（純文字，一頁）。內容備好後把下一行的註解解開。 -->
+            <!-- <div class="offer-stack-item offer-bonus"><span class="offer-stack-check">★</span><div><strong class="text-white"><span class="bonus-tag">加贈</span> 睡前 3 分鐘收尾清單</strong><p class="text-sm text-slate-400 mt-1">躺下前的三個動作，不需要工具、不需要 App，30 秒內做得完。</p></div><span class="offer-stack-value">已含</span></div> -->
+        </div>
+        <div class="mt-8 pt-7 border-t border-cyan-300/20">
+            <div class="price-anchor">
+                <div class="price-anchor-side">台北一次 60 分鐘按摩<br><strong>約 NT$800–1,300</strong><br>換來一個晚上的放鬆</div>
+                <div class="price-anchor-arrow" aria-hidden="true">→</div>
+                <div>
+                    <p class="price-anchor-main"><span class="price-anchor-unit">NT$</span><span data-price>299</span></p>
+                    <p class="price-anchor-side mt-2">21 個晚上<br><strong>平均一晚 NT$<span data-price-per-night>14</span></strong></p>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 text-center mt-5 leading-relaxed">同樣是照顧自己的自費選擇，只是這一個你可以重複使用。<br class="sm:hidden">按摩價格區間參考台北市政府公開價目表與坊間業者公開價目。</p>
+            <div class="tier-board" id="tier-board" hidden>
+                <p class="tier-board-title">現在是哪一階</p>
+                <div class="tier-list" id="tier-list"></div>
+                <div class="tier-pact" id="tier-pact" hidden>
+                    <p class="tier-pact-title">關於早鳥價，我想先說清楚</p>
+                    <p>這個價格不是行銷手法，是一個交換。</p>
+                    <p>前 10 位選擇早鳥價的朋友，我會在你使用滿 14 天之後，另外寫一封信，<strong>邀請你回覆一則使用心得</strong>。不需要寫得長，也不需要寫得好聽，只要是你真實的感受就好。這對現在的我很重要 —— 這是一個剛開始的服務，我需要知道它在不同的人身上，實際上發生了什麼。</p>
+                    <p>這不是購買條件。收到邀請時你可以婉拒，不影響你已經取得的任何內容，也不影響你的退款權利。</p>
+                    <p class="tier-pact-close">我只是希望你知道，這個價格是從哪裡來的。</p>
+                </div>
+                <p class="tier-note">價格以結帳當下為準。名額售完後自動進入下一階，不會再回到前一階。</p>
+            </div>
+            <div class="cost-of-delay">
+                <p>你今晚本來就要躺下。<strong>差別只在於今晚有沒有一個對的收尾。</strong><br>多拖一個星期，就是七個沒有真正恢復的白天 —— 而那七天你一樣會累，只是沒有人告訴你原因。</p>
+            </div>
+            <div class="mid-cta">
+                <button type="button" onclick="jumpToBuy('offer_stack')" class="primary-btn inline-flex items-center justify-center px-8 py-4">今晚就開始</button>
+                <p class="mid-cta-note">先完成檢測，系統會幫你選好對應的一款。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="glass-panel rounded-[2rem] funnel-section tier-support">
+        <div><p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">使用情境與交付流程</p><h2 class="text-3xl font-bold text-white mt-3">不是再找一段背景音，而是建立可重複的睡前入口</h2><p class="text-slate-300 mt-4 leading-relaxed">當你知道自己最常卡在哪裡，就能從對應的一款開始，在固定的睡前時段建立較一致的放鬆與收尾節奏。</p></div><div class="funnel-list mt-7"><div class="flow-step"><span class="flow-step-number">1</span><div><strong class="text-white">完成付款</strong><p class="text-sm text-slate-400 mt-1">填寫資料後前往綠界完成付款。</p></div></div><div class="flow-step"><span class="flow-step-number">2</span><div><strong class="text-white">收到啟動資訊</strong><p class="text-sm text-slate-400 mt-1">付款完成後，系統會依訂單資料寄送對應方案的啟動資訊；最晚 12 小時內完成交付。</p></div></div><div class="flow-step"><span class="flow-step-number">3</span><div><strong class="text-white">依節奏使用</strong><p class="text-sm text-slate-400 mt-1">從今晚使用方式開始，並收到 Day 1、3、7、14、21 的節奏提醒。</p></div></div></div>
+    </section>
+    <section id="faq" class="glass-panel rounded-[2rem] funnel-section tier-support" aria-labelledby="faq-title">
+        <p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">付款前，先把問題說清楚</p>
+        <h2 id="faq-title" class="text-3xl font-bold text-white mt-3">你可能還想確認的事</h2>
+        <div class="funnel-list mt-7">
+            <details class="mini-card rounded-2xl p-5">
+                <summary class="font-semibold text-white cursor-pointer pr-6">這跟 YouTube 上免費的助眠音樂差在哪？</summary>
+                <div class="text-sm text-slate-300 leading-relaxed mt-4 space-y-2"><p>免費音樂通常是一段做給所有人聽的背景聲。這裡的每一款是三層疊起來的：一段把注意力從白天收回來的引導、一段為那一型設計的音樂，以及一組對應的頻率。四種卡點各做一版，不是同一段音檔換個封面。</p><p>所以才需要先花 60 秒做檢測 —— 拿到對的那一款，比拿到一款「聽起來很放鬆」的更重要。</p><p>而你拿到的也不只是一個播放連結，還有你的卡點解讀、Day 1／3／7／14／21 的節奏提醒，以及一次換款的權利。用不用、什麼時候用，仍然由你決定。</p></div>
+            </details>
+            <details class="mini-card rounded-2xl p-5">
+                <summary class="font-semibold text-white cursor-pointer pr-6">我戴耳機睡覺會不會不好？</summary>
+                <div class="text-sm text-slate-300 leading-relaxed mt-4 space-y-2"><p>不建議戴入耳式耳機整晚睡覺，尤其是側睡或容易翻身時；它可能造成壓迫、纏繞或讓你忽略不適。</p><p>若要使用耳機，建議在睡前短時間、低音量聆聽；需要整晚播放時，優先考慮外放或床頭喇叭。</p></div>
+            </details>
+            <details class="mini-card rounded-2xl p-5">
+                <summary class="font-semibold text-white cursor-pointer pr-6">我測完是 A 型，但我覺得自己也有 C 型的狀況，怎麼辦？</summary>
+                <div class="text-sm text-slate-300 leading-relaxed mt-4 space-y-2"><p>A 與 C 可以同時出現；檢測先抓的是你目前最常把睡前拉走的主卡點，不是在替你貼永久標籤。</p><p>先從推薦方案開始，若在付款日起 7 天內發現次要卡點更明顯，可用原訂單 Email 申請換一次方案。</p></div>
+            </details>
+            <details class="mini-card rounded-2xl p-5">
+                <summary class="font-semibold text-white cursor-pointer pr-6">要聽多久才有感覺？</summary>
+                <div class="text-sm text-slate-300 leading-relaxed mt-4 space-y-2"><p>不把它設定成「播幾分鐘就必須發生什麼」的任務。第一晚先依啟動資訊使用，觀察自己最常在哪一刻又回到復盤、預演或撐住。</p><p>建議先固定使用 7 個晚上，再判斷推薦路徑是否貼近你的主卡點；不貼近時，你有一次換款的權利。</p></div>
+            </details>
+            <details class="mini-card rounded-2xl p-5">
+                <summary class="font-semibold text-white cursor-pointer pr-6">我之前試過很多方法都沒用。</summary>
+                <div class="text-sm text-slate-300 leading-relaxed mt-4 space-y-2"><p>那不代表你沒有努力；很多方法的問題是所有人都用同一個入口，而你的卡點可能根本不在那裡。</p><p>這份檢測不要求你相信某個萬用答案，只先幫你辨識今晚最需要被處理的方向，讓你不必再一次把自己逼得更用力。</p></div>
+            </details>
+            <details class="mini-card rounded-2xl p-5">
+                <summary class="font-semibold text-white cursor-pointer pr-6">付款後多久收到、怎麼收到？</summary>
+                <div class="text-sm text-slate-300 leading-relaxed mt-4 space-y-2"><p>完成綠界付款後，系統會依訂單資料把對應方案的啟動資訊寄到你填寫的 Email，最晚 12 小時內完成交付。</p><p>若時間超過仍未收到，先查看垃圾郵件與促銷分類；需要確認時，請以原訂單 Email 申請查詢。</p></div>
+            </details>
+            <details class="mini-card rounded-2xl p-5">
+                <summary class="font-semibold text-white cursor-pointer pr-6">可以在手機、平板或電腦上聽嗎？</summary>
+                <div class="text-sm text-slate-300 leading-relaxed mt-4 space-y-2"><p>可以。交付的是 MP3 檔（192kbps、44.1kHz、立體聲），手機、平板、電腦上任何一般播放器都能聆聽，不需要安裝特定 App。</p><p>下載後即可離線使用，不受網路狀況影響。付款完成後的啟動資訊會附上取得方式。</p></div>
+            </details>
+            <details class="mini-card rounded-2xl p-5">
+                <summary class="font-semibold text-white cursor-pointer pr-6">這是醫療用途嗎？</summary>
+                <div class="text-sm text-slate-300 leading-relaxed mt-4 space-y-2"><p>不是。這是以睡前使用情境為主的身心放鬆輔助內容，不用來診斷、處理或預防任何疾病。</p><p>若你正因長期睡眠困擾、身心不適或正在接受專業照護，請優先尋求合格專業人員的協助。</p></div>
+            </details>
+        </div>
+    </section>
+
+    <!-- N6 上線後：導言改為「也可以四款一起帶走」，並於結果頁補 NT$799 次級 CTA -->
+    <section id="solutions" class="glass-panel rounded-[2rem] funnel-section tier-fine">
+        <div class="text-center max-w-3xl mx-auto"><p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">四種睡前聲音路徑</p><h2 class="text-3xl sm:text-4xl font-bold text-white mt-3">先對應你的主卡點，再開始今晚的節奏</h2><p class="text-slate-300 mt-4 leading-relaxed">檢測已經幫你選好了。以下四款保留給想確認差異的人。</p></div>
+        <div class="funnel-list mt-8">
+            <article class="mini-card rounded-2xl p-6"><p class="text-cyan-200 text-sm">A 劑｜Theta 波 4–7Hz</p><h3 class="text-xl font-semibold text-white mt-2">斷路器・沉靜頻率</h3><p class="text-slate-400 text-sm mt-3">適合腦內雜訊、復盤、思考停不下來的夜晚。</p><button class="secondary-btn px-4 py-3 text-sm mt-5" onclick="chooseProduct('A')">選 A 劑</button></article>
+            <article class="mini-card rounded-2xl p-6"><p class="text-cyan-200 text-sm">B 劑｜Delta 波 0.5–4Hz</p><h3 class="text-xl font-semibold text-white mt-2">深海艙・放鬆頻率</h3><p class="text-slate-400 text-sm mt-3">適合淺眠易醒、睡醒仍累、修復感不足的夜晚。</p><button class="secondary-btn px-4 py-3 text-sm mt-5" onclick="chooseProduct('B')">選 B 劑</button></article>
+            <article class="mini-card rounded-2xl p-6"><p class="text-cyan-200 text-sm">C 劑｜Alpha 波 8–12Hz</p><h3 class="text-xl font-semibold text-white mt-2">心流校準・專注頻率</h3><p class="text-slate-400 text-sm mt-3">適合明天壓力、預演與神經提前備戰的夜晚。</p><button class="secondary-btn px-4 py-3 text-sm mt-5" onclick="chooseProduct('C')">選 C 劑</button></article>
+            <article class="mini-card rounded-2xl p-6"><p class="text-cyan-200 text-sm">D 劑｜Solfeggio 852Hz</p><h3 class="text-xl font-semibold text-white mt-2">豐盛錨點・安定頻率</h3><p class="text-slate-400 text-sm mt-3">適合底層不安、安全感不足與情緒牽動明顯的夜晚。</p><button class="secondary-btn px-4 py-3 text-sm mt-5" onclick="chooseProduct('D')">選 D 劑</button></article>
+        </div>
+    </section>
+
+    <section class="glass-panel rounded-[2rem] funnel-section tier-support" aria-labelledby="abl-method-title">
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-500 mb-3">Erick｜艾伯林量子調頻</p>
+        <h2 id="abl-method-title" class="text-3xl font-bold text-white">方法定位</h2>
+        <p class="text-slate-200 leading-relaxed mt-4">我自己就是那種一點小事就會緊張，然後晚上睡不好的人。</p>
+        <p class="text-slate-200 leading-relaxed mt-4">後來我才慢慢意識到，睡眠影響的範圍遠超過我原本以為的 —— 活力、食慾、專注力，甚至白天的判斷力，都跟前一晚有沒有真的休息到有關。你以為只是「今天比較累」，但它其實一路往後影響。</p>
+        <p class="text-slate-200 leading-relaxed mt-4">對我來說，這些音頻真正的價值不是讓我睡得更久，而是讓睡前有一個固定的收尾方式，比較不會躺下之後還在轉。白天的專注也跟著比較穩。<span class="story-note">這是我個人的使用經驗，每個人的感受不一定相同，提供你參考。</span></p>
+        <p class="text-slate-200 leading-relaxed mt-4">我做這件事，不是要替每個人貼標籤，而是因為我看見：很多人在睡前不是沒有努力，而是一直拿同一種方式，面對不同的卡點。艾伯林量子調頻想做的，是把差異說清楚，讓你從今晚能開始的一步出發。</p>
+    </section>
+    <section id="guarantee" class="glass-panel rounded-[2rem] funnel-section tier-hero">
+        <p class="section-eyebrow">7 晚無條件保證</p>
+        <h2 class="tier-hero-title mt-3">先用 7 個晚上。不滿意，全額退。</h2>
+        <p class="text-slate-300 mt-4 leading-relaxed">選錯型的風險，我來扛。你只要先從檢測推薦的那一款開始用滿 7 個晚上。如果你認為它沒有幫上忙，寫一封信給我們，<strong class="guarantee-strong">全額退還，不需要解釋原因，也不需要退回任何東西。</strong></p>
+        <div class="funnel-list mt-6 text-sm text-slate-300">
+            <p class="py-3">自付款日起 7 天內，以原訂單 Email 來信申請即可，我們才能正確對應你的訂單。</p>
+            <p class="py-3">不問原因、不需填問卷、不需要你證明什麼。</p>
+            <p class="py-3">退款於收到申請後 7 個工作天內原路退回。</p>
+            <p class="py-3">你也可以選擇不退款、改換另一款方案；換款後會重寄新方案的 Day 1 啟動內容。</p>
+        </div>
+        <p class="text-xs text-slate-500 mt-5 leading-relaxed">我知道數位商品通常不給退。但如果我不敢讓你先用了再決定，那就是我對自己做的東西沒有把握。</p>
+        <div class="mid-cta">
+            <button type="button" onclick="jumpToBuy('guarantee')" class="primary-btn inline-flex items-center justify-center px-8 py-4">選一款，今晚就開始</button>
+            <p class="mid-cta-note">付款前不會扣款；7 天內不滿意可全額退費。</p>
+        </div>
+    </section>
+    <section id="purchase" class="glass-panel rounded-[2rem] funnel-section tier-hero">
+        <div class="max-w-2xl mx-auto"><p class="text-sm tracking-[0.2em] uppercase text-cyan-200/80">開始你的睡前聲音路徑</p><h2 class="text-3xl font-bold text-white mt-3">選擇一款，今晚就開始</h2><p id="purchase-selection" class="selection-highlight mt-3">請先從檢測結果或四款方案中選擇。</p>
+            <form id="purchase-form" onsubmit="submitPaymentOrder(event)" class="space-y-4 mt-6">
+                <input id="purchase-product-code" type="hidden" value="">
+                <input id="purchase-product-name" type="hidden" value="">
+                <div><label class="block text-sm text-slate-400 mb-1" for="purchase-name">姓名</label><input id="purchase-name" required autocomplete="name" class="field-input" type="text" placeholder="請輸入姓名"></div>
+                <div><label class="block text-sm text-slate-400 mb-1" for="purchase-phone">手機 <span class="text-slate-500">（選填，僅用於交付異常時聯繫）</span></label><input id="purchase-phone" autocomplete="tel" class="field-input" type="tel" inputmode="tel" placeholder="請輸入手機（選填）"></div>
+                <div><label class="block text-sm text-slate-400 mb-1" for="purchase-email">Email</label><input id="purchase-email" required autocomplete="email" class="field-input" type="email" placeholder="用於訂單與交付資訊"><p class="text-xs text-slate-500 mt-2">啟動連結會寄到這裡，請確認拼字。</p></div>
+                <label class="consent-row">
+                    <input type="checkbox" id="purchase-consent" required>
+                    <span>我已閱讀並同意 <a href="privacy.html" target="_blank" rel="noopener">隱私權政策與服務條款</a>，並同意我提供的姓名與 Email 用於本次訂單的交付與後續內容寄送。</span>
+                </label>
+                <button id="purchase-submit" class="primary-btn w-full py-4 px-6" type="submit">今晚就開始 → 前往付款 NT$<span data-price>299</span></button>
+                <div class="flex flex-wrap justify-center gap-2 text-xs text-slate-400" aria-label="付款與交付保障">
+                    <span class="rounded-full border border-slate-700 px-3 py-1.5">綠界金流</span>
+                    <span class="rounded-full border border-slate-700 px-3 py-1.5">SSL 加密</span>
+                    <span class="rounded-full border border-slate-700 px-3 py-1.5">12 小時內交付</span>
+                    <span class="rounded-full border border-slate-700 px-3 py-1.5">可換一次</span>
+                </div>
+                <p id="purchase-status" class="text-sm text-slate-400" aria-live="polite">付款前不會扣款。</p>
+            </form>
+        </div>
+    </section>
+
+
+
+    <!-- 待真實素材到位後移除 hidden：需要 (1) 後台檢測人次與四型比例 (2) 3 則經書面同意的回饋 -->
+    <section id="social-proof" class="glass-panel rounded-[2rem] funnel-section" aria-labelledby="social-proof-title" hidden style="display:none">
+        <!--
+        社會證明區內容待真實素材到位後再放入：已核對的檢測人次與四型比例、經書面同意公開的三則回饋。
+        -->
+    </section>
+
+    <footer class="px-6 pb-6 text-xs text-slate-500 leading-relaxed">
+        <p class="footer-links"><a href="privacy.html">隱私權政策與服務條款</a>　·　<a href="privacy.html#refund">交付與退款說明</a>　·　<a href="mailto:ikit178@gmail.com">聯絡我們</a></p>
+        <p>自付款日起 7 天內，可以原訂單 Email 來信申請全額退款，無需說明原因；退款後停止後續內容寄送。逾 7 天或已選擇換款者，不再適用退款。</p>
+        <p class="mt-2">本產品為一般身心放鬆與專注聆聽的輔助內容，不屬醫療器材，不提供疾病診斷、治療或預防。</p>
+    </footer>
+</main>
+
+<div id="sticky-mobile-cta" class="sticky-mobile-cta glass-panel" aria-label="下一步">
+    <button id="sticky-mobile-cta-button" type="button" onclick="handleStickyCtaClick()" class="primary-btn w-full px-5 py-3 text-sm">
+        <span id="sticky-mobile-cta-label">60 秒測出你的睡前卡點</span>
+    </button>
 </div>
 
 <script>
     const N8N_WEBHOOK_URL = "https://erick303.app.n8n.cloud/webhook/timewaver-quiz-hook";
+    const PAYMENT_ORDER_WEBHOOK = "https://erick303.app.n8n.cloud/webhook/timewaver-create-ecpay-order";
+    const products = {
+        A: "【A劑】斷路器・沉靜頻率",
+        B: "【B劑】深海艙・放鬆頻率",
+        C: "【C劑】心流校準・專注頻率",
+        D: "【D劑】豐盛錨點・安定頻率"
+    };
 
     const questions = [
         { q: "【檢測 1/8】回想最近幾個晚上，你的睡眠狀態最接近哪一種？", options: [ {text: "躺下後腦袋仍在整理事情，入睡前一直有念頭在跑。", type: "A"}, {text: "有睡著，但睡得很淺、容易醒，醒來像沒有真正休息到。", type: "B"}, {text: "睡前容易想到明天的任務或壓力，身體明明累了，心裡卻還在備戰。", type: "C"}, {text: "夜深時會浮出不安、空洞或沒來由的擔心，睡眠像被底層情緒牽住。", type: "D"} ] },
@@ -876,34 +1607,50 @@
 
     const resultsMap = {
         "A": {
-            title: "A 型：腦內雜訊與復盤",
-            checkpoint: "大腦還沒下班的過載型",
-            desc: "你真正卡住的不是不想睡，而是注意力還被白天的資訊、對話、決策和明天的安排佔住。當腦內分頁一直開著，身體躺下了，大腦卻還在工作。",
-            firstStep: "今晚先把手機放遠，讓燈光降下來，播放一段能協助思考降速的聲音路徑，讓注意力慢慢離開腦內復盤。",
+            title: "A 型：大腦下不了班型",
+            checkpoint: "腦內雜訊、復盤、思考停不下來",
+            desc: "你以為是自己想太多、睡前不夠自律。其實不是你不夠努力，而是白天留下的資訊、對話與決策還抓著你的注意力；身體已經躺下，大腦仍在替你收尾。",
+            failure: "白噪音能蓋住環境聲，卻不會替注意力換一個落點。腦內分頁沒有被關照或移轉時，大腦仍會把它們留在前景繼續處理。",
+            firstStep: "現在花 30 秒，把手機螢幕朝下放遠，做三次比吸氣更長的吐氣，只數吐氣；先把注意力從腦內復盤帶回一件正在做的事。",
+            cost: "接下來一週，睡前的復盤可能仍每天佔用你的收尾時間，讓休息也像另一件待完成的事。",
+            // 真實使用回饋尚未提供，勿以推測補寫。
+            proof: "",
             audioName: "【A劑】斷路器・沉靜頻率",
             freq: "Theta 波 4-7Hz"
         },
         "B": {
-            title: "B 型：淺眠易醒與修復不足",
-            checkpoint: "睡了卻沒有真正恢復的待機型",
-            desc: "你的問題不一定是睡不著，而是睡眠深度不夠穩。身體像進入待機模式，神經系統卻沒有完整切換到修復節奏，所以醒來仍覺得沉重。",
-            firstStep: "今晚先不要追求立刻睡著，而是建立固定下沉節奏。讓聲音維持穩定、低刺激，協助身體慢慢進入更深的休息感。",
+            title: "B 型：睡了但沒修復型",
+            checkpoint: "淺眠易醒、睡醒仍累、身體像在待機",
+            desc: "你以為只是睡得不夠久，所以逼自己早點躺下。真正讓你累的，可能是身體只停在待機，還沒有從白天的警覺狀態切換到可以真正休息的節奏；這不是你不會睡。",
+            failure: "早點躺只增加在床上的時間，不能替神經系統完成切換。當身體仍維持警覺，越急著睡，越容易把「快睡著」變成新的任務。",
+            firstStep: "躺好後花 30 秒，依序感覺後腦、肩膀、雙腳和床的接觸點；不必要求自己放鬆，只把注意力放在重量被承接。",
+            cost: "接下來一週，你可能繼續把更多時間留給睡覺，卻很難感覺每天有一個真正結束的時刻。",
+            // 真實使用回饋尚未提供，勿以推測補寫。
+            proof: "",
             audioName: "【B劑】深海艙・放鬆頻率",
             freq: "Delta 波 0.5-4Hz"
         },
         "C": {
-            title: "C 型：明天壓力與神經備戰",
-            checkpoint: "還沒發生就先緊繃的預演型",
-            desc: "你的神經系統很可能正在提前替明天備戰。你不是單純想太多，而是身體把會議、責任、期限或未知風險當成需要預先處理的任務。",
-            firstStep: "今晚先把明天最重要的一件事寫下來，讓大腦知道它已經被安放，再用穩定的聲音路徑把注意力帶回當下。",
+            title: "C 型：明天先佔用今晚型",
+            checkpoint: "明天壓力、預演、神經提前備戰",
+            desc: "你以為是自己責任感太重、怎麼都放不下明天。真正的問題是，大腦把會議、期限與未知風險辨識成『現在就得處理』的任務，所以它不是故意不讓你休息，而是在提前備戰。",
+            failure: "叫自己別想，沒有告訴大腦這件事何時會被處理；它仍把明天當成當下任務，於是反覆預演來避免遺漏。壓住念頭，只會讓它更黏在前景。",
+            firstStep: "現在花 30 秒寫下：『明天第一件要做的是＿＿＿。』寫完把紙扣起來；不是解決它，只是讓大腦知道這件事已有位置。",
+            cost: "接下來一週，明天的清單可能每天提早進場，讓今晚的空白時間越來越少。",
+            // 真實使用回饋尚未提供，勿以推測補寫。
+            proof: "",
             audioName: "【C劑】心流校準・專注頻率",
             freq: "Alpha 波 8-12Hz"
         },
         "D": {
-            title: "D 型：底層不安與安全感牽動",
-            checkpoint: "安靜下來後不安浮出的防衛型",
-            desc: "你夜裡卡住的點，可能不是今天事情太多，而是安靜下來後，安全感、匱乏感或情緒牽動開始浮出。這時候需要的不是壓下情緒，而是先讓身心感到被支撐。",
-            firstStep: "今晚先把注意力放回呼吸和身體重量，讓自己知道此刻是安全的，再用溫和的聲音路徑協助底層不安慢慢降下來。",
+            title: "D 型：安靜後不安浮出型",
+            checkpoint: "底層不安、安全感不足、匱乏感或情緒牽動",
+            desc: "你以為自己太敏感，或又在睡前胡思亂想。真正的問題是，白天撐住的感受一安靜下來就有了空間浮出；這不是脆弱，而是你已經用撐住的方式活太久了。",
+            failure: "叫自己不要想，其實仍在盯著那個念頭有沒有回來。壓抑需要持續用力，安靜時一鬆開，感受就容易反彈；所以你需要的不是再壓一次。",
+            firstStep: "現在花 30 秒，一手放在胸口、一手放在腹部，慢慢吐氣三次，心裡只說：『我正在這裡。』不必把感受趕走。",
+            cost: "接下來一週，安靜下來的片刻可能仍容易被不安填滿，讓你更想用忙碌把自己撐住。",
+            // 真實使用回饋尚未提供，勿以推測補寫。
+            proof: "",
             audioName: "【D劑】豐盛錨點・安定頻率",
             freq: "Solfeggio 852Hz"
         }
@@ -913,6 +1660,7 @@
     let scores = { A:0, B:0, C:0, D:0 };
     let userResultType = "A";
     let answers = [];
+    let hasCompletedQuiz = false;
 
     function showStep(stepId) {
         document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
@@ -923,6 +1671,8 @@
         currentQ = 0;
         scores = { A:0, B:0, C:0, D:0 };
         answers = [];
+        hasCompletedQuiz = false;
+        updateStickyCta();
         trackAblEvent('quiz_start');
         showStep('quiz-container');
         renderQuestion();
@@ -945,7 +1695,7 @@
             btn.innerHTML = `
                 <div class="flex items-start gap-4">
                     <span class="option-key">${String.fromCharCode(65 + index)}</span>
-                    <span class="option-text text-sm sm:text-base leading-relaxed text-slate-100">${opt.text}</span>
+                    <span class="option-text text-sm sm:text-base leading-relaxed">${opt.text}</span>
                 </div>
             `;
             btn.onclick = () => selectOption(opt.type, btn);
@@ -965,7 +1715,7 @@
             } else {
                 calculateResult();
                 trackAblEvent('quiz_complete', { result_type: userResultType });
-                showLeadStep();
+                showResult();
             }
         }, 180);
     }
@@ -985,29 +1735,203 @@
         userResultType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
     }
 
-    function showLeadStep() {
+    function showResult() {
         const resultData = resultsMap[userResultType];
-        document.getElementById('lead-result-preview').innerText = `${resultData.title} / ${resultData.checkpoint}`;
-        trackAblEvent('lead_form_view', { result_type: userResultType });
-        showStep('step-lead');
+        document.getElementById('result-title').innerText = resultData.title;
+        document.getElementById('result-checkpoint').innerText = `${resultData.checkpoint} / ${resultData.freq}`;
+        document.getElementById('result-desc').innerText = resultData.desc;
+        document.getElementById('result-failure').innerText = resultData.failure;
+        document.getElementById('result-cost').innerText = resultData.cost;
+        document.getElementById('result-first-step').innerText = resultData.firstStep;
+        document.getElementById('result-audio-name').innerText = resultData.audioName;
+        const resultSalesLink = document.getElementById('result-sales-link');
+        resultSalesLink.dataset.resultType = userResultType;
+        resultSalesLink.textContent = `今晚就用 ${resultData.audioName} NT${currentPrice()}`;
+        hasCompletedQuiz = true;
+        updateStickyCta();
+        trackAblEvent('result_view', { result_type: userResultType });
+        showStep('step-result');
     }
 
-    async function submitLead(e) {
+    function updateStickyCta() {
+        const label = document.getElementById('sticky-mobile-cta-label');
+        if (!label) return;
+        label.textContent = hasCompletedQuiz
+            ? `今晚就用 ${resultsMap[userResultType].audioName} NT${currentPrice()}`
+            : '60 秒測出你的睡前卡點';
+    }
+
+    /* ===== 價格階梯 ===== */
+    const PRICING_API = "https://erick303.app.n8n.cloud/webhook/timewaver-pricing";
+    let PRICING = null;
+
+    function currentPrice() {
+        return (PRICING && PRICING.active_price) ? PRICING.active_price : 299;
+    }
+
+    function applyPrices() {
+        const p = currentPrice();
+        document.querySelectorAll('[data-price]').forEach(function (el) { el.textContent = p; });
+        document.querySelectorAll('[data-price-per-night]').forEach(function (el) {
+            el.textContent = Math.round(p / 21);
+        });
+    }
+
+    function renderTiers() {
+        if (!PRICING || !Array.isArray(PRICING.tiers)) return;
+        const list = document.getElementById('tier-list');
+        const board = document.getElementById('tier-board');
+        if (!list || !board) return;
+        list.innerHTML = '';
+        PRICING.tiers.forEach(function (t) {
+            const row = document.createElement('div');
+            row.className = 'tier-item' + (t.state === 'open' ? ' is-open' : (t.state === 'sold_out' ? ' is-done' : ''));
+            let sub = '', badge = '', badgeClass = '';
+            if (t.state === 'open') {
+                sub = t.limit ? ('限 ' + t.limit + ' 位・還剩 ' + t.remaining + ' 位') : '無名額限制';
+                badge = '現在這一階'; badgeClass = 'badge-open';
+            } else if (t.state === 'sold_out') {
+                sub = t.limit ? ('限 ' + t.limit + ' 位・已額滿') : '已結束';
+                badge = '已額滿'; badgeClass = 'badge-done';
+            } else {
+                sub = t.limit ? ('限 ' + t.limit + ' 位・前一階售完後開放') : '前面售完後開放';
+                badge = '尚未開放'; badgeClass = 'badge-next';
+            }
+            row.innerHTML =
+                '<div class="tier-price">NT$' + t.price + '</div>' +
+                '<div class="tier-main"><div class="tier-label">' + t.label + '</div>' +
+                '<div class="tier-sub">' + sub + '</div></div>' +
+                '<span class="tier-badge ' + badgeClass + '">' + badge + '</span>';
+            list.appendChild(row);
+        });
+        const pact = document.getElementById('tier-pact');
+        if (pact) {
+            const early = PRICING.tiers.find(function (t) { return t.code === 'EARLY1'; });
+            pact.hidden = !(early && early.state === 'open');
+        }
+        board.hidden = false;
+    }
+
+    function loadPricing() {
+        fetch(PRICING_API + '?_=' + Date.now())
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (data) {
+                if (!data || !data.ok) return;
+                PRICING = data;
+                applyPrices();
+                renderTiers();
+                trackAblEvent('pricing_loaded', { tier: data.active_tier, price: data.active_price, sold: data.total_sold });
+            })
+            .catch(function () { /* 取價失敗就維持頁面預設值，不影響購買 */ });
+    }
+
+    function jumpToQuiz(source) {
+        trackAblEvent('mid_cta_click', { source: source, target: 'quiz' });
+        const anchor = document.getElementById('step-start');
+        if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (!hasCompletedQuiz) startQuiz();
+    }
+
+    function jumpToBuy(source) {
+        if (!hasCompletedQuiz) {
+            trackAblEvent('mid_cta_click', { source: source, target: 'quiz_redirect' });
+            jumpToQuiz(source);
+            return;
+        }
+        trackAblEvent('mid_cta_click', { source: source, target: 'purchase' });
+        chooseRecommendedProduct();
+    }
+
+    function handleStickyCtaClick() {
+        const state = hasCompletedQuiz ? 'result_ready' : 'quiz_not_completed';
+        trackAblEvent('sticky_cta_click', { state });
+        if (hasCompletedQuiz) {
+            chooseRecommendedProduct();
+            return;
+        }
+        startQuiz();
+    }
+
+    loadPricing();
+
+    function initialiseStickyCtaVisibility() {
+        const stickyCta = document.getElementById('sticky-mobile-cta');
+        const purchase = document.getElementById('purchase');
+        if (!stickyCta || !purchase || !('IntersectionObserver' in window)) return;
+        const observer = new IntersectionObserver(([entry]) => {
+            stickyCta.classList.toggle('is-hidden', entry.isIntersecting);
+        }, { threshold: 0.12 });
+        observer.observe(purchase);
+    }
+
+    initialiseStickyCtaVisibility();
+
+    function initialiseFunnelViewTracking() {
+        if (!('IntersectionObserver' in window)) return;
+
+        [
+            { id: 'offer-stack', eventName: 'offer_stack_view' },
+            { id: 'guarantee', eventName: 'guarantee_view' }
+        ].forEach(({ id, eventName }) => {
+            const element = document.getElementById(id);
+            if (!element) return;
+            const observer = new IntersectionObserver(([entry]) => {
+                if (!entry.isIntersecting) return;
+                trackAblEvent(eventName);
+                observer.unobserve(entry.target);
+            }, { threshold: 0.25 });
+            observer.observe(element);
+        });
+    }
+
+    function initialiseFaqTracking() {
+        document.querySelectorAll('#faq details').forEach((detail, index) => {
+            detail.addEventListener('toggle', () => {
+                if (detail.open) trackAblEvent('faq_open', { question_index: index + 1 });
+            });
+        });
+    }
+
+    function initialiseCheckoutTracking() {
+        const purchaseForm = document.getElementById('purchase-form');
+        if (!purchaseForm) return;
+        let hasStartedCheckout = false;
+        purchaseForm.querySelectorAll('input:not([type="hidden"])').forEach((input) => {
+            input.addEventListener('focus', () => {
+                if (hasStartedCheckout) return;
+                hasStartedCheckout = true;
+                trackAblEvent('checkout_start', {
+                    product_code: document.getElementById('purchase-product-code').value || null
+                });
+            });
+        });
+    }
+
+    initialiseFunnelViewTracking();
+    initialiseFaqTracking();
+    initialiseCheckoutTracking();
+
+    async function submitOptionalEmail(e) {
         e.preventDefault();
         const btn = document.getElementById('submit-btn');
         const name = document.getElementById('user-name').value;
         const email = document.getElementById('user-email').value;
+        const status = document.getElementById('lead-status');
+        const resultData = resultsMap[userResultType];
 
         btn.disabled = true;
         btn.style.opacity = "0.7";
         btn.innerText = "資料傳輸中...";
 
-        const resultData = resultsMap[userResultType];
-
         const payload = {
             name: name,
             email: email,
             result_type: userResultType,
+            result_desc: resultData.desc,
+            result_failure: resultData.failure,
+            result_cost: resultData.cost,
+            result_first_step: resultData.firstStep,
+            audio_name: resultData.audioName,
             timestamp: new Date().toISOString()
         };
 
@@ -1021,35 +1945,93 @@
             });
 
             if (response.ok) {
-                console.log('✅ 頻率處方已成功同步至 TimeWaver Cloud');
                 trackAblEvent('assessment_submit', { result_type: userResultType });
                 if (typeof fbq === 'function') {
                     fbq('track', 'Lead');
                 }
-                document.getElementById('result-title').innerText = resultData.title;
-                document.getElementById('result-checkpoint').innerText = `${resultData.checkpoint} / ${resultData.freq}`;
-                document.getElementById('result-desc').innerText = resultData.desc;
-                document.getElementById('result-first-step').innerText = resultData.firstStep;
-                document.getElementById('result-audio-name').innerText = resultData.audioName;
-                const resultSalesLink = document.getElementById('result-sales-link');
-                resultSalesLink.href = `https://timewaver-audio-sales.netlify.app/?result=${userResultType}#purchase`;
-                resultSalesLink.dataset.resultType = userResultType;
-                trackAblEvent('result_view', { result_type: userResultType });
-                showStep('step-result');
+                status.textContent = '完整解讀已送出，請留意你的 Email。';
+                btn.innerText = '已寄送';
             } else {
-                console.error('❌ 系統同步失敗，請檢查 Webhook 網址設定');
-                alert("伺服器同步失敗，請稍後再試。");
+                status.textContent = '系統暫時無法寄送，請稍後再試。';
                 btn.disabled = false;
                 btn.style.opacity = "1";
-                btn.innerText = "寄送我的解碼報告";
+                btn.innerText = "把我的完整解讀寄到信箱";
             }
         } catch (error) {
-            console.error('⚠️ 傳輸發生異常:', error);
-            alert("網路錯誤，請稍後再試或聯繫客服。");
+            console.error('Email 同步失敗:', error);
+            status.textContent = '網路暫時無法寄送，請稍後再試。';
             btn.disabled = false;
             btn.style.opacity = "1";
-            btn.innerText = "寄送我的解碼報告";
+            btn.innerText = "把我的完整解讀寄到信箱";
         }
+    }
+
+    function chooseRecommendedProduct() {
+        chooseProduct(userResultType);
+    }
+
+    function chooseProduct(productCode) {
+        const productName = products[productCode];
+        document.getElementById('purchase-product-code').value = productCode;
+        document.getElementById('purchase-product-name').value = productName;
+        document.getElementById('purchase-selection').innerHTML = `你選擇的是：<strong>${productName}</strong>（NT${productCode === 'BUNDLE' ? 799 : currentPrice()}）`;
+        document.getElementById('purchase').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (productCode === 'BUNDLE') {
+            trackAblEvent('bundle_click', { product_code: productCode, source: 'one_page' });
+            return;
+        }
+        trackAblEvent('audio_purchase_click', { product_code: productCode, source: 'one_page' });
+    }
+
+    // 訂單編號與金額一律由後台（n8n + products 主檔）決定，前端不再傳送，
+    // 避免任何人透過 DevTools 竄改成交金額。
+    function submitPaymentOrder(event) {
+        event.preventDefault();
+        const productCode = document.getElementById('purchase-product-code').value;
+        const status = document.getElementById('purchase-status');
+        const submit = document.getElementById('purchase-submit');
+        if (!productCode) {
+            status.textContent = '請先從檢測結果或四款方案中選擇一款。';
+            return;
+        }
+        const BASE_TYPES = ['A', 'B', 'C', 'D'];
+        const primaryCode = BASE_TYPES.includes(userResultType) ? userResultType
+            : (BASE_TYPES.includes(productCode) ? productCode : 'A');
+        // 次卡點＝分數第二高的型別，供 order bump 決定要交付哪一款
+        const secondaryCode = BASE_TYPES
+            .filter((t) => t !== primaryCode)
+            .sort((a, b) => (scores[b] || 0) - (scores[a] || 0))[0] || '';
+        const payload = {
+            buyer_name: document.getElementById('purchase-name').value.trim(),
+            buyer_email: document.getElementById('purchase-email').value.trim(),
+            buyer_phone: document.getElementById('purchase-phone').value.trim(),
+            item_codes: productCode,
+            primary_code: primaryCode,
+            secondary_code: secondaryCode,
+            source: 'one_page_assessment',
+            return_url: new URL('oto.html', window.location.href).href
+        };
+        trackAblEvent('checkout_submit', {
+            item_codes: payload.item_codes,
+            primary_code: payload.primary_code
+        });
+        submit.disabled = true;
+        status.textContent = '正在建立綠界訂單…';
+        if (typeof fbq === 'function') fbq('track', 'Lead');
+        const bridgeForm = document.createElement('form');
+        bridgeForm.method = 'POST';
+        bridgeForm.action = PAYMENT_ORDER_WEBHOOK;
+        bridgeForm.acceptCharset = 'UTF-8';
+        bridgeForm.hidden = true;
+        Object.entries(payload).forEach(([key, value]) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            bridgeForm.appendChild(input);
+        });
+        document.body.appendChild(bridgeForm);
+        bridgeForm.submit();
     }
 </script>
 </body>
